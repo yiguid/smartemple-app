@@ -1,1 +1,0 @@
-# smartemple-app
