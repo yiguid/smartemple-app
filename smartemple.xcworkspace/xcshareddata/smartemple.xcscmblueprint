@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4E2A245C739C1C08102DEC7B7BA4BEF3973C55D2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4E2A245C739C1C08102DEC7B7BA4BEF3973C55D2" : 0,
+    "B6C7A569D2DB7CBE95A08038BB5C8337FA05E938" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0A3A5130-EEC9-40A6-98D3-228CFA212A99",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4E2A245C739C1C08102DEC7B7BA4BEF3973C55D2" : "smartemple-app\/",
+    "B6C7A569D2DB7CBE95A08038BB5C8337FA05E938" : "Cine-App\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "smartemple",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "smartemple.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yiguid\/smartemple-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4E2A245C739C1C08102DEC7B7BA4BEF3973C55D2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yiguid\/Cine-App.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B6C7A569D2DB7CBE95A08038BB5C8337FA05E938"
+    }
+  ]
+}

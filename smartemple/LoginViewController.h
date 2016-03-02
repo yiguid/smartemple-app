@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
+
+
+@property(nonatomic,weak) IBOutlet UITextField * account;
+@property(nonatomic,weak) IBOutlet UITextField * password;
+
+
+
+- (IBAction)logBtn:(id)sender;
+- (IBAction)regBtn:(id)sender;
+- (IBAction)forgetBtn:(id)sender;
+- (IBAction)weixinBtn:(id)sender;
 
 @end
