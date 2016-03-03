@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SpeechModel.h"
 @interface SpeechTableViewCell : UITableViewCell
+
+-(void) setup :(SpeechModel *)model;
 
 @end

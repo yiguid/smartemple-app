@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TempleModel.h"
 @interface TempleTableViewCell : UITableViewCell
+
+@property(nonatomic,strong) TempleModel *model;
+
+@property(nonatomic,strong) UIImageView * templeimage;
+@property(nonatomic,strong) UIImageView * masterimage;
+@property(nonatomic,strong) UILabel * mastername;
+@property(nonatomic,strong) UILabel * timelabel;
+
+
+-(void) setup :(TempleModel *)model;
 
 @end

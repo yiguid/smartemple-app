@@ -8,6 +8,8 @@
 
 #import "MasterViewController.h"
 #import "smartemple.pch"
+#import "MasterCollectionViewCell.h"
+#import "AFNetworking.h"
 @interface MasterViewController ()
 
 @end
@@ -17,19 +19,101 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
     
-    _tableView.delegate=self;
-//    _tableView.dataSource=self;
-    _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
-    [self.view addSubview:_tableView];
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, wScreen, hScreen - 44) collectionViewLayout:flowLayout];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.alwaysBounceVertical = YES;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.collectionView];
+    [self.collectionView registerClass:[MasterCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+    
   
+    self.navigationItem.title = @"法师";
+    
+    [self loadData];
+    
+    
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)loadData{
+    
+  
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+   
+    [manager GET:@"http://smartemple.com/json/master/all" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+       
+        
+    }];
+
+   }
+
+//定义展示的UICollectionViewCell的个数
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 15;
+}
+//定义展示的Section的个数
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+//每个UICollectionView展示的内容
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    MasterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    [cell sizeToFit];
+    
+    cell.imageView.image =  [UIImage imageNamed:@"avatar@2x.png"];
+   
+    cell.title.text = @"法师";
+    
+    cell.guanzhuimage.image  =[UIImage imageNamed:@"xin@2x.png"];
+    cell.guanzhulabel.text = @"1357";
+    
+    return cell;
+}
+
+//定义每个UICollectionView 的大小（返回CGSize：宽度和高度）
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake((wScreen - 100)/3,100);
+    
+}
+//定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    return UIEdgeInsetsMake(20,20,20, 20);
+    
+}
+//定义每个UICollectionView 纵向的间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 0;
+}
+//UICollectionView被选中时调用的方法
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+  
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+    //    self.tabBarController.tabBar.hidden = YES;
+    
 }
 
 /*

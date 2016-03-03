@@ -24,6 +24,7 @@
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
 
+     self.navigationItem.title = @"发现";
 
 }
 

@@ -20,4 +20,30 @@
     // Configure the view for the selected state
 }
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    
+    
+    return self;
+    
+}
+
+- (void)layoutSubviews{
+    
+    
+}
+
+- (void)setup:(NeighModel *)model{
+    
+    
+    
+}
+
+-(CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
+
 @end

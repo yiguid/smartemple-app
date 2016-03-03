@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TempleViewController : UIViewController<UITableViewDelegate>
+@interface TempleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) UITableView * tableView;
 

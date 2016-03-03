@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NeighModel.h"
 @interface NeighTableViewCell : UITableViewCell
+
+-(void) setup :(NeighModel *)model;
 
 @end

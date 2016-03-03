@@ -8,7 +8,13 @@
 
 #import "TempleViewController.h"
 #import "smartemple.pch"
-@interface TempleViewController ()
+#import "TempleModel.h"
+#import "TempleTableViewCell.h"
+@interface TempleViewController (){
+
+TempleModel * templemodel;
+
+}
 
 @end
 
@@ -20,10 +26,12 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
     
     _tableView.delegate=self;
-//    _tableView.dataSource=self;
+    _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
-  
+    
+     self.navigationItem.title = @"寺院";
+    [self loadData];
 
 }
 
@@ -31,6 +39,52 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)loadData{
+    
+    
+   
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+   
+        return 1;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+        
+        NSString *ID = [NSString stringWithFormat:@"Cell"];
+        TempleTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell == nil) {
+            cell = [[TempleTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        }
+    
+    cell.templeimage.image = [UIImage imageNamed:@"myBackImg@2x.png"];
+    cell.masterimage.image = [UIImage imageNamed:@"avatar@2x.png"];
+    cell.mastername.text = @"法师";
+    
+        return  cell;
+    
+ 
+}
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    return 300;
+}
+
+
 
 /*
 #pragma mark - Navigation

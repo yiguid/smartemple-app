@@ -20,25 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-//    MasterViewController * master=[[MasterViewController  alloc]init];
-//    TempleViewController * temple=[[TempleViewController alloc]init];
-//    MakeViewController * make=[[MakeViewController alloc]init];
-//    MyViewController * my=[[MyViewController alloc]init];
-//    self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
-//    UITabBarController *tb=[[UITabBarController alloc]init];
-//    self.window.rootViewController=tb;
-//    master.tabBarItem.title=@"法师";
-//    master.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-//    temple.tabBarItem.title=@"寺院";
-//    temple.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-//    make.tabBarItem.title=@"发现";
-//    make.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-//    my.tabBarItem.title=@"个人";
-//    my.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-//    tb.viewControllers=@[master,temple,make,my];
-    
-    
+     
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginScene"];
     self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];

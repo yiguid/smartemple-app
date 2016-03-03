@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface TempleModel : NSObject
+
+
 
 @end

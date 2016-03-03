@@ -33,18 +33,9 @@
 
 - (IBAction)logBtn:(id)sender{
     
-//    MasterViewController * master=[[MasterViewController  alloc]init];
-    TempleViewController * temple=[[TempleViewController alloc]init];
-    MakeViewController * make=[[MakeViewController alloc]init];
-    MyViewController * my=[[MyViewController alloc]init];
-    
-//    [self presentViewController:master animated:YES completion:nil];
+
     
     UITabBarController *tabBarController = [[UITabBarController alloc]init];
-    
-//    UINavigationController *NavigationController = [MasterViewController new];
-    
-    
     
     
     MasterViewController *masterViewController = [[MasterViewController
@@ -57,21 +48,34 @@
     [tabBarController addChildViewController:masterNavigationController];
     
     
-    temple.tabBarItem.title=@"寺院";
-    temple.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-    make.tabBarItem.title=@"发现";
-    make.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-    my.tabBarItem.title=@"个人";
-    my.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
-    
-    [tabBarController addChildViewController:temple];
-    
-    [tabBarController addChildViewController:make];
-    
-    [tabBarController addChildViewController:my];
+    TempleViewController *templeViewController = [[TempleViewController
+                                                   alloc] init];
+    UINavigationController *templeNavigationController =
+    [[UINavigationController alloc] initWithRootViewController:
+     templeViewController];
+    templeNavigationController.tabBarItem.title=@"寺院";
+    templeNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    [tabBarController addChildViewController:templeNavigationController];
     
     
-//        tabBarController.viewControllers=@[masterNavigationController,temple,make,my];
+    MakeViewController *makeViewController = [[MakeViewController
+                                                   alloc] init];
+    UINavigationController *makeNavigationController =
+    [[UINavigationController alloc] initWithRootViewController:
+     makeViewController];
+    makeNavigationController.tabBarItem.title=@"发现";
+    makeNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    [tabBarController addChildViewController:makeNavigationController];
+    
+    
+    MyViewController *myViewController = [[MyViewController
+                                                   alloc] init];
+    UINavigationController *myNavigationController =
+    [[UINavigationController alloc] initWithRootViewController:
+     myViewController];
+    myNavigationController.tabBarItem.title=@"我的";
+    myNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    [tabBarController addChildViewController:myNavigationController];
     
     self.view.window.rootViewController = tabBarController;
     
@@ -84,9 +88,12 @@
 
 }
 - (IBAction)regBtn:(id)sender{
-
+    
+   
 }
 - (IBAction)forgetBtn:(id)sender{
+    
+ 
 
 
 }

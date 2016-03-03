@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ActiviModel.h"
 @interface ActiviTableViewCell : UITableViewCell
+
+-(void) setup :(ActiviModel *)model;
 
 @end
