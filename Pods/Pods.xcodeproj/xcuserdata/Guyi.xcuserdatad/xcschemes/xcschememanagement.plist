@@ -8,61 +8,101 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
+		</dict>
+		<key>HMSegmentedControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>MJExtension.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PEPhotoCropEditor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
+		</dict>
+		<key>Qiniu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>iCarousel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>09DD8DA5CAA2F75782A723FAF09C5682</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1350968084D2E629E5AE282A02F594F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F787F835DA6A493D5FE6CA72695E664</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4618C8910ED03EE86512DEFA4702F6D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EB92CB6ECA1CE95D3C7F23C15B7B6CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5352D432641F0656C90741034E32F31E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D0F52603C2F0D51C49FF336701ECFCA</key>
+		<key>7D43A90C6F9452C2D52B5B4F28E5B556</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>91A4F684B92B4018146876762ACB4D3F</key>
+		<key>8F98112A68CA4DA3C42673414BBD3FA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9494390523250106847516AB47E5F9FF</key>
+		<key>D17F97C67B52986E01AF60E616E246B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD60032F8308383409965978768B84A5</key>
+		<key>E12B457493B154D1F6F72BAE70DE3778</key>
 		<dict>
 			<key>primary</key>
 			<true/>
