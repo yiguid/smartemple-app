@@ -9,15 +9,45 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>HMSegmentedControl.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>HappyDNS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>MJExtension.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>PEPhotoCropEditor.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>Qiniu.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
 		<dict>
@@ -32,12 +62,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>09DD8DA5CAA2F75782A723FAF09C5682</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1350968084D2E629E5AE282A02F594F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3F787F835DA6A493D5FE6CA72695E664</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4618C8910ED03EE86512DEFA4702F6D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EB92CB6ECA1CE95D3C7F23C15B7B6CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5352D432641F0656C90741034E32F31E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>6D0F52603C2F0D51C49FF336701ECFCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7D43A90C6F9452C2D52B5B4F28E5B556</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F98112A68CA4DA3C42673414BBD3FA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +118,16 @@
 			<true/>
 		</dict>
 		<key>AD60032F8308383409965978768B84A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D17F97C67B52986E01AF60E616E246B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E12B457493B154D1F6F72BAE70DE3778</key>
 		<dict>
 			<key>primary</key>
 			<true/>

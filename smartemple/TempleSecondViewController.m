@@ -1,18 +1,18 @@
 //
-//  MyattentViewController.m
+//  TempleSecondViewController.m
 //  smartemple
 //
 //  Created by wang on 16/3/3.
 //  Copyright © 2016年 wang. All rights reserved.
 //
 
-#import "MyattentViewController.h"
+#import "TempleSecondViewController.h"
 
-@interface MyattentViewController ()
+@interface TempleSecondViewController ()
 
 @end
 
-@implementation MyattentViewController
+@implementation TempleSecondViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

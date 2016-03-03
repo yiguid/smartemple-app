@@ -26,6 +26,9 @@
     self.templeimage = [[UIImageView alloc]init];
     [self.contentView addSubview:self.templeimage];
     
+    self.templename = [[UILabel alloc]init];
+    [self.contentView addSubview:self.templename];
+    
     self.masterimage = [[UIImageView alloc]init];
     [self.contentView addSubview:self.masterimage];
     
@@ -35,12 +38,15 @@
     self.timelabel = [[UILabel alloc]init];
     [self.contentView addSubview:self.timelabel];
     
+    self.provincelabel = [[UILabel alloc]init];
+    [self.contentView addSubview:self.provincelabel];
+    
+    
+    self.citylabel = [[UILabel alloc]init];
+    [self.contentView addSubview:self.citylabel];
+    
    
     
-    
-
-    
-        
     
     return self;
     
@@ -50,14 +56,21 @@
     
     
     self.templeimage.frame = CGRectMake(10, 10, wScreen-20, 200);
-    self.masterimage.frame = CGRectMake(10, 220,30,30);
-    self.mastername.frame = CGRectMake(50, 230, 100, 20);
+    self.masterimage.frame = CGRectMake(10, 250,30,30);
+    self.mastername.frame = CGRectMake(50, 260, 100, 20);
+    self.provincelabel.frame = CGRectMake(10, 220,50, 20);
+    self.citylabel.frame = CGRectMake(50, 220, 50, 20);
+    self.templename.frame = CGRectMake(100, 220, 100, 20);
+    
     
   
 }
 
 - (void)setup:(TempleModel *)model{
     
+    self.provincelabel.text = model.province;
+    self.citylabel.text = model.city;
+    self.mastername.text = model.master;
     
     
 }

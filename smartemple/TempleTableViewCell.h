@@ -16,6 +16,10 @@
 @property(nonatomic,strong) UIImageView * masterimage;
 @property(nonatomic,strong) UILabel * mastername;
 @property(nonatomic,strong) UILabel * timelabel;
+@property(nonatomic,strong) UILabel * templename;
+
+@property(nonatomic,strong) UILabel * provincelabel;
+@property(nonatomic,strong) UILabel * citylabel;
 
 
 -(void) setup :(TempleModel *)model;

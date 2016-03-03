@@ -101,6 +101,7 @@
         
     }
   
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return  cell;
     
@@ -116,6 +117,49 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    if (indexPath.row==0) {
+        MyattentViewController * myattent = [[MyattentViewController alloc]init];
+        
+        myattent.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:myattent animated:YES];
+    }else if (indexPath.row==1) {
+        MydonateViewController * mydonate = [[MydonateViewController alloc]init];
+        
+        mydonate.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:mydonate animated:YES];
+    }else if (indexPath.row==2) {
+        MyprayViewController * mypray = [[MyprayViewController alloc]init];
+        
+        mypray.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:mypray animated:YES];
+    }else if (indexPath.row==3) {
+        MyactivityViewController * myactivity = [[MyactivityViewController alloc]init];
+        
+        myactivity.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:myactivity animated:YES];
+    }else if (indexPath.row==4) {
+        MyattentViewController * myattent = [[MyattentViewController alloc]init];
+        
+        myattent.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:myattent animated:YES];
+    }else if (indexPath.row==5) {
+        MyworkViewController * mywork = [[MyworkViewController alloc]init];
+        
+        mywork.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:mywork animated:YES];
+    }else if (indexPath.row==6) {
+        MysettingViewController * mysetting = [[MysettingViewController alloc]init];
+        
+        mysetting.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:mysetting animated:YES];
+    }
     
     
     

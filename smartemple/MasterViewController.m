@@ -10,6 +10,7 @@
 #import "smartemple.pch"
 #import "MasterCollectionViewCell.h"
 #import "AFNetworking.h"
+#import "MasterSectionViewController.h"
 @interface MasterViewController ()
 
 @end
@@ -49,7 +50,7 @@
   
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
    
-    [manager GET:@"http://smartemple.com/json/master/all" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:Temple_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
@@ -72,11 +73,14 @@
     MasterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     [cell sizeToFit];
     
+//    cell.layer.borderColor=[UIColor grayColor].CGColor;
+//    cell.layer.borderWidth=0.3;
+    
     cell.imageView.image =  [UIImage imageNamed:@"avatar@2x.png"];
    
     cell.title.text = @"法师";
     
-    cell.guanzhuimage.image  =[UIImage imageNamed:@"xin@2x.png"];
+    cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
     cell.guanzhulabel.text = @"1357";
     
     return cell;
@@ -85,13 +89,13 @@
 //定义每个UICollectionView 的大小（返回CGSize：宽度和高度）
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake((wScreen - 100)/3,100);
+    return CGSizeMake((wScreen-80)/3,100);
     
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(20,20,20, 20);
+    return UIEdgeInsetsMake(20,20,10,10);
     
 }
 //定义每个UICollectionView 纵向的间距
@@ -103,6 +107,12 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
   
+    MasterSectionViewController * master = [[MasterSectionViewController alloc]init];
+    
+    master.hidesBottomBarWhenPushed = YES;
+    
+    [self.navigationController pushViewController:master animated:YES];
+    
 }
 
 -(BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {

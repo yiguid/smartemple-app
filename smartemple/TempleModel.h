@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 @interface TempleModel : NSObject
 
-
+@property(nonatomic,strong)NSString * name;
+@property(nonatomic,strong)NSString * province;
+@property(nonatomic,strong)NSString * city;
+@property(nonatomic,strong)NSString * master;
 
 @end

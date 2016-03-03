@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212622271C8844BB009A3028 /* xin.png in Resources */ = {isa = PBXBuildFile; fileRef = 212622261C8844BB009A3028 /* xin.png */; };
+		2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222A1C884856009A3028 /* TempleSecondViewController.m */; };
 		217B56C21C868ED00077B23D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B56C11C868ED00077B23D /* main.m */; };
 		217B56C51C868ED00077B23D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B56C41C868ED00077B23D /* AppDelegate.m */; };
 		217B56CB1C868ED00077B23D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217B56C91C868ED00077B23D /* Main.storyboard */; };
@@ -74,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		212622261C8844BB009A3028 /* xin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xin.png; sourceTree = "<group>"; };
+		212622291C884856009A3028 /* TempleSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempleSecondViewController.h; sourceTree = "<group>"; };
+		2126222A1C884856009A3028 /* TempleSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempleSecondViewController.m; sourceTree = "<group>"; };
 		217B56BD1C868ED00077B23D /* smartemple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartemple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217B56C11C868ED00077B23D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		217B56C31C868ED00077B23D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -188,6 +193,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		212622281C884833009A3028 /* 寺院详情 */ = {
+			isa = PBXGroup;
+			children = (
+				212622291C884856009A3028 /* TempleSecondViewController.h */,
+				2126222A1C884856009A3028 /* TempleSecondViewController.m */,
+			);
+			name = "寺院详情";
+			sourceTree = "<group>";
+		};
 		217B56B41C868ED00077B23D = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +340,7 @@
 		217B56FA1C8692270077B23D /* 寺院(第二个tableview） */ = {
 			isa = PBXGroup;
 			children = (
+				212622281C884833009A3028 /* 寺院详情 */,
 				217B56FE1C86940E0077B23D /* TempleViewController.h */,
 				217B56FF1C86940E0077B23D /* TempleViewController.m */,
 			);
@@ -335,6 +350,7 @@
 		217B57071C8696150077B23D /* image */ = {
 			isa = PBXGroup;
 			children = (
+				212622261C8844BB009A3028 /* xin.png */,
 				217B57081C86963E0077B23D /* dian.png */,
 				217B57821C86E2EA0077B23D /* shareqq@2x.png */,
 				217B57831C86E2EA0077B23D /* shareqq@3x.png */,
@@ -678,6 +694,7 @@
 				217B57D11C87DAB90077B23D /* shareImg.png in Resources */,
 				217B57091C86963E0077B23D /* dian.png in Resources */,
 				217B57841C86E2EA0077B23D /* shareqq@2x.png in Resources */,
+				212622271C8844BB009A3028 /* xin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +777,7 @@
 				217B57971C86F6FE0077B23D /* TempleModel.m in Sources */,
 				217B56C21C868ED00077B23D /* main.m in Sources */,
 				217B57B91C86F9AD0077B23D /* NewsTableViewCell.m in Sources */,
+				2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */,
 				217B58131C881B8A0077B23D /* MasterSectionViewController.m in Sources */,
 				217B57061C86945F0077B23D /* MyViewController.m in Sources */,
 				217B57A61C86F7CA0077B23D /* NeighModel.m in Sources */,
