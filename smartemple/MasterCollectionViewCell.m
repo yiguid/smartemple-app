@@ -7,18 +7,18 @@
 //
 
 #import "MasterCollectionViewCell.h"
-
+#import "smartemple.pch"
 @implementation MasterCollectionViewCell
 
 -(id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        //        self.backgroundColor = [UIColor grayColor];
+            
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(15,0,60,60)];
         [self addSubview:self.imageView];
         self.title = [[UILabel alloc]initWithFrame:CGRectMake(15,60,60, 20)];
         self.title.textAlignment = NSTextAlignmentCenter;
-        self.title.font = [UIFont systemFontOfSize:12];
+        self.title.font = TextFont;
         self.title.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
         [self addSubview:self.title];
         self.guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(25,80,10,10)];

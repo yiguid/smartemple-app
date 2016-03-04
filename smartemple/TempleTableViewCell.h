@@ -22,6 +22,7 @@
 @property(nonatomic,strong) UILabel * citylabel;
 
 
+
 -(void) setup :(TempleModel *)model;
 
 @end

@@ -8,7 +8,27 @@
 
 #import "MakeViewController.h"
 #import "smartemple.pch"
+#import "AFNetworking.h"
+#import "MJExtension.h"
+#import "UIImageView+WebCache.h"
+#import "TempleModel.h"
+#import "masterModel.h"
+#import "NewsModel.h"
+#import "ActiviModel.h"
+#import "TempleTableViewCell.h"
+#import "TempleSecondViewController.h"
+#import "MasterCollectionViewCell.h"
+#import "MasterSectionViewController.h"
+#import "NewsTableViewCell.h"
+#import "ActiviTableViewCell.h"
+#import "NewsViewController.h"
+#import "ActivityViewController.h"
 @interface MakeViewController ()
+
+@property(nonatomic, strong)NSMutableArray * templeMakeArr;
+@property(nonatomic, strong)NSMutableArray * masterMakeArr;
+@property(nonatomic, strong)NSMutableArray * newsMakeArr;
+@property(nonatomic, strong)NSMutableArray * activityMakeArr;
 
 @end
 
@@ -20,11 +40,42 @@
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
     
     _tableView.delegate=self;
-//    _tableView.dataSource=self;
+    _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
+    
+    self.templeMakeArr = [[NSMutableArray alloc]init];
+    self.masterMakeArr = [[NSMutableArray alloc]init];
+    self.newsMakeArr = [[NSMutableArray alloc]init];
+    self.activityMakeArr = [[NSMutableArray alloc]init];
 
+    
+    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]
+//                                   initWithTitle:@"左按钮"
+//                                   style:UIBarButtonItemStylePlain
+//                                   target:self
+//                                   action:@selector(left)];
+//    [self.navigationItem setLeftBarButtonItem:leftButton];
+//    
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
+//                                    initWithTitle:@"右按钮"
+//                                    style:UIBarButtonItemStylePlain
+//                                    target:self
+//                                    action:@selector(right)];
+//    [self.navigationItem setRightBarButtonItem:rightButton];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+
+    
      self.navigationItem.title = @"发现";
+    
+    [self loadData];
 
 }
 
@@ -32,6 +83,191 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)loadData{
+
+        
+        AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+        
+        [manager GET:Make_recTemple_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+            
+            self.templeMakeArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
+            [self.tableView reloadData];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            
+            
+        }];
+        
+        [manager GET:Make_recMaster_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+            
+            self.masterMakeArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
+            [self.tableView reloadData];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            
+            
+        }];
+        
+        [manager GET:Make_news_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+            
+            self.newsMakeArr = [NewsModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
+            [self.tableView reloadData];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            
+            
+        }];
+    
+        [manager GET:Make_activity_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+            
+            self.activityMakeArr = [ActiviModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
+            [self.tableView reloadData];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            
+            
+        }];
+    
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (section==0) {
+        return self.templeMakeArr.count;
+    }else if (section==1){
+        
+        return self.newsMakeArr.count;
+    }else{
+        
+        return self.activityMakeArr.count;
+    }
+
+    
+   
+    
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+    
+    if (indexPath.section==0) {
+        NSString *ID = [NSString stringWithFormat:@"Cell"];
+        TempleTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell == nil) {
+            cell = [[TempleTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        }
+        
+    [cell setup:self.templeMakeArr[indexPath.row]];
+    cell.selectionStyle =UITableViewCellSelectionStyleNone;
+        
+        return cell;
+    }else  if (indexPath.section==1) {
+        
+        
+        NSString *ID = [NSString stringWithFormat:@"NewsCell"];
+        NewsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell == nil) {
+            cell = [[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        }
+        
+        
+        [cell setup:self.newsMakeArr[indexPath.row]];
+         cell.selectionStyle =UITableViewCellSelectionStyleNone;
+        
+        return cell;
+
+        
+        
+        
+        
+    }else{
+        
+        
+        NSString *ID = [NSString stringWithFormat:@"ActivityCell"];
+        ActiviTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell == nil) {
+            cell = [[ActiviTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        }
+        
+        
+        [cell setup:self.activityMakeArr[indexPath.row]];
+         cell.selectionStyle =UITableViewCellSelectionStyleNone;
+        return cell;
+
+        
+        
+        
+    }
+    
+    return nil;
+    
+    
+    
+    
+}
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section==0) {
+        return 300;
+    }else if (indexPath.section==2){
+    
+        return 80;
+    }else{
+        return 80;
+    }
+    
+    
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section==0) {
+        
+        TempleSecondViewController * temple = [[TempleSecondViewController alloc]init];
+        temple.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:temple animated:YES];
+        
+    }else if (indexPath.section==1){
+        
+        NewsViewController * news = [[NewsViewController alloc]init];
+        news.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:news animated:YES];
+    
+    }else{
+        ActivityViewController * activity = [[ActivityViewController alloc]init];
+        activity.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:activity animated:YES];
+        
+    
+    }
+    
+    
+    
+    
+}
+
+
 
 /*
 #pragma mark - Navigation

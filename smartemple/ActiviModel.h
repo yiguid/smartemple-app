@@ -10,4 +10,10 @@
 
 @interface ActiviModel : NSObject
 
+@property(nonatomic,copy)NSString * location;
+@property(nonatomic,copy)NSString * views;
+@property(nonatomic,copy)NSString * title;
+@property(nonatomic,copy)NSString * Description;
+@property(nonatomic,copy)NSString * starttime;
+@property(nonatomic,copy)NSString * endtime;
 @end

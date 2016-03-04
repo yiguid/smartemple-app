@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MasterViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface MasterViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UISearchDisplayDelegate>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
-@property(nonatomic,retain)UISearchController *searchController;
+@property(nonatomic,retain)UISearchDisplayController *searchController;
 
 
 

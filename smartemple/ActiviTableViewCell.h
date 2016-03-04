@@ -10,6 +10,10 @@
 #import "ActiviModel.h"
 @interface ActiviTableViewCell : UITableViewCell
 
+@property(nonatomic,strong) UILabel * templeLabel;
+@property(nonatomic,strong) UILabel * desLabel;
+@property(nonatomic,strong) UILabel * viewLabel;
+
 -(void) setup :(ActiviModel *)model;
 
 @end

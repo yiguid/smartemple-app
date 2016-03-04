@@ -13,13 +13,15 @@
 #import "TempleSecondViewController.h"
 #import "AFNetworking.h"
 #import "MJExtension.h"
+#import "UIImageView+WebCache.h"
 @interface TempleViewController (){
 
-    TempleModel * templemodel;
-
+     UISearchBar * mysearch;
 }
 
-@property(nonatomic, strong)NSMutableArray * TempleArr;
+@property(nonatomic, strong)NSMutableArray * allTempleArr;
+@property(nonatomic, strong)NSMutableArray * recTempleArr;
+@property(nonatomic, strong)NSMutableArray * hotTempleArr;
 
 @end
 
@@ -34,9 +36,47 @@
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
     
-    self.TempleArr = [[NSMutableArray alloc]init];
+    self.allTempleArr = [[NSMutableArray alloc]init];
+    self.recTempleArr = [[NSMutableArray alloc]init];
+    self.hotTempleArr = [[NSMutableArray alloc]init];
     
      self.navigationItem.title = @"寺院";
+    
+    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]
+//                                   initWithTitle:@"左按钮"
+//                                   style:UIBarButtonItemStylePlain
+//                                   target:self
+//                                   action:@selector(left)];
+//    [self.navigationItem setLeftBarButtonItem:leftButton];
+//    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
+                                    initWithTitle:@"🔍"
+                                    style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(right:)];
+    [self.navigationItem setRightBarButtonItem:rightButton];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+
+    mysearch = [[UISearchBar alloc]initWithFrame:CGRectMake(0,64,wScreen, 40)];
+    
+    mysearch.delegate = self;
+    
+    mysearch.placeholder = @"搜索寺院";
+    mysearch.barTintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    
+
+    [self.view addSubview:mysearch];
+    mysearch.hidden = YES;
+
+    
+    
     [self loadData];
 
 }
@@ -46,15 +86,75 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)right:(id)sender{
+    if (mysearch.hidden==YES) {
+        mysearch.hidden=NO;
+        self.tableView.frame = CGRectMake(0,40, wScreen, hScreen-40);
+    }else{
+        mysearch.hidden=YES;
+        self.tableView.frame = CGRectMake(0,0, wScreen, hScreen);
+    }
+    
+    
+}
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    
+    NSLog(@"shouldBeginEditing");
+    return YES;
+    
+}
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    NSLog(@"didBeginEditing");
+    
+}
+-(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    NSLog(@"shouldEndEding");
+    return YES;
+}
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    NSLog(@"didEndEditing");
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"searchButtonClicked");
+    
+}
+
+
 - (void)loadData{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     
-    [manager GET:Temple_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:Temple_all_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
-        self.TempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject];
+        self.allTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
+         [self.tableView reloadData];
         
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    [manager GET:Temple_hot_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        self.hotTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    [manager GET:Temple_recommend_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        self.recTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
+        [self.tableView reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
@@ -62,21 +162,29 @@
         
     }];
 
-    
-    
-   
+
+
     
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-   
-        return 1;
+    if (section==0) {
+        return self.recTempleArr.count;
+    }else if (section==1){
+    
+        return self.hotTempleArr.count;
+    }else{
+    
+        return self.allTempleArr.count;
+    }
+    
+  
     
 }
 
@@ -88,16 +196,26 @@
         
         if (cell == nil) {
             cell = [[TempleTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+             cell.selectionStyle =UITableViewCellSelectionStyleNone;
         }
     
-    cell.templeimage.image = [UIImage imageNamed:@"myBackImg@2x.png"];
-    cell.masterimage.image = [UIImage imageNamed:@"avatar@2x.png"];
-    cell.mastername.text = @"法师";
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.section==0) {
+                [cell setup:self.recTempleArr[indexPath.row]];
+        
+           }else  if (indexPath.section==1) {
+               
+             
+                [cell setup:self.hotTempleArr[indexPath.row]];
+                cell.selectionStyle =UITableViewCellSelectionStyleNone;
+   
 
+    }else{
+                [cell setup:self.allTempleArr[indexPath.row]];
+                 cell.selectionStyle =UITableViewCellSelectionStyleNone;
+        
+          }
     
-        return  cell;
+    return cell;
     
  
 }

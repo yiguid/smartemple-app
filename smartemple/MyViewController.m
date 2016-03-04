@@ -32,6 +32,30 @@
     _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
+    
+    
+    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]
+//                                   initWithTitle:@"左按钮"
+//                                   style:UIBarButtonItemStylePlain
+//                                   target:self
+//                                   action:@selector(left)];
+//    [self.navigationItem setLeftBarButtonItem:leftButton];
+//    
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
+//                                    initWithTitle:@"右按钮"
+//                                    style:UIBarButtonItemStylePlain
+//                                    target:self
+//                                    action:@selector(right)];
+//    [self.navigationItem setRightBarButtonItem:rightButton];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+
 
      self.navigationItem.title = @"我的";
     

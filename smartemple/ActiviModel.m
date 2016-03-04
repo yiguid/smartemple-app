@@ -10,4 +10,9 @@
 
 @implementation ActiviModel
 
++(NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{@"Description" : @"description"};
+}
+
 @end

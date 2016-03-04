@@ -10,6 +10,10 @@
 #import "NewsModel.h"
 @interface NewsTableViewCell : UITableViewCell
 
+@property(nonatomic,strong) UILabel * templeLabel;
+@property(nonatomic,strong) UILabel * desLabel;
+@property(nonatomic,strong) UILabel * viewLabel;
+
 -(void) setup :(NewsModel *)model;
 
 @end

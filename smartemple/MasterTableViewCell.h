@@ -1,19 +1,21 @@
 //
-//  MasterCollectionViewCell.h
+//  MasterTableViewCell.h
 //  smartemple
 //
-//  Created by wang on 16/3/3.
+//  Created by wang on 16/3/4.
 //  Copyright © 2016年 wang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
-@interface MasterCollectionViewCell : UICollectionViewCell
+#import "masterModel.h"
+@interface MasterTableViewCell : UITableViewCell
 
 @property(nonatomic, strong)UILabel *title;
-@property(nonatomic, strong)UIImageView *imageView;
+@property(nonatomic, strong)UIImageView * masterimage;
 @property(nonatomic, strong)UILabel *templename;
 @property(nonatomic, strong)UIImageView * guanzhuimage;
 @property(nonatomic, strong)UILabel * guanzhulabel;
+
+-(void) setup :(masterModel *)model;
 
 @end

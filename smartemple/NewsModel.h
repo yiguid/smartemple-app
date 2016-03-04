@@ -10,4 +10,10 @@
 
 @interface NewsModel : NSObject
 
+@property(nonatomic,copy)NSString * updatetime;
+@property(nonatomic,copy)NSString * title;
+@property(nonatomic,copy)NSString * Description;
+@property(nonatomic,copy)NSString * views;
+@property(nonatomic,copy)NSString * realname;
+
 @end

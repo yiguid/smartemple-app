@@ -10,4 +10,10 @@
 
 @implementation NewsModel
 
++(NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{@"Description" : @"description"};
+}
+
+
 @end

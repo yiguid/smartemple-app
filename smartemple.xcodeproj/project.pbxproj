@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		212622271C8844BB009A3028 /* xin.png in Resources */ = {isa = PBXBuildFile; fileRef = 212622261C8844BB009A3028 /* xin.png */; };
 		2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222A1C884856009A3028 /* TempleSecondViewController.m */; };
+		2126222E1C899BE7009A3028 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222D1C899BE7009A3028 /* NewsViewController.m */; };
+		212622331C899C1E009A3028 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212622321C899C1E009A3028 /* ActivityViewController.m */; };
+		212622361C89A0B0009A3028 /* MasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 212622351C89A0B0009A3028 /* MasterTableViewCell.m */; };
 		217B56C21C868ED00077B23D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B56C11C868ED00077B23D /* main.m */; };
 		217B56C51C868ED00077B23D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B56C41C868ED00077B23D /* AppDelegate.m */; };
 		217B56CB1C868ED00077B23D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 217B56C91C868ED00077B23D /* Main.storyboard */; };
@@ -79,6 +82,12 @@
 		212622261C8844BB009A3028 /* xin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xin.png; sourceTree = "<group>"; };
 		212622291C884856009A3028 /* TempleSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempleSecondViewController.h; sourceTree = "<group>"; };
 		2126222A1C884856009A3028 /* TempleSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempleSecondViewController.m; sourceTree = "<group>"; };
+		2126222C1C899BE7009A3028 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		2126222D1C899BE7009A3028 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		212622311C899C1E009A3028 /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		212622321C899C1E009A3028 /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		212622341C89A0B0009A3028 /* MasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableViewCell.h; sourceTree = "<group>"; };
+		212622351C89A0B0009A3028 /* MasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableViewCell.m; sourceTree = "<group>"; };
 		217B56BD1C868ED00077B23D /* smartemple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartemple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		217B56C11C868ED00077B23D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		217B56C31C868ED00077B23D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -202,6 +211,23 @@
 			name = "寺院详情";
 			sourceTree = "<group>";
 		};
+		2126222F1C899BF1009A3028 /* 新闻详情 */ = {
+			isa = PBXGroup;
+			children = (
+				2126222C1C899BE7009A3028 /* NewsViewController.h */,
+				2126222D1C899BE7009A3028 /* NewsViewController.m */,
+			);
+			name = "新闻详情";
+			sourceTree = "<group>";
+		};
+		212622301C899C0A009A3028 /* 活动详情 */ = {
+			isa = PBXGroup;
+			children = (
+				212622311C899C1E009A3028 /* ActivityViewController.h */,
+			);
+			name = "活动详情";
+			sourceTree = "<group>";
+		};
 		217B56B41C868ED00077B23D = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +301,7 @@
 		217B56F31C8691470077B23D /* 法师 */ = {
 			isa = PBXGroup;
 			children = (
+				217B58101C881B600077B23D /* 法师详情 */,
 				217B57AE1C86F9050077B23D /* 法师列表 */,
 				217B57AC1C86F7E50077B23D /* 法师model */,
 			);
@@ -284,7 +311,6 @@
 		217B56F41C8691540077B23D /* 法师（第一个tableview） */ = {
 			isa = PBXGroup;
 			children = (
-				217B58101C881B600077B23D /* 法师详情 */,
 				217B56FB1C8693E90077B23D /* MasterViewController.h */,
 				217B56FC1C8693E90077B23D /* MasterViewController.m */,
 			);
@@ -340,7 +366,6 @@
 		217B56FA1C8692270077B23D /* 寺院(第二个tableview） */ = {
 			isa = PBXGroup;
 			children = (
-				212622281C884833009A3028 /* 寺院详情 */,
 				217B56FE1C86940E0077B23D /* TempleViewController.h */,
 				217B56FF1C86940E0077B23D /* TempleViewController.m */,
 			);
@@ -424,6 +449,8 @@
 			children = (
 				217B57D61C87E5B80077B23D /* MasterCollectionViewCell.h */,
 				217B57D71C87E5B80077B23D /* MasterCollectionViewCell.m */,
+				212622341C89A0B0009A3028 /* MasterTableViewCell.h */,
+				212622351C89A0B0009A3028 /* MasterTableViewCell.m */,
 			);
 			name = "法师列表";
 			sourceTree = "<group>";
@@ -485,6 +512,7 @@
 		217B57C41C87D3B90077B23D /* 活动 */ = {
 			isa = PBXGroup;
 			children = (
+				212622301C899C0A009A3028 /* 活动详情 */,
 				217B57B01C86F9230077B23D /* 活动列表 */,
 				217B57A71C86F7D40077B23D /* 活动model */,
 			);
@@ -494,6 +522,7 @@
 		217B57C51C87D3BC0077B23D /* 新闻 */ = {
 			isa = PBXGroup;
 			children = (
+				2126222F1C899BF1009A3028 /* 新闻详情 */,
 				217B57B11C86F9260077B23D /* 新闻列表 */,
 				217B57A81C86F7D80077B23D /* 新闻model */,
 			);
@@ -512,6 +541,7 @@
 		217B57C71C87D3C60077B23D /* 寺院 */ = {
 			isa = PBXGroup;
 			children = (
+				212622281C884833009A3028 /* 寺院详情 */,
 				217B57B31C86F92C0077B23D /* 寺院列表 */,
 				217B57AB1C86F7E00077B23D /* 寺院model */,
 			);
@@ -532,6 +562,7 @@
 		217B57DC1C87EF950077B23D /* 我的列表 */ = {
 			isa = PBXGroup;
 			children = (
+				212622321C899C1E009A3028 /* ActivityViewController.m */,
 				217B57DD1C87EFCA0077B23D /* MyattentViewController.h */,
 				217B57DE1C87EFCA0077B23D /* MyattentViewController.m */,
 				217B57E01C87EFEF0077B23D /* MydonateViewController.h */,
@@ -770,6 +801,7 @@
 				217B57EE1C87F0700077B23D /* MynewsViewController.m in Sources */,
 				217B570F1C86982D0077B23D /* RegistViewController.m in Sources */,
 				217B57F11C87F08F0077B23D /* MysettingViewController.m in Sources */,
+				212622361C89A0B0009A3028 /* MasterTableViewCell.m in Sources */,
 				217B57031C8694500077B23D /* MakeViewController.m in Sources */,
 				217B57EB1C87F0590077B23D /* MyworkViewController.m in Sources */,
 				217B57E51C87F0190077B23D /* MyprayViewController.m in Sources */,
@@ -777,8 +809,10 @@
 				217B57971C86F6FE0077B23D /* TempleModel.m in Sources */,
 				217B56C21C868ED00077B23D /* main.m in Sources */,
 				217B57B91C86F9AD0077B23D /* NewsTableViewCell.m in Sources */,
+				212622331C899C1E009A3028 /* ActivityViewController.m in Sources */,
 				2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */,
 				217B58131C881B8A0077B23D /* MasterSectionViewController.m in Sources */,
+				2126222E1C899BE7009A3028 /* NewsViewController.m in Sources */,
 				217B57061C86945F0077B23D /* MyViewController.m in Sources */,
 				217B57A61C86F7CA0077B23D /* NeighModel.m in Sources */,
 				217B57C21C87CFE00077B23D /* ForgetViewController.m in Sources */,
