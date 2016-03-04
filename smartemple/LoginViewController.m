@@ -36,7 +36,7 @@
 
     
     UITabBarController *tabBarController = [[UITabBarController alloc]init];
-    
+
     
     MasterViewController *masterViewController = [[MasterViewController
                                                    alloc] init];
@@ -77,14 +77,11 @@
     myNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
     [tabBarController addChildViewController:myNavigationController];
     
+    
+    
+    
     self.view.window.rootViewController = tabBarController;
-    
-    
-    
-  
-    
-    
-
+ 
 
 }
 - (IBAction)regBtn:(id)sender{

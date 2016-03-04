@@ -34,6 +34,30 @@
   
     self.navigationItem.title = @"法师";
     
+    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
+    
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+   
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"左按钮"
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:@selector(myAction)];
+    [self.navigationItem setLeftBarButtonItem:leftButton];
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
+                                    initWithBarButtonSystemItem:UIBarButtonSystemItemUndo
+                                    target:self
+                                    action:@selector(myAction)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    
+
+    
+    
     [self loadData];
     
     
@@ -62,11 +86,11 @@
 
 //定义展示的UICollectionViewCell的个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 15;
+    return 9;
 }
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return 3;
 }
 //每个UICollectionView展示的内容
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,12 +100,38 @@
 //    cell.layer.borderColor=[UIColor grayColor].CGColor;
 //    cell.layer.borderWidth=0.3;
     
-    cell.imageView.image =  [UIImage imageNamed:@"avatar@2x.png"];
-   
-    cell.title.text = @"法师";
+    if (indexPath.section==0) {
+        cell.imageView.image =  [UIImage imageNamed:@"avatar@2x.png"];
+        
+        cell.title.text = @"大德";
+        
+        cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
+        cell.guanzhulabel.text = @"1357";
+    }else if (indexPath.section==1){
+        
+        cell.imageView.image =  [UIImage imageNamed:@"avatar@2x.png"];
+        
+        cell.title.text = @"法师";
+        
+        cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
+        cell.guanzhulabel.text = @"456";
     
-    cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-    cell.guanzhulabel.text = @"1357";
+    
+    }else{
+    
+        cell.imageView.image =  [UIImage imageNamed:@"avatar@2x.png"];
+        
+        cell.title.text = @"法师";
+        
+        cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
+        cell.guanzhulabel.text = @"223";
+    
+    
+    
+    }
+    
+    
+   
     
     return cell;
 }
@@ -95,7 +145,7 @@
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(20,20,10,10);
+    return UIEdgeInsetsMake(20,20,20,20);
     
 }
 //定义每个UICollectionView 纵向的间距

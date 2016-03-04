@@ -69,7 +69,7 @@
     UserTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (cell == nil) {
-        cell = [[UserTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        cell = [[UserTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:ID];
     }
     
     if (indexPath.row == 0) {
@@ -102,7 +102,6 @@
     }
   
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     return  cell;
     
     

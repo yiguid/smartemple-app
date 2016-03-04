@@ -11,6 +11,8 @@
 @interface MasterViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (nonatomic, strong)UICollectionView *collectionView;
+@property(nonatomic,retain)UISearchController *searchController;
+
 
 
 @end
