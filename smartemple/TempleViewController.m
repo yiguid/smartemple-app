@@ -42,7 +42,7 @@
     
      self.navigationItem.title = @"寺院";
     
-    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    UIColor * color = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     
@@ -62,14 +62,13 @@
                                     action:@selector(right:)];
     [self.navigationItem setRightBarButtonItem:rightButton];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     mysearch = [[UISearchBar alloc]initWithFrame:CGRectMake(0,64,wScreen, 40)];
     
     mysearch.delegate = self;
     
     mysearch.placeholder = @"搜索寺院";
-    mysearch.barTintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    mysearch.barTintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
 
     [self.view addSubview:mysearch];
@@ -219,6 +218,21 @@
     
  
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    if (section==0) {
+        return @"推荐寺院";
+    }else if (section==1){
+        return @"热门寺院";
+    }else{
+        return @"全部寺院";
+    }
+    
+}
+
+
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     

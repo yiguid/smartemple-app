@@ -28,12 +28,12 @@
     
     self.menuname = [[UILabel alloc]init];
     self.menuname.font = [UIFont systemFontOfSize:13];
-    self.menuname.textColor =[UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.menuname.textColor =[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
 
     [self.contentView addSubview:self.menuname];
     
     self.menuview = [[UIView alloc]init];
-    self.menuview.backgroundColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.menuview.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [self.contentView addSubview:self.menuview];
     
     

@@ -26,7 +26,7 @@
                                 <rect key="frame" x="30" y="335" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.65329743479005231" green="0.49100867453156366" blue="0.22133223508500813" alpha="0.72891733156028371" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="登录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -42,7 +42,7 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="注册账号">
-                                    <color key="titleColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="regBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pkN-gy-L7n"/>
@@ -99,7 +99,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.57647058823529407" green="0.52156862745098043" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入手机号" minimumFontSize="17" id="X06-aA-w9O">
@@ -163,7 +163,7 @@
                                 <rect key="frame" x="30" y="424" width="260" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,7 +188,7 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="发送验证码">
-                                    <color key="titleColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -239,7 +239,7 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="发送验证码">
-                                    <color key="titleColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.65329743480000002" green="0.49100867450000002" blue="0.2213322351" alpha="0.72891733160000005" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>

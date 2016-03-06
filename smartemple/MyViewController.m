@@ -34,7 +34,7 @@
     [self.view addSubview:_tableView];
     
     
-    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    UIColor * color =[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     
@@ -54,8 +54,7 @@
 //                                    action:@selector(right)];
 //    [self.navigationItem setRightBarButtonItem:rightButton];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
 
      self.navigationItem.title = @"我的";
     

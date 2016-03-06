@@ -33,7 +33,7 @@
     [self.contentView addSubview:self.templeimage];
     
     self.templename = [[UILabel alloc]init];
-    self.templename.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.templename.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     self.templename.font = TextFont;
     [self.contentView addSubview:self.templename];
     
@@ -41,7 +41,7 @@
     [self.contentView addSubview:self.masterimage];
     
     self.mastername = [[UILabel alloc]init];
-    self.mastername.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.mastername.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     self.mastername.font = TextFont;
     [self.contentView addSubview:self.mastername];
     
@@ -49,13 +49,13 @@
     [self.contentView addSubview:self.timelabel];
     
     self.provincelabel = [[UILabel alloc]init];
-    self.provincelabel.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.provincelabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     self.provincelabel.font = TextFont;
     [self.contentView addSubview:self.provincelabel];
     
     
     self.citylabel = [[UILabel alloc]init];
-    self.citylabel.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.citylabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     self.citylabel.font = TextFont;
     [self.contentView addSubview:self.citylabel];
     

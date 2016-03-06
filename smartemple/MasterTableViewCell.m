@@ -31,7 +31,7 @@
     self.title = [[UILabel alloc]init];
     self.title.textAlignment = NSTextAlignmentCenter;
     self.title.font = TextFont;
-    self.title.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.title.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [self addSubview:self.title];
     
     
@@ -39,8 +39,7 @@
     [self addSubview:self.guanzhuimage];
     self.guanzhulabel = [[UILabel alloc]init];
     self.guanzhulabel.textAlignment = NSTextAlignmentLeft;
-    self.guanzhulabel.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-    self.guanzhulabel.font = [UIFont systemFontOfSize:10];
+    self.guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];    self.guanzhulabel.font = [UIFont systemFontOfSize:10];
     [self addSubview:self.guanzhulabel];
     
     

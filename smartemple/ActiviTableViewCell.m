@@ -25,7 +25,7 @@
     
     
     self.templeLabel = [[UILabel alloc]init];
-    self.templeLabel.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    self.templeLabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     self.templeLabel.font = TextFont;
     self.templeLabel.numberOfLines = 0;
     [self.contentView addSubview:self.templeLabel];

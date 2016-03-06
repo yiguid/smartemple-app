@@ -17,6 +17,8 @@
 @interface MasterViewController (){
 
     UISearchBar * mysearch;
+    UILabel * label;
+
 }
 
 @property(nonatomic, strong)NSMutableArray * allMasterArr;
@@ -44,7 +46,7 @@
   
     self.navigationItem.title = @"法师";
     
-    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    UIColor * color = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     
@@ -64,8 +66,7 @@
                                     action:@selector(right:)];
     [self.navigationItem setRightBarButtonItem:rightButton];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-    
+    self.navigationController.navigationBar.tintColor =[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];    
     self.allMasterArr = [[NSMutableArray alloc]init];
     self.recMasterArr = [[NSMutableArray alloc]init];
     self.hotMasterArr = [[NSMutableArray alloc]init];
@@ -86,8 +87,7 @@
 //    mysearch.barStyle = UIBarStyleBlackTranslucent;
 //    mysearch.keyboardType = UIKeyboardTypeDefault;
     mysearch.placeholder = @"搜索法师";
-    mysearch.barTintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-
+    mysearch.barTintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
     [self.view addSubview:mysearch];
     mysearch.hidden = YES;
@@ -96,8 +96,20 @@
     
     [self loadData];
     
+   
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"GradientCell"];
+    
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    
+    //代码控制header和footer的显示
+    UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    collectionViewLayout.headerReferenceSize = CGSizeMake(375, 50);
     
 
+    label = [[UILabel alloc]init];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont systemFontOfSize:14];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,6 +128,13 @@
 
 
 }
+
+//- (UICollectionViewFlowLayout *) flowLayout{
+//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    flowLayout.headerReferenceSize = CGSizeMake(300.0f, 50.0f);  //设置head大小
+//    flowLayout.footerReferenceSize = CGSizeMake(300.0f, 50.0f);
+//    return flowLayout;
+//}
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
 
@@ -216,6 +235,42 @@
     
 }
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    CGSize size={320,45};
+    return size;
+}
+
+- (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableview = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader)
+    {
+        UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        
+        reusableview = headerView;
+       
+    }
+    
+
+    reusableview.backgroundColor=[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    label.frame =  CGRectMake(0,10, wScreen, 30);
+    [reusableview addSubview:label];
+   
+    if (indexPath.section==0){
+        label.text = @"推荐法师";
+    }else if (indexPath.section==1){
+        label.text = @"热门法师";
+    }else if(indexPath.section==2){
+        label.text = @"全部法师";
+    }
+ 
+    
+       
+    return reusableview;
+}
+
+
 
 //每个UICollectionView展示的内容
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -294,6 +349,9 @@
     
     return 0;
 }
+
+
+
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -317,95 +375,6 @@
     
 }
 
-///*设置标题头的宽度*/
-//-(CGFloat)tableview:(UICollectionView *)collectionView heightForHeaderInSection:(NSInteger)section
-//{
-//    
-//    if (section==0) {
-//        
-//        return 30;
-//    }else if(section == 1){
-//        
-//        return 30;
-//    }else{
-//        
-//        
-//        return 30;
-//    }
-//    
-//    
-//}
-//
-//-(UIView *)tableview:(UICollectionView *)collectionView viewForHeaderInSection:(NSInteger)section
-//{
-//    if (section == 0)
-//    {
-//        
-//        UIView * view = [[UIView alloc]init];
-//        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100, 20)];
-//        label.text = @"推荐寺院";
-//        label.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-//        [view addSubview:label];
-//        
-//        
-//        return view;
-//        
-//        
-//    }
-//    else if(section == 1)
-//    {
-//        
-//        UIView * view = [[UIView alloc]init];
-//        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100, 20)];
-//        label.text = @"热门寺院";
-//        label.textColor =[UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-//        [view addSubview:label];
-//        
-//        
-//        return view;
-//        
-//    }else{
-//        
-//        UIView * view = [[UIView alloc]init];
-//        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 100, 20)];
-//        label.text = @"全部寺院";
-//        label.textColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-//        [view addSubview:label];
-//        
-//        
-//        
-//        return view;
-//        
-//    }
-//    
-//    return nil;
-//}
-//
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    if (scrollView == self.collectionView)
-//    {
-//        //为最高的那个headerView的高度
-//        CGFloat sectionHeaderHeight = 30;
-//        if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
-//            scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
-//        } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
-//            scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
-//        }
-//        
-//        
-//    }
-//    
-//    
-//}
-
-
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//
-//{
-//    
-////    
-//    
-//}
 
 /*
 #pragma mark - Navigation

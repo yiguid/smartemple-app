@@ -50,7 +50,7 @@
     self.activityMakeArr = [[NSMutableArray alloc]init];
 
     
-    UIColor * color = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
+    UIColor * color = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     
@@ -70,8 +70,7 @@
 //                                    action:@selector(right)];
 //    [self.navigationItem setRightBarButtonItem:rightButton];
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
      self.navigationItem.title = @"发现";
     
@@ -238,6 +237,19 @@
     
     
 }
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+
+    if (section==0) {
+        return @"寺院";
+    }else if (section==1){
+        return @"消息";
+    }else{
+        return @"活动";
+    }
+
+}
+
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
