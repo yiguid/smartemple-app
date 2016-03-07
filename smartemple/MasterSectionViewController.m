@@ -16,7 +16,10 @@
 #import "UIImageView+WebCache.h"
 #import "Timelinemodel.h"
 #import "TimelineTableViewCell.h"
-@interface MasterSectionViewController ()
+@interface MasterSectionViewController (){
+
+    UISegmentedControl *segmentedControl;
+}
 
 @property(nonatomic, strong)NSMutableArray * TimeArr;
 @property(nonatomic, strong)NSMutableArray * QuestionArr;
@@ -56,45 +59,6 @@
 
     [self setHeaderView];
     
-    NSArray *segmentedData = [[NSArray alloc]initWithObjects:@"时光轴",@"问答",@"祈福",nil];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedData];
-    segmentedControl.frame = CGRectMake(10.0,wScreen/3+160,wScreen-20, 30.0);
-    segmentedControl.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    segmentedControl.selectedSegmentIndex =0;//默认选中的按钮索引
-    
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0], NSForegroundColorAttributeName,nil];
-    
-    [segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    
-    [segmentedControl addTarget:self action:@selector(Segment:)forControlEvents:UIControlEventValueChanged];
-    
-    [self.tableView addSubview:segmentedControl];
-    
-    
-    self.timelinetableview = [[UITableView alloc]initWithFrame:CGRectMake(0,wScreen/3+190, wScreen,hScreen-64)];
-    self.timelinetableview.backgroundColor = [UIColor blueColor];
-    self.questiontableview = [[UITableView alloc]initWithFrame:CGRectMake(0,wScreen/3+190, wScreen,hScreen-64)];
-    self.questiontableview.backgroundColor = [UIColor greenColor];
-    self.wishtableview = [[UITableView alloc]initWithFrame:CGRectMake(0,wScreen/3+190, wScreen,hScreen-64)];
-    self.wishtableview.backgroundColor = [UIColor orangeColor];
-    self.timelinetableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.questiontableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.wishtableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    self.timelinetableview.dataSource = self;
-    self.timelinetableview.delegate = self;
-    self.questiontableview.delegate = self;
-    self.questiontableview.dataSource = self;
-    self.wishtableview.dataSource = self;
-    self.wishtableview.delegate = self;
-    
-    [self.tableView addSubview:self.timelinetableview];
-    [self.tableView addSubview:self.questiontableview];
-    [self.tableView addSubview:self.wishtableview];
-    
-    [self.timelinetableview setHidden:NO];
-    [self.questiontableview setHidden:YES];
-    [self.wishtableview setHidden:YES];
     
     [self loadTimeline];
     
@@ -108,7 +72,7 @@
 
 
     UIView *headView = [[UIView alloc]init];
-    headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+150);
+    headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+190);
 //    headView.backgroundColor = [UIColor colorWithRed:210/255.0 green:212/255.0 blue:225/255.0 alpha:1.0];
     self.tableView.tableHeaderView = headView;
     
@@ -147,7 +111,7 @@
     [headView addSubview:likes];
     
     UILabel * views = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-100,50,60,10)];
-    views.text =[NSString stringWithFormat:@"人气 %@",self.master.views];;
+    views.text =[NSString stringWithFormat:@"人气 %@",self.master.views];
     views.textColor = [UIColor blackColor];
     views.font = TextFont;
     [headView addSubview:views];
@@ -171,6 +135,20 @@
     speech.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [headView addSubview:speech];
     
+    NSArray *segmentedData = [[NSArray alloc]initWithObjects:@"时光轴",@"问答",@"祈福",nil];
+    segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedData];
+    segmentedControl.frame = CGRectMake(10.0,wScreen/3+160,wScreen-20, 30.0);
+    segmentedControl.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    segmentedControl.selectedSegmentIndex =0;//默认选中的按钮索引
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0], NSForegroundColorAttributeName,nil];
+    
+    [segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    
+    [segmentedControl addTarget:self action:@selector(Segment:)forControlEvents:UIControlEventValueChanged];
+    
+    [headView addSubview:segmentedControl];
+    
 }
 
 
@@ -186,15 +164,7 @@
         animation.type = kCATransitionFade;
         animation.duration = 1;
         
-        [self.timelinetableview.layer addAnimation:animation forKey:nil];
-        [self.questiontableview.layer addAnimation:animation forKey:nil];
-        [self.wishtableview.layer addAnimation:animation forKey:nil];
-        
-        
-        
-        [self.timelinetableview setHidden:YES];
-        [self.questiontableview setHidden:YES];
-        [self.wishtableview setHidden:NO];
+       
 
         
            }
@@ -204,15 +174,7 @@
         animation.type = kCATransitionFade;
         animation.duration = 1;
         
-        [self.timelinetableview.layer addAnimation:animation forKey:nil];
-        [self.questiontableview.layer addAnimation:animation forKey:nil];
-        [self.wishtableview.layer addAnimation:animation forKey:nil];
         
-        
-        
-        [self.timelinetableview setHidden:YES];
-        [self.questiontableview setHidden:NO];
-        [self.wishtableview setHidden:YES];
 
   
         
@@ -221,17 +183,8 @@
         CATransition *animation = [CATransition animation];
         animation.type = kCATransitionFade;
         animation.duration = 1;
-        
-        [self.timelinetableview.layer addAnimation:animation forKey:nil];
-        [self.questiontableview.layer addAnimation:animation forKey:nil];
-        [self.wishtableview.layer addAnimation:animation forKey:nil];
-        
-        
-        
-        [self.timelinetableview setHidden:NO];
-        [self.questiontableview setHidden:YES];
-        [self.wishtableview setHidden:YES];
-        
+  
+       
     
     }
 
@@ -243,13 +196,13 @@
 -(void)loadTimeline{
 
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    
-    [manager GET:Timeline_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSString * url = [NSString stringWithFormat:@"%@",Timeline_API];
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
-        self.TimeArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
+        self.TimeArr = [Timelinemodel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
         
-        [self.timelinetableview reloadData];
+        [self.tableView reloadData];
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -276,36 +229,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if ([tableView isEqual:self.timelinetableview]) {
-        return self.TimeArr.count;
-    }else if ([tableView isEqual:self.questiontableview]){
-        return 1;
-    }else{
-        return 1;
-    }
-    
+    return self.TimeArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *ID = [NSString stringWithFormat:@"Cell"];
-    TimelineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
-    if (cell == nil) {
-        cell = [[TimelineTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    if (segmentedControl.selectedSegmentIndex==0) {
+        NSString *ID = [NSString stringWithFormat:@"TimeCell"];
+        TimelineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell == nil) {
+            cell = [[TimelineTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        }
+        
+              
         cell.selectionStyle =UITableViewCellSelectionStyleNone;
+        
+        [cell setup:self.TimeArr[indexPath.row]];
+        
+        return cell;
     }
     
-    cell.message.text = @"24423432432";
-    [cell.contentView addSubview:cell.message];
+   
     
-
-    
-//    [cell setup:self.TimeArr[indexPath.row]];
-    
-    
-    return cell;
-    
+    return nil;
     
 }
 
@@ -313,7 +261,9 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100;
+    //return 290;
+    Timelinemodel *model = [self.TimeArr objectAtIndex:indexPath.row];
+    return 80;
   
 }
 

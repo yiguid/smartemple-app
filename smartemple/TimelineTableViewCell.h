@@ -14,6 +14,8 @@
 @property(nonatomic,strong)UIImageView * messageimage;
 @property(nonatomic,strong)UILabel * message;
 
+@property(nonatomic,assign) CGFloat cellHeight;
+
 -(void) setup :(Timelinemodel *)model;
 
 @end

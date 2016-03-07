@@ -25,6 +25,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     self.datetime = [[UILabel alloc]init];
+    self.datetime.textColor=[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    self.datetime.font = TextFont;
     [self.contentView addSubview:self.datetime];
     
     self.messageimage = [[UIImageView alloc]init];
@@ -32,7 +34,9 @@
     [self.contentView addSubview:self.messageimage];
     
     self.message = [[UILabel alloc]init];
-    
+    self.message.textColor=[UIColor colorWithRed:83/255.0 green:83/255.0 blue:83/255.0 alpha:1.0];
+    self.message.numberOfLines = 0;
+    self.message.font = TextFont;
     [self.contentView addSubview:self.message];
     
     
@@ -43,15 +47,21 @@
 
 - (void)layoutSubviews{
     
-    self.datetime.frame = CGRectMake(10, 10, 50, 15);
+     CGSize textSize = [self sizeWithText:self.message.text font:TextFont maxSize:CGSizeMake(wScreen-80, MAXFLOAT)];
+    [self.message setFrame:CGRectMake(60, 20, wScreen-80, textSize.height+20)];
+    
+    CGFloat heightmessage = CGRectGetMaxY(self.message.frame);
+    
+    
+    self.datetime.frame = CGRectMake(10, 10,200, 15);
     self.messageimage.frame = CGRectMake(10, 30, 40, 40);
-    self.message.frame = CGRectMake(60, 40, wScreen-80, 50);
+//    self.message.frame = CGRectMake(60, 20, wScreen-80,60);
     
     //头像圆形
     self.messageimage.layer.masksToBounds = YES;
     self.messageimage.layer.cornerRadius = self.messageimage.frame.size.width/2;
 
-    
+    self.cellHeight = heightmessage + 80;
     
 }
 

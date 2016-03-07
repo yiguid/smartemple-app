@@ -100,25 +100,6 @@
     }];
     
     
-//    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.homeimg]];
-//    if( ![manager diskImageExistsForURL:url]){
-//        //            [imageView sd_cancelCurrentImageLoad];
-//        [self.templeimage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"myBackImg.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//            NSLog(@"Dingge Image Size: %f",image.size.height,nil);
-//            UIImage *img = self.templeimage.image;
-//            if (img.size.height > 0) {
-//                self.templeimage.image = img;
-//                CGFloat ratio = (wScreen - 10) / img.size.width;
-//               self.templeimage.frame = CGRectMake(5, 5, wScreen-10, img.size.height * ratio); //190
-//                NSInteger height = [self getHeight:model];
-//                [self.cellHeightDic setObject:[NSString stringWithFormat:@"%ld",(long)height] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
-//                
-//            }
-//        }];
-//    
-//
-    
     
 }
 

@@ -10,4 +10,9 @@
 
 @implementation masterModel
 
++(NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{@"ID" : @"id"};
+}
+
 @end

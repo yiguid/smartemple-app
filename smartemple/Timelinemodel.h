@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "MJExtension.h"
 @interface Timelinemodel : NSObject
 
 @property(nonatomic,copy)NSString * masterid;

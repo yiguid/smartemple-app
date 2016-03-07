@@ -15,4 +15,5 @@
 @property(nonatomic,copy)NSString * name;
 @property(nonatomic,copy)NSString * likes;
 @property(nonatomic,copy)NSString * views;
+@property(nonatomic,copy)NSString * ID;
 @end
