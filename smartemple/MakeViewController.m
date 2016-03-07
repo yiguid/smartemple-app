@@ -22,7 +22,6 @@
 #import "NewsTableViewCell.h"
 #import "ActiviTableViewCell.h"
 #import "NewsViewController.h"
-#import "ActivityViewController.h"
 @interface MakeViewController ()
 
 @property(nonatomic, strong)NSMutableArray * templeMakeArr;
@@ -267,10 +266,7 @@
         [self.navigationController pushViewController:news animated:YES];
     
     }else{
-        ActivityViewController * activity = [[ActivityViewController alloc]init];
-        activity.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:activity animated:YES];
-        
+                
     
     }
     

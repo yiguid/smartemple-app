@@ -294,7 +294,7 @@
         cell.title.text = model.realname;
         
         cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-        cell.guanzhulabel.text = model.views;
+        cell.guanzhulabel.text = model.likes;
     }else  if (indexPath.section==1) {
         masterModel * model = self.hotMasterArr[indexPath.row];
         
@@ -310,7 +310,7 @@
         cell.title.text = model.realname;
         
         cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-        cell.guanzhulabel.text = model.views;
+        cell.guanzhulabel.text = model.likes;
     }else{
         masterModel * model = self.allMasterArr[indexPath.row];
         
@@ -326,7 +326,7 @@
         cell.title.text = model.realname;
         
         cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-        cell.guanzhulabel.text = model.views;
+        cell.guanzhulabel.text = model.likes;
     }
    
     return cell;
@@ -355,12 +355,51 @@
 //UICollectionView被选中时调用的方法
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+    if (indexPath.section==0) {
+        
+        
+        MasterSectionViewController * master = [[MasterSectionViewController alloc]init];
+        
+        masterModel * model = self.recMasterArr[indexPath.row];
+        
+        master.master = model;
+        
+        master.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:master animated:YES];
+        
+    }else if (indexPath.section==1) {
+        
+        
+        MasterSectionViewController * master = [[MasterSectionViewController alloc]init];
+        
+        masterModel * model = self.hotMasterArr[indexPath.row];
+        
+        master.master = model;
+        
+        master.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:master animated:YES];
+        
+    }else{
+        
+        
+        MasterSectionViewController * master = [[MasterSectionViewController alloc]init];
+        
+        masterModel * model = self.allMasterArr[indexPath.row];
+        
+        master.master = model;
+        
+        master.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:master animated:YES];
+        
+    }
+    
+    
+    
   
-    MasterSectionViewController * master = [[MasterSectionViewController alloc]init];
-    
-    master.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:master animated:YES];
     
 }
 

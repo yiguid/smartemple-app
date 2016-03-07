@@ -76,7 +76,9 @@
 
     
     
-    [self loadData];
+    [self loadRec];
+    [self loadHot];
+    [self loadAll];
 
 }
 
@@ -121,33 +123,9 @@
 }
 
 
-- (void)loadData{
+-(void)loadRec{
     
-    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    
-    [manager GET:Temple_all_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
-        
-        self.allTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
-         [self.tableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-        
-        
-    }];
-    
-    [manager GET:Temple_hot_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
-        
-        self.hotTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
-        [self.tableView reloadData];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-        
-        
-    }];
+     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     
     [manager GET:Temple_recommend_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
@@ -163,8 +141,47 @@
 
 
 
-    
 }
+-(void)loadHot{
+    
+     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    [manager GET:Temple_hot_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        self.hotTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
+
+}
+-(void)loadAll{
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    
+    [manager GET:Temple_all_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        self.allTempleArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
+        [self.tableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+
+
+}
+
+
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -199,9 +216,10 @@
         }
     
     if (indexPath.section==0) {
-                [cell setup:self.recTempleArr[indexPath.row]];
+        [cell setup:self.recTempleArr[indexPath.row]];
+        cell.selectionStyle =UITableViewCellSelectionStyleNone;
         
-           }else  if (indexPath.section==1) {
+        }else  if (indexPath.section==1) {
                
              
                 [cell setup:self.hotTempleArr[indexPath.row]];

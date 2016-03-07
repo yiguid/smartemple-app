@@ -32,6 +32,12 @@
 #define Make_news_API @"http://temple.irockwill.com/json/find/news/1/5"
 #define Make_activity_API @"http://temple.irockwill.com/json/find/activity/1/5"
 
+#define Timeline_API @"http://temple.irockwill.com/json/master/timeline"
+#define Question_API @"http://temple.irockwill.com/json/master/question"
+#define Wish_API @"http://temple.irockwill.com/json/temple/wish "
+
+
+
 #define TextFont [UIFont systemFontOfSize:12]
 
 #endif 
