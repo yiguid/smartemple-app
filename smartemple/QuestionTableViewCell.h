@@ -10,6 +10,12 @@
 #import "Questionmodel.h"
 @interface QuestionTableViewCell : UITableViewCell
 
+@property(nonatomic,strong) UILabel * questionlabel;
+@property(nonatomic,strong) UILabel * question;
+@property(nonatomic,strong) UILabel * answerlabel;
+@property(nonatomic,strong) UILabel * answer;
+@property(nonatomic,strong)UIView * fengexian;
+
 -(void) setup :(Questionmodel *)model;
 
 @end

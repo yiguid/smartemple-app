@@ -28,7 +28,7 @@
     
     self.menuname = [[UILabel alloc]init];
     self.menuname.font = [UIFont systemFontOfSize:13];
-    self.menuname.textColor =[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+//    self.menuname.textColor =[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
 
     [self.contentView addSubview:self.menuname];
     
@@ -44,9 +44,9 @@
 
 - (void)layoutSubviews{
     
-    self.menuname.frame = CGRectMake(20,30, 100, 20);
+    self.menuname.frame = CGRectMake(10,10,100, 20);
     self.menuimage.frame = CGRectMake(wScreen-30, 10, 20,20);
-    self.menuview.frame = CGRectMake(20, 79, wScreen-40, 1);
+    self.menuview.frame = CGRectMake(10,39, wScreen-20,0.5);
     
     
 }

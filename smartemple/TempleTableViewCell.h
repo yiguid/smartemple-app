@@ -20,7 +20,12 @@
 
 @property(nonatomic,strong) UILabel * provincelabel;
 @property(nonatomic,strong) UILabel * citylabel;
+@property(nonatomic,strong)UIView * fengexian;
 
+@property(nonatomic, strong)UIImageView * guanzhuimage;
+@property(nonatomic, strong)UILabel * guanzhulabel;
+
+@property(nonatomic, strong)UILabel * websitelabel;
 
 
 -(void) setup :(TempleModel *)model;

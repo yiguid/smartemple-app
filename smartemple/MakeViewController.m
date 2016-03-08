@@ -226,8 +226,11 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section==0) {
-        return 300;
-    }else if (indexPath.section==2){
+        
+        TempleModel *model = [self.templeMakeArr objectAtIndex:indexPath.row];
+        return [model getCellHeight];
+        
+    }else if (indexPath.section==1){
     
         return 80;
     }else{

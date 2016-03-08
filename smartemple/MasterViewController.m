@@ -77,19 +77,9 @@
     mysearch = [[UISearchBar alloc]initWithFrame:CGRectMake(0,64,wScreen, 40)];
 
     mysearch.delegate = self;
-//    UIView * segment = [mysearch.subviews objectAtIndex:0];
-//    [segment removeFromSuperview];
-//    mysearch.backgroundColor = [UIColor colorWithRed:190/255.0 green:160/255.0 blue:110/255.0 alpha:1.0];
-    
-//    UITextField * searchField = [[mysearch subviews] lastObject];
-//    [searchField setReturnKeyType:UIReturnKeyDone];
-//    
-//    mysearch.barStyle = UIBarStyleBlackTranslucent;
-//    mysearch.keyboardType = UIKeyboardTypeDefault;
+
     mysearch.placeholder = @"搜索法师";
-    mysearch.barTintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    
-    [self.view addSubview:mysearch];
+     [self.view addSubview:mysearch];
     mysearch.hidden = YES;
     
     
@@ -214,7 +204,7 @@
 
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    return 4;
 }
 
 //定义展示的UICollectionViewCell的个数
@@ -236,7 +226,7 @@
 }
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    CGSize size={320,45};
+    CGSize size={wScreen,wScreen/8};
     return size;
 }
 
@@ -252,9 +242,10 @@
        
     }
     
-
-    reusableview.backgroundColor=[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+//
+//    reusableview.backgroundColor=[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     label.frame =  CGRectMake(0,10, wScreen, 30);
+    label.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [reusableview addSubview:label];
    
     if (indexPath.section==0){
@@ -335,13 +326,13 @@
 //定义每个UICollectionView 的大小（返回CGSize：宽度和高度）
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake((wScreen-80)/3,100);
+    return CGSizeMake(wScreen/5,wScreen/3);
     
 }
 //定义每个UICollectionView 的间距（返回UIEdgeInsets：上、左、下、右）
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    return UIEdgeInsetsMake(20,20,20,20);
+    return UIEdgeInsetsMake(10,10,10,10);
     
 }
 //定义每个UICollectionView 纵向的间距
@@ -367,6 +358,9 @@
         
         master.hidesBottomBarWhenPushed = YES;
         
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+        
         [self.navigationController pushViewController:master animated:YES];
         
     }else if (indexPath.section==1) {
@@ -380,6 +374,9 @@
         
         master.hidesBottomBarWhenPushed = YES;
         
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+        
         [self.navigationController pushViewController:master animated:YES];
         
     }else{
@@ -392,6 +389,9 @@
         master.master = model;
         
         master.hidesBottomBarWhenPushed = YES;
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
         
         [self.navigationController pushViewController:master animated:YES];
         

@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TempleModel.h"
+@interface TempleSecondViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@interface TempleSecondViewController : UIViewController
+@property(nonatomic,strong) UITableView * tableView;
+
+@property(nonatomic,strong) TempleModel * temple;
 
 @end

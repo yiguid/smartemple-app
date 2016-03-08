@@ -10,11 +10,12 @@
 #import "Timelinemodel.h"
 @interface TimelineTableViewCell : UITableViewCell
 
+@property(nonatomic,strong)Timelinemodel *model;
+
 @property(nonatomic,strong)UILabel * datetime;
 @property(nonatomic,strong)UIImageView * messageimage;
 @property(nonatomic,strong)UILabel * message;
-
-@property(nonatomic,assign) CGFloat cellHeight;
+@property(nonatomic,strong)UIView * fengexian;
 
 -(void) setup :(Timelinemodel *)model;
 

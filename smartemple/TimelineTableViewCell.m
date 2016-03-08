@@ -39,6 +39,10 @@
     self.message.font = TextFont;
     [self.contentView addSubview:self.message];
     
+    self.fengexian = [[UIView alloc]init];
+    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    [self.contentView addSubview:self.fengexian];
+    
     
     
     return self;
@@ -48,20 +52,20 @@
 - (void)layoutSubviews{
     
      CGSize textSize = [self sizeWithText:self.message.text font:TextFont maxSize:CGSizeMake(wScreen-80, MAXFLOAT)];
-    [self.message setFrame:CGRectMake(60, 20, wScreen-80, textSize.height+20)];
+
     
-    CGFloat heightmessage = CGRectGetMaxY(self.message.frame);
+        [self.message setFrame:CGRectMake(60,25, wScreen-80, textSize.height)];
     
+        self.fengexian.frame = CGRectMake(10,textSize.height+55, wScreen-20,0.5);
     
-    self.datetime.frame = CGRectMake(10, 10,200, 15);
-    self.messageimage.frame = CGRectMake(10, 30, 40, 40);
+    self.datetime.frame = CGRectMake(10,5,200, 15);
+    self.messageimage.frame = CGRectMake(10,25, 40, 40);
 //    self.message.frame = CGRectMake(60, 20, wScreen-80,60);
     
     //头像圆形
     self.messageimage.layer.masksToBounds = YES;
     self.messageimage.layer.cornerRadius = self.messageimage.frame.size.width/2;
-
-    self.cellHeight = heightmessage + 80;
+    
     
 }
 
@@ -69,7 +73,6 @@
     
     self.datetime.text = model.datetime;
     self.message.text = model.message;
-    
     
     [self.messageimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.img]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [self.messageimage setImage:self.messageimage.image];

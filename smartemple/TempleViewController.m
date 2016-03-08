@@ -48,13 +48,7 @@
     
     self.navigationController.navigationBar.titleTextAttributes = dict;
     
-//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]
-//                                   initWithTitle:@"左按钮"
-//                                   style:UIBarButtonItemStylePlain
-//                                   target:self
-//                                   action:@selector(left)];
-//    [self.navigationItem setLeftBarButtonItem:leftButton];
-//    
+   
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
                                     initWithTitle:@"🔍"
                                     style:UIBarButtonItemStylePlain
@@ -68,9 +62,7 @@
     mysearch.delegate = self;
     
     mysearch.placeholder = @"搜索寺院";
-    mysearch.barTintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    
-
+   
     [self.view addSubview:mysearch];
     mysearch.hidden = YES;
 
@@ -254,20 +246,79 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
+    if (indexPath.section==0) {
+        TempleModel *model = [self.recTempleArr objectAtIndex:indexPath.row];
+        return [model getCellHeight];
+    }else if (indexPath.section==1){
+        TempleModel *model = [self.hotTempleArr objectAtIndex:indexPath.row];
+        return [model getCellHeight];
+    }else{
     
-    return 300;
+        TempleModel *model = [self.allTempleArr objectAtIndex:indexPath.row];
+        return [model getCellHeight];
+    }
+    
+    
+    
 }
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    TempleSecondViewController * temple = [[TempleSecondViewController alloc]init];
+    if (indexPath.section==0) {
+        
+        
+        
+        TempleSecondViewController * temple = [[TempleSecondViewController alloc]init];
+        
+        TempleModel * model = self.recTempleArr[indexPath.row];
+        
+        temple.temple = model;
+        
+        temple.hidesBottomBarWhenPushed = YES;
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+        
+        [self.navigationController pushViewController:temple animated:YES];
+        
+    }else if (indexPath.section==1) {
+        
+        
+        TempleSecondViewController * temple = [[TempleSecondViewController alloc]init];
+        
+        TempleModel * model = self.hotTempleArr[indexPath.row];
+        
+        temple.temple = model;
+        
+        temple.hidesBottomBarWhenPushed = YES;
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+        
+        [self.navigationController pushViewController:temple animated:YES];
+        
+    }else{
+        
+        TempleSecondViewController * temple = [[TempleSecondViewController alloc]init];
+        
+        TempleModel * model = self.allTempleArr[indexPath.row];
+        
+        temple.temple = model;
+        
+        temple.hidesBottomBarWhenPushed = YES;
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+        
+        [self.navigationController pushViewController:temple animated:YES];
+        
+    }
     
-    temple.hidesBottomBarWhenPushed = YES;
     
-    [self.navigationController pushViewController:temple animated:YES];
 
+    
 
 }
 

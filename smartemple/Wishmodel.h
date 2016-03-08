@@ -7,9 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Wishmodel : NSObject
 
+@property(nonatomic,copy)NSString * userid;
+@property(nonatomic,copy)NSString * content;
+@property(nonatomic,copy)NSString * datetime;
 @property(nonatomic,copy)NSString * location;
+
+@property(nonatomic,assign)CGFloat cellHigth;
+-(CGFloat)getCellHeight;
 
 @end

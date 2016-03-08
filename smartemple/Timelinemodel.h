@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MJExtension.h"
+#import <UIKit/UIKit.h>
 @interface Timelinemodel : NSObject
 
 @property(nonatomic,copy)NSString * masterid;
@@ -17,5 +17,6 @@
 @property(nonatomic,copy)NSString * message;
 @property(nonatomic,copy)NSString * link;
 
-
+@property(nonatomic,assign)CGFloat cellHigth;
+-(CGFloat)getCellHeight;
 @end

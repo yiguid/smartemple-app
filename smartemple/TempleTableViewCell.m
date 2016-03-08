@@ -33,33 +33,54 @@
     [self.contentView addSubview:self.templeimage];
     
     self.templename = [[UILabel alloc]init];
-    self.templename.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    self.templename.font = TextFont;
+    self.templename.textColor = [UIColor blackColor];
+    self.templename.font = NameFont;
     [self.contentView addSubview:self.templename];
     
-    self.masterimage = [[UIImageView alloc]init];
-    [self.contentView addSubview:self.masterimage];
+//    self.masterimage = [[UIImageView alloc]init];
+//    [self.contentView addSubview:self.masterimage];
+//    
+//    self.mastername = [[UILabel alloc]init];
+//    self.mastername.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+//    self.mastername.font = TextFont;
+//    [self.contentView addSubview:self.mastername];
     
-    self.mastername = [[UILabel alloc]init];
-    self.mastername.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    self.mastername.font = TextFont;
-    [self.contentView addSubview:self.mastername];
+//    self.timelabel = [[UILabel alloc]init];
+//    [self.contentView addSubview:self.timelabel];
+//    
+//    self.provincelabel = [[UILabel alloc]init];
+//    self.provincelabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+//    self.provincelabel.font = TextFont;
+//    [self.contentView addSubview:self.provincelabel];
+//    
+//    
+//    self.citylabel = [[UILabel alloc]init];
+//    self.citylabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+//    self.citylabel.font = TextFont;
+//    [self.contentView addSubview:self.citylabel];
     
-    self.timelabel = [[UILabel alloc]init];
-    [self.contentView addSubview:self.timelabel];
     
-    self.provincelabel = [[UILabel alloc]init];
-    self.provincelabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    self.provincelabel.font = TextFont;
-    [self.contentView addSubview:self.provincelabel];
+    self.fengexian = [[UIView alloc]init];
+    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    [self.contentView addSubview:self.fengexian];
     
     
-    self.citylabel = [[UILabel alloc]init];
-    self.citylabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    self.citylabel.font = TextFont;
-    [self.contentView addSubview:self.citylabel];
-    
+    self.guanzhuimage = [[UIImageView alloc]init];
+    [self addSubview:self.guanzhuimage];
+    self.guanzhulabel = [[UILabel alloc]init];
+    self.guanzhulabel.textAlignment = NSTextAlignmentLeft;
+    self.guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    self.guanzhulabel.font = [UIFont systemFontOfSize:10];
+    [self addSubview:self.guanzhulabel];
    
+    
+    self.websitelabel = [[UILabel alloc]init];
+    self.websitelabel.textAlignment = NSTextAlignmentLeft;
+    self.websitelabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    self.websitelabel.font = TextFont;
+    self.websitelabel.numberOfLines = 0;
+    [self.contentView addSubview:self.websitelabel];
+
     
     
     return self;
@@ -68,39 +89,42 @@
 
 - (void)layoutSubviews{
     
+    CGSize textSize = [self sizeWithText:self.websitelabel.text font:TextFont maxSize:CGSizeMake(wScreen-20, MAXFLOAT)];
     
-    self.templeimage.frame = CGRectMake(10, 10, wScreen-20,200);
-    self.masterimage.frame = CGRectMake(10, 250,30,30);
-    self.mastername.frame = CGRectMake(50, 260, 100, 20);
-    self.provincelabel.frame = CGRectMake(10, 220,50, 20);
-    self.citylabel.frame = CGRectMake(50, 220,80, 20);
-    self.templename.frame = CGRectMake(100, 220,50, 20);
     
-    self.masterimage.layer.masksToBounds = YES;
-    self.masterimage.layer.cornerRadius = self.masterimage.frame.size.width/2;
+    [self.websitelabel setFrame:CGRectMake(10, wScreen/2+50, wScreen-20,textSize.height)];
     
+    
+    self.guanzhuimage.frame = CGRectMake(wScreen-45, wScreen/2+25, 10, 10);
+    self.guanzhulabel.frame = CGRectMake(wScreen-30, wScreen/2+20, 30, 20);
+    
+    
+    self.templeimage.frame = CGRectMake(10, 10, wScreen-20,wScreen/2);
+
+    self.templename.frame = CGRectMake(10,wScreen/2+20,wScreen-20,20);
+    
+//    self.masterimage.layer.masksToBounds = YES;
+//    self.masterimage.layer.cornerRadius = self.masterimage.frame.size.width/2;
+    
+     self.fengexian.frame = CGRectMake(10,wScreen/2+60+textSize.height,wScreen-20,0.5);
     
   
 }
 
 - (void)setup:(TempleModel *)model{
     
-    self.provincelabel.text = model.province;
-    self.templename.text = model.name;
-    self.citylabel.text = model.city;
-    self.mastername.text = model.master;
-    [self.masterimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [self.masterimage setImage:self.masterimage.image];
-        //头像圆形
-       
-    }];
+
+    self.templename.text = [NSString stringWithFormat:@"%@(%@ %@)",model.name,model.province,model.city];
+    
 
     [self.templeimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.homeimg]] placeholderImage:[UIImage imageNamed:@"myBackImg@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
     }];
     
+    self.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
+    self.guanzhulabel.text = model.views;
     
-    
+    self.websitelabel.text = model.website;
 }
 
 -(CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize{

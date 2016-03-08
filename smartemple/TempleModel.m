@@ -7,7 +7,21 @@
 //
 
 #import "TempleModel.h"
-
+#import "smartemple.pch"
 @implementation TempleModel
+
+-(CGFloat)getCellHeight{
+    CGSize textSize = [self sizeWithText:self.website font:TextFont maxSize:CGSizeMake(wScreen - 20, MAXFLOAT)];
+    
+    
+    return textSize.height + wScreen/2+60;
+}
+
+
+-(CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
 
 @end

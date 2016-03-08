@@ -10,6 +10,13 @@
 #import "Wishmodel.h"
 @interface WishTableViewCell : UITableViewCell
 
+@property(nonatomic,strong)UILabel * username;
+@property(nonatomic,strong)UILabel * address;
+@property(nonatomic,strong)UILabel * datetime;
+@property(nonatomic,strong)UILabel * messagelabel;
+@property(nonatomic,strong)UILabel * message;
+@property(nonatomic,strong)UIView * fengexian;
+
 -(void) setup :(Wishmodel *)model;
 
 @end
