@@ -106,7 +106,7 @@
 //    self.masterimage.layer.masksToBounds = YES;
 //    self.masterimage.layer.cornerRadius = self.masterimage.frame.size.width/2;
     
-     self.fengexian.frame = CGRectMake(10,wScreen/2+60+textSize.height,wScreen-20,0.5);
+     self.fengexian.frame = CGRectMake(10,wScreen/2+65+textSize.height,wScreen-20,0.5);
     
   
 }
