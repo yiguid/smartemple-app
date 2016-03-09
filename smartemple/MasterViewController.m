@@ -285,7 +285,13 @@
         cell.title.text = model.realname;
         
         cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-        cell.guanzhulabel.text = model.likes;
+        
+        if (model.likes==NULL) {
+            cell.guanzhulabel.text = @"0";
+        }else{
+            cell.guanzhulabel.text = model.likes;
+        }
+
     }else  if (indexPath.section==1) {
         masterModel * model = self.hotMasterArr[indexPath.row];
         
@@ -301,7 +307,13 @@
         cell.title.text = model.realname;
         
         cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-        cell.guanzhulabel.text = model.likes;
+        
+        if (model.likes==NULL) {
+            cell.guanzhulabel.text = @"0";
+        }else{
+            cell.guanzhulabel.text = model.likes;
+        }
+
     }else{
         masterModel * model = self.allMasterArr[indexPath.row];
         
@@ -317,7 +329,14 @@
         cell.title.text = model.realname;
         
         cell.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-        cell.guanzhulabel.text = model.likes;
+        
+        if (model.likes==NULL) {
+            cell.guanzhulabel.text = @"0";
+        }else{
+            cell.guanzhulabel.text = model.likes;
+        }
+        
+        
     }
    
     return cell;

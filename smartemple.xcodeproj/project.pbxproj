@@ -14,6 +14,7 @@
 		2108915D1C8D872500F8DD80 /* Wishmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2108915C1C8D872500F8DD80 /* Wishmodel.m */; };
 		210891601C8D873900F8DD80 /* Questionmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2108915F1C8D873900F8DD80 /* Questionmodel.m */; };
 		210891631C8D879000F8DD80 /* ActiviTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891621C8D879000F8DD80 /* ActiviTableViewCell.m */; };
+		210891661C8FAFDA00F8DD80 /* MasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891651C8FAFDA00F8DD80 /* MasterTableViewCell.m */; };
 		212622271C8844BB009A3028 /* xin.png in Resources */ = {isa = PBXBuildFile; fileRef = 212622261C8844BB009A3028 /* xin.png */; };
 		2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222A1C884856009A3028 /* TempleSecondViewController.m */; };
 		2126222E1C899BE7009A3028 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222D1C899BE7009A3028 /* NewsViewController.m */; };
@@ -97,6 +98,8 @@
 		2108915F1C8D873900F8DD80 /* Questionmodel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Questionmodel.m; sourceTree = "<group>"; };
 		210891611C8D879000F8DD80 /* ActiviTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiviTableViewCell.h; sourceTree = "<group>"; };
 		210891621C8D879000F8DD80 /* ActiviTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActiviTableViewCell.m; sourceTree = "<group>"; };
+		210891641C8FAFDA00F8DD80 /* MasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableViewCell.h; sourceTree = "<group>"; };
+		210891651C8FAFDA00F8DD80 /* MasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableViewCell.m; sourceTree = "<group>"; };
 		212622261C8844BB009A3028 /* xin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xin.png; sourceTree = "<group>"; };
 		212622291C884856009A3028 /* TempleSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempleSecondViewController.h; sourceTree = "<group>"; };
 		2126222A1C884856009A3028 /* TempleSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempleSecondViewController.m; sourceTree = "<group>"; };
@@ -342,6 +345,8 @@
 				217B57931C86F6ED0077B23D /* masterModel.m */,
 				217B57D61C87E5B80077B23D /* MasterCollectionViewCell.h */,
 				217B57D71C87E5B80077B23D /* MasterCollectionViewCell.m */,
+				210891641C8FAFDA00F8DD80 /* MasterTableViewCell.h */,
+				210891651C8FAFDA00F8DD80 /* MasterTableViewCell.m */,
 				217B58101C881B600077B23D /* 法师详情 */,
 			);
 			name = "法师";
@@ -746,6 +751,7 @@
 				217B57031C8694500077B23D /* MakeViewController.m in Sources */,
 				217B57EB1C87F0590077B23D /* MyworkViewController.m in Sources */,
 				2108915D1C8D872500F8DD80 /* Wishmodel.m in Sources */,
+				210891661C8FAFDA00F8DD80 /* MasterTableViewCell.m in Sources */,
 				217B57E51C87F0190077B23D /* MyprayViewController.m in Sources */,
 				2108915A1C8D871500F8DD80 /* WishTableViewCell.m in Sources */,
 				217B57CB1C87D6240077B23D /* UserModel.m in Sources */,

@@ -19,6 +19,7 @@
 #import "TempleSecondViewController.h"
 #import "MasterCollectionViewCell.h"
 #import "MasterSectionViewController.h"
+#import "MasterTableViewCell.h"
 #import "NewsTableViewCell.h"
 #import "ActiviTableViewCell.h"
 #import "NewsViewController.h"
@@ -139,14 +140,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (section==0) {
         return self.templeMakeArr.count;
-    }else if (section==1){
+    } else if (section==1){
+        
+        return self.masterMakeArr.count;
+    }
+    else if (section==2){
         
         return self.newsMakeArr.count;
     }else{
@@ -178,6 +183,26 @@
         
         return cell;
     }else  if (indexPath.section==1) {
+        
+        
+        NSString *ID = [NSString stringWithFormat:@"MasterCell"];
+        MasterTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        
+        if (cell == nil) {
+            cell = [[MasterTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+        }
+        
+        
+        [cell setup:self.masterMakeArr[indexPath.row]];
+        cell.selectionStyle =UITableViewCellSelectionStyleNone;
+        
+        return cell;
+        
+        
+        
+        
+        
+    }else  if (indexPath.section==2) {
         
         
         NSString *ID = [NSString stringWithFormat:@"NewsCell"];
@@ -231,6 +256,9 @@
         return [model getCellHeight];
         
     }else if (indexPath.section==1){
+        
+        return wScreen/5+20;
+    }else if (indexPath.section==2){
     
         return 80;
     }else{
@@ -245,6 +273,8 @@
     if (section==0) {
         return @"寺院";
     }else if (section==1){
+        return @"法师";
+    }else if (section==2){
         return @"消息";
     }else{
         return @"活动";
@@ -259,10 +289,33 @@
     if (indexPath.section==0) {
         
         TempleSecondViewController * temple = [[TempleSecondViewController alloc]init];
+        TempleModel * model = self.templeMakeArr[indexPath.row];
+        
+        temple.temple = model;
+        
         temple.hidesBottomBarWhenPushed = YES;
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+        
+
         [self.navigationController pushViewController:temple animated:YES];
         
     }else if (indexPath.section==1){
+        
+        MasterSectionViewController * master = [[MasterSectionViewController alloc]init];
+        masterModel * model = self.masterMakeArr[indexPath.row];
+        
+        master.master = model;
+        
+        master.hidesBottomBarWhenPushed = YES;
+        
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
+        self.navigationItem.backBarButtonItem = barButtonItem;
+
+        [self.navigationController pushViewController:master animated:YES];
+        
+    }else if (indexPath.section==2){
         
         NewsViewController * news = [[NewsViewController alloc]init];
         news.hidesBottomBarWhenPushed = YES;

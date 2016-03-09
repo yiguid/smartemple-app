@@ -122,7 +122,14 @@
     }];
     
     self.guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
-    self.guanzhulabel.text = model.views;
+    
+    if (model.views==NULL) {
+        self.guanzhulabel.text = @"0";
+    }else{
+          self.guanzhulabel.text = model.views;
+    }
+    
+  
     
     self.websitelabel.text = model.website;
 }
