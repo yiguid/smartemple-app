@@ -23,6 +23,7 @@
 @interface MasterSectionViewController (){
 
     UISegmentedControl *segmentedControl;
+    masterModel * mastermodel;
 }
 
 @property(nonatomic, strong)NSMutableArray * TimeArr;
@@ -60,6 +61,8 @@
     
        
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    
+    [self loadMaster];
 
     [self setHeaderView];
     [self loadTimeline];
@@ -68,11 +71,37 @@
     _textView.hidden = YES;
 }
 
+
+-(void)loadMaster{
+
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"masterid":self.master.masterid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    [manager GET:Master_ID_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        mastermodel = [masterModel mj_objectWithKeyValues:responseObject[0]];
+        
+        
+        [self.tableView reloadData];
+        
+        NSLog(@"成功");
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+
+
+}
+
+
 /**
  * 设置tabview顶部视图
  */
 - (void)setHeaderView{
-
 
     UIView *headView = [[UIView alloc]init];
     headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+160);
@@ -87,7 +116,7 @@
         masterimage.layer.masksToBounds = YES;
         masterimage.layer.cornerRadius = masterimage.frame.size.width/2;
         
-                //头像边框
+        //头像边框
         masterimage.layer.borderColor = [UIColor colorWithRed:200/255.0 green:180/255.0 blue:125/255.0 alpha:1.0].CGColor;
         masterimage.layer.borderWidth = 3.0;
     }];
@@ -95,7 +124,7 @@
     [headView addSubview:masterimage];
     UIButton * guanzhu = [[UIButton alloc]initWithFrame:CGRectMake(wScreen-45,20,10,10)];
     [guanzhu setImage:[UIImage imageNamed:@"xin.png"] forState:UIControlStateNormal];
-//    [guanzhu addTarget:self action:@selector(followTag) forControlEvents:UIControlEventTouchUpInside];
+    [guanzhu addTarget:self action:@selector(guanzhuBtn:) forControlEvents:UIControlEventTouchUpInside];
      [headView addSubview:guanzhu];
     UILabel * likes = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-32,20,30,10)];
     likes.text = self.master.likes;
@@ -161,7 +190,7 @@
     _textButton.layer.masksToBounds = YES;
     _textButton.layer.cornerRadius = 4.0;
     
-    [_textButton addTarget:self action:@selector(sendmessage) forControlEvents:UIControlEventTouchUpInside];
+    [_textButton addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
     [_textView addSubview:_textButton];
     
     _textFiled=[[UITextView alloc]initWithFrame:CGRectMake(10, 4.5, wScreen - 75, 35)];
@@ -186,7 +215,36 @@
 }
 
 
--(void)sendmessage{
+-(void)sendmessage:(id)sender{
+    
+//    if (_textFiled.text.length==0) {
+//        
+//        return;
+//        
+//    }
+//    
+//    NSString * textstring = _textFiled.text;
+    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString * url = [NSString stringWithFormat:@"%@/message",Temple_API];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSDictionary * param = @{@"realname":@"测试",@"content":@"测试数据",@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":@"002"};
+    [manager POST:url parameters:param
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
+              NSLog(@"评论成功");
+              [self.view endEditing:YES];
+              self.textFiled.text = @"";
+              
+          
+              
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              
+              NSLog(@"请求失败,%@",error);
+          }];
+    
     
 
     
@@ -254,6 +312,30 @@
 }
 
 
+-(void)guanzhuBtn:(id)sender{
+
+   
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"masterid": self.master.masterid};
+    NSString *url = [NSString stringWithFormat:@"%@/likes",Master_API];
+    
+    [manager POST:url parameters:parameters
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
+              [self.tableView reloadData];
+               NSLog(@"请求成功");
+              
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              
+              NSLog(@"请求失败,%@",error);
+          }];
+    
+
+
+
+}
 
 
 
@@ -284,7 +366,7 @@
         
         
         [self loadQuestion];
-        _textView.hidden = NO;
+        _textView.hidden = YES;
        
         
     } else if (Seg.selectedSegmentIndex == 2){
@@ -308,8 +390,8 @@
 -(void)loadTimeline{
 
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSString * url = [NSString stringWithFormat:@"%@/%@/1/5",Timeline_API,self.master.ID];
-    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"masterid":self.master.masterid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    [manager GET:Timeline_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.TimeArr = [Timelinemodel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
@@ -329,8 +411,8 @@
 -(void)loadQuestion{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSString *url = [NSString stringWithFormat:@"%@/%@/1/5",Question_API,self.master.ID];
-    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"templeid":self.master.templeid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    [manager GET:Question_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.QuestionArr = [Questionmodel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
@@ -350,8 +432,8 @@
 -(void)loadWish{
 
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSString *url = [NSString stringWithFormat:@"%@/%@/1/5",Wish_API,self.master.ID];
-    [manager POST:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"10",@"templeid":self.master.templeid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    [manager GET:Wish_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.WishArr = [Wishmodel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];

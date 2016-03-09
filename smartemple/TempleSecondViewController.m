@@ -20,10 +20,15 @@
 #import "QuestionTableViewCell.h"
 #import "Wishmodel.h"
 #import "WishTableViewCell.h"
+#import "masterModel.h"
 @interface TempleSecondViewController (){
     
     UISegmentedControl *segmentedControl;
+    masterModel * ma;
+
+   
 }
+@property(nonatomic,strong)UIView * activityView;
 
 @end
 
@@ -53,8 +58,59 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
+    [self loadMaster];
+    
+    [self setFootView];
     [self setHeaderView];
  
+}
+
+-(void)loadMaster{
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"masterid":self.temple.masterid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    [manager GET:Master_ID_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        ma = [masterModel mj_objectWithKeyValues:responseObject[0]];
+        
+        
+        [self.tableView reloadData];
+        
+        NSLog(@"成功");
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+    
+    
+}
+
+//设置底部视图
+-(void)setFootView{
+    
+    self.activityView = [[UIView alloc]initWithFrame:CGRectMake(0,hScreen-50, wScreen,50)];
+    self.activityView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.activityView];
+    
+    UIView * fengexian = [[UIView alloc]initWithFrame:CGRectMake(0,0, wScreen,0.5)];
+    fengexian.backgroundColor = [UIColor colorWithRed:149/255.0 green:149/255.0 blue:149/255.0 alpha:1.0];
+    [self.activityView addSubview:fengexian];
+    
+    UIButton * WishButton = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, wScreen/2-20, 30)];
+    WishButton.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    [WishButton setTitle:@"我想祈福" forState:UIControlStateNormal];
+    [self.activityView addSubview:WishButton];
+    
+    UIButton * activityButton = [[UIButton alloc]initWithFrame:CGRectMake(wScreen/2+10, 10, wScreen/2-20, 30)];
+    activityButton.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    [activityButton setTitle:@"我想活动" forState:UIControlStateNormal];
+    
+    [self.activityView addSubview:activityButton];
 }
 
 /**
@@ -62,13 +118,14 @@
  */
 - (void)setHeaderView{
     
+    [self loadMaster];
     
     UIView *headView = [[UIView alloc]init];
    
     //    headView.backgroundColor = [UIColor colorWithRed:210/255.0 green:212/255.0 blue:225/255.0 alpha:1.0];
     self.tableView.tableHeaderView = headView;
     
-    UIImageView *  templeimage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, wScreen-20,wScreen/2)];
+    UIImageView *  templeimage = [[UIImageView alloc]initWithFrame:CGRectMake(10,20+wScreen/5, wScreen-20,wScreen/2)];
     
     [templeimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",self.temple.homeimg]] placeholderImage:[UIImage imageNamed:@"myBackImg@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [templeimage setImage:templeimage.image];
@@ -77,24 +134,37 @@
     
     [headView addSubview:templeimage];
     
+    UIImageView * masterimage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10,wScreen/5, wScreen/5)];
     
-//    NSArray *segmentedData = [[NSArray alloc]initWithObjects:@"功德榜",@"祈福",@"活动",nil];
-//    segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedData];
-//    segmentedControl.frame = CGRectMake(10.0,wScreen/3+130,wScreen-20, 30.0);
-//    segmentedControl.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-//    segmentedControl.selectedSegmentIndex =0;//默认选中的按钮索引
-//    
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:12],NSFontAttributeName,[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0], NSForegroundColorAttributeName,nil];
-//    
-//    [segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-//    
-//    [segmentedControl addTarget:self action:@selector(Segment:)forControlEvents:UIControlEventValueChanged];
-//    
-//    [headView addSubview:segmentedControl];
+    [masterimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",self.temple.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [masterimage setImage:masterimage.image];
+        //头像圆形
+        masterimage.layer.masksToBounds = YES;
+        masterimage.layer.cornerRadius = masterimage.frame.size.width/2;
+        
+    }];
     
+    [headView addSubview:masterimage];
     
+    UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+20,15,100, 20)];
+    title.textAlignment = NSTextAlignmentLeft;
+    title.font = NameFont;
+    title.text = ma.realname;
+    [headView addSubview:title];
     
-    UILabel * templename = [[UILabel alloc]initWithFrame:CGRectMake(10, wScreen/2+20, wScreen-20, 20)];
+    UILabel * renqilabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+70,35,50,30)];
+    renqilabel.font = TextFont;
+    renqilabel.text = ma.views;
+    renqilabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    [headView addSubview:renqilabel];
+    UILabel * guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+20,35,50,30)];
+    guanzhulabel.textAlignment = NSTextAlignmentLeft;
+    guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    guanzhulabel.font = TextFont;
+    guanzhulabel.text = ma.likes;
+    [headView addSubview:guanzhulabel];
+   
+    UILabel * templename = [[UILabel alloc]initWithFrame:CGRectMake(10, wScreen/2+30+wScreen/5, wScreen-20, 20)];
     templename.textColor = [UIColor blackColor];
     templename.font = NameFont;
     templename.text = [NSString stringWithFormat:@"%@(%@ %@)",self.temple.name,self.temple.province,self.temple.city];
@@ -102,36 +172,32 @@
     [headView addSubview:templename];
     
     
-    UIImageView * guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen-45, wScreen/2+25, 10, 10)];
+    UIImageView * guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen-45, wScreen/2+35+wScreen/5, 10, 10)];
     guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
     [headView addSubview:guanzhuimage];
-    UILabel * guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-30, wScreen/2+20, 30, 20)];
-    guanzhulabel.textAlignment = NSTextAlignmentLeft;
-    guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    guanzhulabel.font = [UIFont systemFontOfSize:10];
-    guanzhulabel.text = self.temple.views;
+    UILabel * followabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-30, wScreen/2+30+wScreen/5, 30, 20)];
+    followabel.textAlignment = NSTextAlignmentLeft;
+    followabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    followabel.font = [UIFont systemFontOfSize:10];
+    followabel.text = self.temple.views;
     
-    [headView addSubview:guanzhulabel];
+    [headView addSubview:followabel];
     
     CGSize textSize = [self sizeWithText:self.temple.website font:TextFont maxSize:CGSizeMake(wScreen - 20, MAXFLOAT)];
     
-     headView.frame = CGRectMake(0, 0, wScreen,textSize.height + wScreen/2+65);
+     headView.frame = CGRectMake(0, 0, wScreen,textSize.height + wScreen/2+65+wScreen/5);
 
 
     
     
     
-    UILabel * websitelabel = [[UILabel alloc]initWithFrame:CGRectMake(10, wScreen/2+50, wScreen-20,textSize.height)];
+    UILabel * websitelabel = [[UILabel alloc]initWithFrame:CGRectMake(10, wScreen/2+60+wScreen/5, wScreen-20,textSize.height)];
     websitelabel.textAlignment = NSTextAlignmentLeft;
     websitelabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     websitelabel.font = TextFont;
     websitelabel.numberOfLines = 0;
     websitelabel.text = self.temple.website;
     [headView addSubview:websitelabel];
-
-    
-    
-    
     
 }
 
@@ -204,10 +270,10 @@
     
 //    if (segmentedControl.selectedSegmentIndex==0) {
         NSString *ID = [NSString stringWithFormat:@"TimeCell"];
-        TimelineTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
         
         if (cell == nil) {
-            cell = [[TimelineTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
         }
     return cell;
 //

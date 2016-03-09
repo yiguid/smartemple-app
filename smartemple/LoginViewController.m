@@ -33,9 +33,15 @@
 
 - (IBAction)logBtn:(id)sender{
     
-
-    
     UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor colorWithRed:140/255.0 green:140/255.0 blue:140/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                                       nil] forState:UIControlStateNormal];
+;
+    [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                       [UIColor blackColor], NSForegroundColorAttributeName,
+                                                       nil] forState:UIControlStateSelected];
 
     
     MasterViewController *masterViewController = [[MasterViewController
@@ -43,8 +49,13 @@
     UINavigationController *masterNavigationController =
     [[UINavigationController alloc] initWithRootViewController:
      masterViewController];
-    masterNavigationController.tabBarItem.title=@"法师";
-    masterNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    masterNavigationController.tabBarItem.title=@"大德";
+    masterNavigationController.tabBarItem.image = [[UIImage imageNamed:@"1_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    masterNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"1_p@2x.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [masterNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0,0, 0)];
+
+    
+    
     [tabBarController addChildViewController:masterNavigationController];
     
     
@@ -54,7 +65,10 @@
     [[UINavigationController alloc] initWithRootViewController:
      templeViewController];
     templeNavigationController.tabBarItem.title=@"寺院";
-    templeNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    templeNavigationController.tabBarItem.image = [[UIImage imageNamed:@"2_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    templeNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"follow-selected@2x.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [templeNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0,0, 0)];
+
     [tabBarController addChildViewController:templeNavigationController];
     
     
@@ -64,7 +78,10 @@
     [[UINavigationController alloc] initWithRootViewController:
      makeViewController];
     makeNavigationController.tabBarItem.title=@"发现";
-    makeNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    makeNavigationController.tabBarItem.image = [[UIImage imageNamed:@"3_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    makeNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"3_p@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [makeNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0,0,0, 0)];
+
     [tabBarController addChildViewController:makeNavigationController];
     
     
@@ -74,7 +91,10 @@
     [[UINavigationController alloc] initWithRootViewController:
      myViewController];
     myNavigationController.tabBarItem.title=@"我的";
-    myNavigationController.tabBarItem.image=[UIImage imageNamed:@"dian.png"];
+    myNavigationController.tabBarItem.image = [[UIImage imageNamed:@"4_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    myNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"4_p@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [myNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0,0, 0)];
+
     [tabBarController addChildViewController:myNavigationController];
     
     

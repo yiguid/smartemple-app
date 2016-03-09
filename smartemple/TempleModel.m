@@ -14,7 +14,7 @@
     CGSize textSize = [self sizeWithText:self.website font:TextFont maxSize:CGSizeMake(wScreen - 20, MAXFLOAT)];
     
     
-    return textSize.height + wScreen/2+65;
+    return textSize.height + wScreen/2+65+wScreen/10;
 }
 
 

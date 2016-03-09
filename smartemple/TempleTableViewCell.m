@@ -27,7 +27,7 @@
     
     self.templeimage = [[UIImageView alloc]init];
     [self.templeimage setContentScaleFactor:[[UIScreen mainScreen] scale]];
-    self.templeimage.contentMode =  UIViewContentModeScaleAspectFill;
+//    self.templeimage.contentMode =  UIViewContentModeScaleAspectFill;
     self.templeimage.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     self.templeimage.clipsToBounds  = YES;
     [self.contentView addSubview:self.templeimage];
@@ -37,9 +37,9 @@
     self.templename.font = NameFont;
     [self.contentView addSubview:self.templename];
     
-//    self.masterimage = [[UIImageView alloc]init];
-//    [self.contentView addSubview:self.masterimage];
-//    
+    self.masterimage = [[UIImageView alloc]init];
+    [self.contentView addSubview:self.masterimage];
+    
 //    self.mastername = [[UILabel alloc]init];
 //    self.mastername.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
 //    self.mastername.font = TextFont;
@@ -92,29 +92,42 @@
     CGSize textSize = [self sizeWithText:self.websitelabel.text font:TextFont maxSize:CGSizeMake(wScreen-20, MAXFLOAT)];
     
     
-    [self.websitelabel setFrame:CGRectMake(10, wScreen/2+50, wScreen-20,textSize.height)];
+    [self.websitelabel setFrame:CGRectMake(10, wScreen/2+50+wScreen/10, wScreen-20,textSize.height)];
     
     
-    self.guanzhuimage.frame = CGRectMake(wScreen-45, wScreen/2+25, 10, 10);
-    self.guanzhulabel.frame = CGRectMake(wScreen-30, wScreen/2+20, 30, 20);
+    self.guanzhuimage.frame = CGRectMake(wScreen-45, wScreen/2+25+wScreen/10, 10, 10);
+    self.guanzhulabel.frame = CGRectMake(wScreen-30, wScreen/2+20+wScreen/10, 30, 20);
     
     
-    self.templeimage.frame = CGRectMake(10, 10, wScreen-20,wScreen/2);
+    self.masterimage.frame = CGRectMake(wScreen/2-wScreen/10-10,10,wScreen/5,wScreen/5);
+    self.templeimage.frame = CGRectMake(10,wScreen/10+10, wScreen-20,wScreen/2);
 
-    self.templename.frame = CGRectMake(10,wScreen/2+20,wScreen-20,20);
+    self.templename.frame = CGRectMake(10,wScreen/2+20+wScreen/10,wScreen-20,20);
     
-//    self.masterimage.layer.masksToBounds = YES;
-//    self.masterimage.layer.cornerRadius = self.masterimage.frame.size.width/2;
+    self.masterimage.layer.masksToBounds = YES;
+    self.masterimage.layer.cornerRadius = self.masterimage.frame.size.width/2;
     
-     self.fengexian.frame = CGRectMake(10,wScreen/2+65+textSize.height,wScreen-20,0.5);
+    //头像边框
+    self.masterimage.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.masterimage.layer.borderWidth = 2.0;
     
-  
+    self.fengexian.frame = CGRectMake(10,wScreen/2+65+textSize.height+wScreen/10,wScreen-20,0.5);
+    
+    
 }
 
 - (void)setup:(TempleModel *)model{
     
 
     self.templename.text = [NSString stringWithFormat:@"%@(%@ %@)",model.name,model.province,model.city];
+    
+    
+    [self.masterimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.masterimage setImage:self.masterimage.image];
+        
+    }];
+
+    
     
 
     [self.templeimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.homeimg]] placeholderImage:[UIImage imageNamed:@"myBackImg@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {

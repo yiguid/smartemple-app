@@ -10,9 +10,9 @@
 
 @implementation masterModel
 
-+(NSDictionary *)replacedKeyFromPropertyName
-{
-    return @{@"ID" : @"masterid"};
-}
+//+(NSDictionary *)replacedKeyFromPropertyName
+//{
+//    return @{@"ID" : @"masterid"};
+//}
 
 @end

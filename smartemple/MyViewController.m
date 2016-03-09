@@ -90,7 +90,6 @@
     
     NSString *ID = [NSString stringWithFormat:@"Cell"];
     UserTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (cell == nil) {
         cell = [[UserTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:ID];
     }
@@ -98,7 +97,6 @@
     if (indexPath.row == 0) {
         cell.menuname.text = @"我的关注";
         
-      
     
     }else if (indexPath.row==1){
     

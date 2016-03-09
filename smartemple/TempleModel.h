@@ -18,6 +18,8 @@
 @property(nonatomic,copy)NSString * avatar;
 @property(nonatomic,copy)NSString * views;
 @property(nonatomic,copy)NSString * website;
+@property(nonatomic,copy)NSString * templeid;
+@property(nonatomic,copy)NSString * masterid;
 
 @property(nonatomic,assign)CGFloat cellHigth;
 -(CGFloat)getCellHeight;

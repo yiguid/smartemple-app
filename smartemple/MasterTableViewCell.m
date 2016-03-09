@@ -77,12 +77,12 @@
     
     self.title.text = model.realname;
     
-    self.renqilabel.text =  [NSString stringWithFormat:@"人气 %@",model.views];;
+    self.renqilabel.text =  [NSString stringWithFormat:@"人气 %@",model.views];
     
     if (model.likes==NULL) {
-        self.guanzhulabel.text =  [NSString stringWithFormat:@"关注 0"];;
+        self.guanzhulabel.text =  [NSString stringWithFormat:@"关注 0"];
     }else{
-        self.guanzhulabel.text =  [NSString stringWithFormat:@"关注 %@",model.likes];;
+        self.guanzhulabel.text =  [NSString stringWithFormat:@"关注 %@",model.likes];
     }
 
     

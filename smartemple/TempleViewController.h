@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TempleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchDisplayDelegate>
+@interface TempleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @property(nonatomic,strong) UITableView * tableView;
 
-@property(nonatomic,retain)UISearchDisplayController *searchController;
+@property(nonatomic,retain)UISearchBar *searchController;
 
 @end

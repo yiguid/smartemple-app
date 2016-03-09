@@ -86,8 +86,8 @@
 
         
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-        
-        [manager GET:Make_recTemple_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+        [manager GET:Make_recTemple_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             
             self.templeMakeArr = [TempleModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
@@ -99,7 +99,7 @@
             
         }];
         
-        [manager GET:Make_recMaster_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:Make_recMaster_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             
             self.masterMakeArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
@@ -111,7 +111,7 @@
             
         }];
         
-        [manager GET:Make_news_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:Make_news_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             
             self.newsMakeArr = [NewsModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
@@ -123,7 +123,7 @@
             
         }];
     
-        [manager GET:Make_activity_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager GET:Make_activity_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             
             self.activityMakeArr = [ActiviModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];

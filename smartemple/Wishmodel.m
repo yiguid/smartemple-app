@@ -12,8 +12,9 @@
 
 -(CGFloat)getCellHeight{
     CGSize textSize = [self sizeWithText:self.content font:TextFont maxSize:CGSizeMake(wScreen - 55, MAXFLOAT)];
+     CGSize donSize = [self sizeWithText:self.donationcontent font:TextFont maxSize:CGSizeMake(wScreen - 30, MAXFLOAT)];
     
-    return textSize.height+60;
+    return textSize.height+45+donSize.height;
 }
 
 

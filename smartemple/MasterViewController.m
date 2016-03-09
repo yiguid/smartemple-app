@@ -44,7 +44,7 @@
     [self.collectionView registerClass:[MasterCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     self.view.backgroundColor = [UIColor whiteColor];
   
-    self.navigationItem.title = @"法师";
+    self.navigationItem.title = @"大德";
     
     UIColor * color = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
@@ -157,8 +157,8 @@
     
   
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-   
-    [manager GET:Master_recommend_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *parameters = @{@"page": @"1",@"limit":@"16",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    [manager GET:Master_recommend_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.recMasterArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
@@ -172,7 +172,7 @@
         
     }];
     
-    [manager GET:Master_hot_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:Master_hot_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.hotMasterArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
@@ -186,7 +186,7 @@
         
     }];
     
-    [manager GET:Master_all_API parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:Master_all_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.allMasterArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
@@ -204,7 +204,7 @@
 
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 4;
+    return 3;
 }
 
 //定义展示的UICollectionViewCell的个数
@@ -289,7 +289,7 @@
         if (model.likes==NULL) {
             cell.guanzhulabel.text = @"0";
         }else{
-            cell.guanzhulabel.text = model.likes;
+            cell.guanzhulabel.text = model.views;
         }
 
     }else  if (indexPath.section==1) {
@@ -311,7 +311,7 @@
         if (model.likes==NULL) {
             cell.guanzhulabel.text = @"0";
         }else{
-            cell.guanzhulabel.text = model.likes;
+            cell.guanzhulabel.text = model.views;
         }
 
     }else{
@@ -333,7 +333,7 @@
         if (model.likes==NULL) {
             cell.guanzhulabel.text = @"0";
         }else{
-            cell.guanzhulabel.text = model.likes;
+            cell.guanzhulabel.text = model.views;
         }
         
         
@@ -380,6 +380,25 @@
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
         self.navigationItem.backBarButtonItem = barButtonItem;
         
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"masterid": model.masterid};
+        NSString *url = [NSString stringWithFormat:@"%@/views",Master_API];
+       
+        [manager POST:url parameters:parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  
+                  //                  NSLog(@"成功,%@",responseObject);
+                  [self loadData];
+                  
+              }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  
+                  NSLog(@"请求失败,%@",error);
+              }];
+
+        
+        
         [self.navigationController pushViewController:master animated:YES];
         
     }else if (indexPath.section==1) {
@@ -396,6 +415,23 @@
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
         self.navigationItem.backBarButtonItem = barButtonItem;
         
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"masterid": model.masterid};
+        NSString *url = [NSString stringWithFormat:@"%@/views",Master_API];
+        
+        [manager POST:url parameters:parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  
+                  //                  NSLog(@"成功,%@",responseObject);
+                  [self loadData];
+                  
+              }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  
+                  NSLog(@"请求失败,%@",error);
+              }];
+
+        
         [self.navigationController pushViewController:master animated:YES];
         
     }else{
@@ -411,6 +447,23 @@
         
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:nil action:nil];
         self.navigationItem.backBarButtonItem = barButtonItem;
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSDictionary *parameters = @{@"masterid": model.masterid};
+        NSString *url = [NSString stringWithFormat:@"%@/views",Master_API];
+        
+        [manager POST:url parameters:parameters
+              success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                  
+                  //                  NSLog(@"成功,%@",responseObject);
+                  [self loadData];
+                  
+              }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                  
+                  NSLog(@"请求失败,%@",error);
+              }];
+
         
         [self.navigationController pushViewController:master animated:YES];
         

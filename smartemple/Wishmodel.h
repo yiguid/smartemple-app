@@ -15,7 +15,7 @@
 @property(nonatomic,copy)NSString * content;
 @property(nonatomic,copy)NSString * datetime;
 @property(nonatomic,copy)NSString * location;
-
+@property(nonatomic,copy)NSString * donationcontent;
 @property(nonatomic,assign)CGFloat cellHigth;
 -(CGFloat)getCellHeight;
 
