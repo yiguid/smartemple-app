@@ -260,9 +260,13 @@
         return wScreen/5+20;
     }else if (indexPath.section==2){
     
-        return 80;
+        NewsModel *model = [self.newsMakeArr objectAtIndex:indexPath.row];
+        return [model getCellHeight];
+
     }else{
-        return 80;
+        ActiviModel *model = [self.activityMakeArr objectAtIndex:indexPath.row];
+        return [model getCellHeight];
+
     }
     
     

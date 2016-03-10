@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface NewsModel : NSObject
 
 @property(nonatomic,copy)NSString * updatetime;
@@ -15,5 +15,9 @@
 @property(nonatomic,copy)NSString * Description;
 @property(nonatomic,copy)NSString * views;
 @property(nonatomic,copy)NSString * realname;
+@property(nonatomic,copy)NSString * like;
+
+-(CGFloat)getCellHeight;
+
 
 @end

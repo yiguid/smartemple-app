@@ -24,6 +24,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     self.menuimage = [[UIImageView alloc]init];
+    
     [self.contentView addSubview:self.menuimage];
     
     self.menuname = [[UILabel alloc]init];
@@ -33,9 +34,12 @@
     [self.contentView addSubview:self.menuname];
     
     self.menuview = [[UIView alloc]init];
-    self.menuview.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    self.menuview.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
     [self.contentView addSubview:self.menuview];
     
+    self.menulabel = [[UILabel alloc]init];
+    self.menulabel.textColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
+    [self.contentView addSubview:self.menulabel];
     
     
     return self;
@@ -44,10 +48,10 @@
 
 - (void)layoutSubviews{
     
-    self.menuname.frame = CGRectMake(10,10,100, 20);
-    self.menuimage.frame = CGRectMake(wScreen-30, 10, 20,20);
-    self.menuview.frame = CGRectMake(10,39, wScreen-20,0.5);
-    
+    self.menuname.frame = CGRectMake(50,10,100,30);
+    self.menuimage.frame = CGRectMake(10,15,20,20);
+    self.menuview.frame = CGRectMake(10,49, wScreen-20,0.5);
+    self.menulabel.frame = CGRectMake(wScreen-30, 10, 30, 30);
     
 }
 

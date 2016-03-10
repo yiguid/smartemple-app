@@ -227,8 +227,11 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     CGSize size={wScreen,wScreen/8};
+    label.frame =  CGRectMake(0,10, wScreen, 30);
+    label.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     return size;
 }
+
 
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -238,20 +241,19 @@
     {
         UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         
+       
+        [headerView addSubview:label];
+        
         reusableview = headerView;
        
     }
     
-//
-//    reusableview.backgroundColor=[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    label.frame =  CGRectMake(0,10, wScreen, 30);
-    label.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    [reusableview addSubview:label];
-   
+    
     if (indexPath.section==0){
         label.text = @"推荐法师";
     }else if (indexPath.section==1){
         label.text = @"热门法师";
+        
     }else if(indexPath.section==2){
         label.text = @"全部法师";
     }

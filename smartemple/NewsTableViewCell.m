@@ -30,18 +30,15 @@
     self.templeLabel.numberOfLines = 0;
     [self.contentView addSubview:self.templeLabel];
     
-    self.desLabel = [[UILabel alloc]init];
-    self.desLabel.font = TextFont;
-    self.desLabel.numberOfLines = 0;
-    [self.contentView addSubview:self.desLabel];
-    
     self.viewLabel = [[UILabel alloc]init];
     self.viewLabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     self.viewLabel.font = TextFont;
     self.viewLabel.numberOfLines = 0;
     [self.contentView addSubview:self.viewLabel];
     
-    
+    self.fengexianview = [[UIView alloc]init];
+    self.fengexianview.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
+    [self.contentView addSubview:self.fengexianview];
     
     return self;
     
@@ -49,18 +46,19 @@
 
 - (void)layoutSubviews{
     
-    self.templeLabel.frame = CGRectMake(10, 10,100,50);
-    self.desLabel.frame = CGRectMake(110, 10, wScreen-200,50);
-    self.viewLabel.frame = CGRectMake(wScreen-80,20,50, 30);
+    CGSize textSize = [self sizeWithText:self.templeLabel.text font:TextFont maxSize:CGSizeMake(wScreen-100, MAXFLOAT)];
     
+    [self.templeLabel setFrame:CGRectMake(10,10, wScreen-100,textSize.height)];
+
+    self.viewLabel.frame = CGRectMake(wScreen-80,8,60,20);
     
+    self.fengexianview.frame = CGRectMake(10, textSize.height+20, wScreen-20, 0.5);
     
 }
 
 - (void)setup:(NewsModel *)model{
     
-    self.templeLabel.text = [NSString stringWithFormat:@"[%@]",model.title];
-    self.desLabel.text = model.Description;
+    self.templeLabel.text = [NSString stringWithFormat:@"%@",model.title];
     self.viewLabel.text = [NSString stringWithFormat:@"阅读: %@",model.views];
     
     

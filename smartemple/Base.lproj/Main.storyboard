@@ -32,8 +32,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="backgroup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A2Z-YM-8SR"/>
-                                    <action selector="logBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YfW-Hh-gF3"/>
+                                    <action selector="backgroup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DeH-K5-ON0"/>
+                                    <action selector="logBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vh5-WX-WW6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YW2-Rg-Fw3">
@@ -45,7 +45,7 @@
                                     <color key="titleColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="regBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pkN-gy-L7n"/>
+                                    <segue destination="ZRU-JJ-jkh" kind="modal" id="9tu-oO-1yG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gCE-H7-1Jg">
@@ -57,7 +57,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="forgetBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qur-6h-dMw"/>
+                                    <segue destination="Uqe-HU-q4b" kind="modal" id="E0C-FK-4y9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他登录方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xCb-p0-zmZ">
@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="283"/>
+            <point key="canvasLocation" x="51" y="273"/>
         </scene>
         <!--注册账号-->
         <scene sceneID="dP5-aH-N8m">
@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4q-QT-KwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="474" y="283"/>
+            <point key="canvasLocation" x="441" y="283"/>
         </scene>
         <!--忘记密码-->
         <scene sceneID="Zpp-sF-amy">
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5u4-FQ-QN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800" y="283"/>
+            <point key="canvasLocation" x="830" y="283"/>
         </scene>
     </scenes>
     <resources>

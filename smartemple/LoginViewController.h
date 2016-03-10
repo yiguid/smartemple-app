@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
 
@@ -17,8 +16,6 @@
 
 
 - (IBAction)logBtn:(id)sender;
-- (IBAction)regBtn:(id)sender;
-- (IBAction)forgetBtn:(id)sender;
 - (IBAction)weixinBtn:(id)sender;
 
 @end

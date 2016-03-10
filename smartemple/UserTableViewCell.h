@@ -14,7 +14,7 @@
 @property(nonatomic,strong)UIImageView * menuimage;
 @property(nonatomic,strong)UILabel * menuname;
 @property(nonatomic,strong)UIView * menuview;
-
+@property(nonatomic,strong)UILabel * menulabel;
 
 
 @end

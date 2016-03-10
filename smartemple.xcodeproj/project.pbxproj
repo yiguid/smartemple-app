@@ -72,6 +72,17 @@
 		210891D61C8FDD1600F8DD80 /* 消息@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 210891BA1C8FDD1600F8DD80 /* 消息@3x.png */; };
 		210891D71C8FDD1600F8DD80 /* 影品@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 210891BB1C8FDD1600F8DD80 /* 影品@2x.png */; };
 		210891D81C8FDD1600F8DD80 /* 影品@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 210891BC1C8FDD1600F8DD80 /* 影品@3x.png */; };
+		210891DE1C910DDF00F8DD80 /* DonationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891DD1C910DDF00F8DD80 /* DonationModel.m */; };
+		210891E11C910EA300F8DD80 /* DonationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891E01C910EA300F8DD80 /* DonationTableViewCell.m */; };
+		210891E41C911EA400F8DD80 /* ActivitySecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891E31C911EA400F8DD80 /* ActivitySecondTableViewCell.m */; };
+		210891E91C914C6500F8DD80 /* ActivityAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891E81C914C6500F8DD80 /* ActivityAllViewController.m */; };
+		210891EC1C914C7900F8DD80 /* ActivitySecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891EB1C914C7900F8DD80 /* ActivitySecondViewController.m */; };
+		210891F01C914CA900F8DD80 /* NewsAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891EF1C914CA900F8DD80 /* NewsAllViewController.m */; };
+		210891F71C914D5900F8DD80 /* WishAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891F61C914D5900F8DD80 /* WishAllViewController.m */; };
+		210891FA1C914D6C00F8DD80 /* WishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891F91C914D6C00F8DD80 /* WishViewController.m */; };
+		210891FD1C914D9400F8DD80 /* DonationAllViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891FC1C914D9400F8DD80 /* DonationAllViewController.m */; };
+		210892001C914DA400F8DD80 /* DonationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 210891FF1C914DA400F8DD80 /* DonationViewController.m */; };
+		210892031C915C7800F8DD80 /* HeardCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 210892021C915C7800F8DD80 /* HeardCollectionReusableView.m */; };
 		212622271C8844BB009A3028 /* xin.png in Resources */ = {isa = PBXBuildFile; fileRef = 212622261C8844BB009A3028 /* xin.png */; };
 		2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222A1C884856009A3028 /* TempleSecondViewController.m */; };
 		2126222E1C899BE7009A3028 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2126222D1C899BE7009A3028 /* NewsViewController.m */; };
@@ -214,6 +225,28 @@
 		210891BA1C8FDD1600F8DD80 /* 消息@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "消息@3x.png"; sourceTree = "<group>"; };
 		210891BB1C8FDD1600F8DD80 /* 影品@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "影品@2x.png"; sourceTree = "<group>"; };
 		210891BC1C8FDD1600F8DD80 /* 影品@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "影品@3x.png"; sourceTree = "<group>"; };
+		210891DC1C910DDF00F8DD80 /* DonationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationModel.h; sourceTree = "<group>"; };
+		210891DD1C910DDF00F8DD80 /* DonationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationModel.m; sourceTree = "<group>"; };
+		210891DF1C910EA300F8DD80 /* DonationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationTableViewCell.h; sourceTree = "<group>"; };
+		210891E01C910EA300F8DD80 /* DonationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationTableViewCell.m; sourceTree = "<group>"; };
+		210891E21C911EA400F8DD80 /* ActivitySecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitySecondTableViewCell.h; sourceTree = "<group>"; };
+		210891E31C911EA400F8DD80 /* ActivitySecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitySecondTableViewCell.m; sourceTree = "<group>"; };
+		210891E71C914C6400F8DD80 /* ActivityAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAllViewController.h; sourceTree = "<group>"; };
+		210891E81C914C6500F8DD80 /* ActivityAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAllViewController.m; sourceTree = "<group>"; };
+		210891EA1C914C7900F8DD80 /* ActivitySecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitySecondViewController.h; sourceTree = "<group>"; };
+		210891EB1C914C7900F8DD80 /* ActivitySecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitySecondViewController.m; sourceTree = "<group>"; };
+		210891EE1C914CA900F8DD80 /* NewsAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsAllViewController.h; sourceTree = "<group>"; };
+		210891EF1C914CA900F8DD80 /* NewsAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsAllViewController.m; sourceTree = "<group>"; };
+		210891F51C914D5900F8DD80 /* WishAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WishAllViewController.h; sourceTree = "<group>"; };
+		210891F61C914D5900F8DD80 /* WishAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishAllViewController.m; sourceTree = "<group>"; };
+		210891F81C914D6C00F8DD80 /* WishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WishViewController.h; sourceTree = "<group>"; };
+		210891F91C914D6C00F8DD80 /* WishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishViewController.m; sourceTree = "<group>"; };
+		210891FB1C914D9400F8DD80 /* DonationAllViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationAllViewController.h; sourceTree = "<group>"; };
+		210891FC1C914D9400F8DD80 /* DonationAllViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationAllViewController.m; sourceTree = "<group>"; };
+		210891FE1C914DA400F8DD80 /* DonationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationViewController.h; sourceTree = "<group>"; };
+		210891FF1C914DA400F8DD80 /* DonationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationViewController.m; sourceTree = "<group>"; };
+		210892011C915C7800F8DD80 /* HeardCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeardCollectionReusableView.h; sourceTree = "<group>"; };
+		210892021C915C7800F8DD80 /* HeardCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeardCollectionReusableView.m; sourceTree = "<group>"; };
 		212622261C8844BB009A3028 /* xin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xin.png; sourceTree = "<group>"; };
 		212622291C884856009A3028 /* TempleSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempleSecondViewController.h; sourceTree = "<group>"; };
 		2126222A1C884856009A3028 /* TempleSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempleSecondViewController.m; sourceTree = "<group>"; };
@@ -334,6 +367,8 @@
 		2108914B1C8D869900F8DD80 /* 祈福 */ = {
 			isa = PBXGroup;
 			children = (
+				210891F41C914D2F00F8DD80 /* 全部祈福列表 */,
+				210891F31C914D2C00F8DD80 /* 祈福详情列表 */,
 				2108915B1C8D872500F8DD80 /* Wishmodel.h */,
 				2108915C1C8D872500F8DD80 /* Wishmodel.m */,
 				210891581C8D871500F8DD80 /* WishTableViewCell.h */,
@@ -362,6 +397,96 @@
 				210891531C8D86EA00F8DD80 /* TimelineTableViewCell.m */,
 			);
 			name = "时光轴";
+			sourceTree = "<group>";
+		};
+		210891D91C910D8100F8DD80 /* 众筹 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "众筹";
+			sourceTree = "<group>";
+		};
+		210891DA1C910D8500F8DD80 /* 捐助 */ = {
+			isa = PBXGroup;
+			children = (
+				210891F11C914D0000F8DD80 /* 全部捐助列表 */,
+				210891F21C914D1900F8DD80 /* 捐助详情列表 */,
+				210891DC1C910DDF00F8DD80 /* DonationModel.h */,
+				210891DD1C910DDF00F8DD80 /* DonationModel.m */,
+				210891DF1C910EA300F8DD80 /* DonationTableViewCell.h */,
+				210891E01C910EA300F8DD80 /* DonationTableViewCell.m */,
+			);
+			name = "捐助";
+			sourceTree = "<group>";
+		};
+		210891DB1C910D8700F8DD80 /* 义工 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "义工";
+			sourceTree = "<group>";
+		};
+		210891E51C914C1D00F8DD80 /* 活动详情列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891EA1C914C7900F8DD80 /* ActivitySecondViewController.h */,
+				210891EB1C914C7900F8DD80 /* ActivitySecondViewController.m */,
+			);
+			name = "活动详情列表";
+			sourceTree = "<group>";
+		};
+		210891E61C914C2200F8DD80 /* 全部活动列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891E71C914C6400F8DD80 /* ActivityAllViewController.h */,
+				210891E81C914C6500F8DD80 /* ActivityAllViewController.m */,
+			);
+			name = "全部活动列表";
+			sourceTree = "<group>";
+		};
+		210891ED1C914C8E00F8DD80 /* 全部新闻列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891EE1C914CA900F8DD80 /* NewsAllViewController.h */,
+				210891EF1C914CA900F8DD80 /* NewsAllViewController.m */,
+			);
+			name = "全部新闻列表";
+			sourceTree = "<group>";
+		};
+		210891F11C914D0000F8DD80 /* 全部捐助列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891FB1C914D9400F8DD80 /* DonationAllViewController.h */,
+				210891FC1C914D9400F8DD80 /* DonationAllViewController.m */,
+			);
+			name = "全部捐助列表";
+			sourceTree = "<group>";
+		};
+		210891F21C914D1900F8DD80 /* 捐助详情列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891FE1C914DA400F8DD80 /* DonationViewController.h */,
+				210891FF1C914DA400F8DD80 /* DonationViewController.m */,
+			);
+			name = "捐助详情列表";
+			sourceTree = "<group>";
+		};
+		210891F31C914D2C00F8DD80 /* 祈福详情列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891F81C914D6C00F8DD80 /* WishViewController.h */,
+				210891F91C914D6C00F8DD80 /* WishViewController.m */,
+			);
+			name = "祈福详情列表";
+			sourceTree = "<group>";
+		};
+		210891F41C914D2F00F8DD80 /* 全部祈福列表 */ = {
+			isa = PBXGroup;
+			children = (
+				210891F51C914D5900F8DD80 /* WishAllViewController.h */,
+				210891F61C914D5900F8DD80 /* WishAllViewController.m */,
+			);
+			name = "全部祈福列表";
 			sourceTree = "<group>";
 		};
 		212622281C884833009A3028 /* 寺院详情 */ = {
@@ -469,6 +594,8 @@
 		217B56F41C8691540077B23D /* 法师（第一个tableview） */ = {
 			isa = PBXGroup;
 			children = (
+				210892011C915C7800F8DD80 /* HeardCollectionReusableView.h */,
+				210892021C915C7800F8DD80 /* HeardCollectionReusableView.m */,
 				217B56FB1C8693E90077B23D /* MasterViewController.h */,
 				217B56FC1C8693E90077B23D /* MasterViewController.m */,
 			);
@@ -501,6 +628,9 @@
 				2108914D1C8D869E00F8DD80 /* 时光轴 */,
 				2108914C1C8D869C00F8DD80 /* 问答 */,
 				2108914B1C8D869900F8DD80 /* 祈福 */,
+				210891DB1C910D8700F8DD80 /* 义工 */,
+				210891DA1C910D8500F8DD80 /* 捐助 */,
+				210891D91C910D8100F8DD80 /* 众筹 */,
 			);
 			name = "全局文件";
 			sourceTree = "<group>";
@@ -622,10 +752,14 @@
 		217B57C41C87D3B90077B23D /* 活动 */ = {
 			isa = PBXGroup;
 			children = (
+				210891E61C914C2200F8DD80 /* 全部活动列表 */,
+				210891E51C914C1D00F8DD80 /* 活动详情列表 */,
 				217B57A11C86F7B20077B23D /* ActiviModel.h */,
 				217B57A21C86F7B20077B23D /* ActiviModel.m */,
 				210891611C8D879000F8DD80 /* ActiviTableViewCell.h */,
 				210891621C8D879000F8DD80 /* ActiviTableViewCell.m */,
+				210891E21C911EA400F8DD80 /* ActivitySecondTableViewCell.h */,
+				210891E31C911EA400F8DD80 /* ActivitySecondTableViewCell.m */,
 			);
 			name = "活动";
 			sourceTree = "<group>";
@@ -633,11 +767,12 @@
 		217B57C51C87D3BC0077B23D /* 新闻 */ = {
 			isa = PBXGroup;
 			children = (
+				210891ED1C914C8E00F8DD80 /* 全部新闻列表 */,
+				2126222F1C899BF1009A3028 /* 新闻详情 */,
 				217B579E1C86F77C0077B23D /* NewsModel.h */,
 				217B579F1C86F77C0077B23D /* NewsModel.m */,
 				217B57B71C86F9AD0077B23D /* NewsTableViewCell.h */,
 				217B57B81C86F9AD0077B23D /* NewsTableViewCell.m */,
-				2126222F1C899BF1009A3028 /* 新闻详情 */,
 			);
 			name = "新闻";
 			sourceTree = "<group>";
@@ -956,8 +1091,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				210891FD1C914D9400F8DD80 /* DonationAllViewController.m in Sources */,
 				217B57DF1C87EFCA0077B23D /* MyattentViewController.m in Sources */,
 				217B57B61C86F99D0077B23D /* SpeechTableViewCell.m in Sources */,
+				210891F71C914D5900F8DD80 /* WishAllViewController.m in Sources */,
 				217B57A01C86F77C0077B23D /* NewsModel.m in Sources */,
 				217B57E81C87F0420077B23D /* MyactivityViewController.m in Sources */,
 				210891541C8D86EA00F8DD80 /* TimelineTableViewCell.m in Sources */,
@@ -967,19 +1104,26 @@
 				217B570C1C86981B0077B23D /* LoginViewController.m in Sources */,
 				217B56FD1C8693E90077B23D /* MasterViewController.m in Sources */,
 				210891601C8D873900F8DD80 /* Questionmodel.m in Sources */,
+				210891E91C914C6500F8DD80 /* ActivityAllViewController.m in Sources */,
 				210891631C8D879000F8DD80 /* ActiviTableViewCell.m in Sources */,
 				217B57001C86940E0077B23D /* TempleViewController.m in Sources */,
 				217B578B1C86F6B00077B23D /* TempleTableViewCell.m in Sources */,
+				210891E41C911EA400F8DD80 /* ActivitySecondTableViewCell.m in Sources */,
 				217B57BF1C86F9C50077B23D /* NeighTableViewCell.m in Sources */,
 				217B57941C86F6ED0077B23D /* masterModel.m in Sources */,
 				217B56C51C868ED00077B23D /* AppDelegate.m in Sources */,
 				217B57EE1C87F0700077B23D /* MynewsViewController.m in Sources */,
+				210892031C915C7800F8DD80 /* HeardCollectionReusableView.m in Sources */,
 				217B570F1C86982D0077B23D /* RegistViewController.m in Sources */,
 				217B57F11C87F08F0077B23D /* MysettingViewController.m in Sources */,
 				217B57031C8694500077B23D /* MakeViewController.m in Sources */,
+				210891E11C910EA300F8DD80 /* DonationTableViewCell.m in Sources */,
+				210891FA1C914D6C00F8DD80 /* WishViewController.m in Sources */,
 				217B57EB1C87F0590077B23D /* MyworkViewController.m in Sources */,
+				210891F01C914CA900F8DD80 /* NewsAllViewController.m in Sources */,
 				2108915D1C8D872500F8DD80 /* Wishmodel.m in Sources */,
 				210891661C8FAFDA00F8DD80 /* MasterTableViewCell.m in Sources */,
+				210891DE1C910DDF00F8DD80 /* DonationModel.m in Sources */,
 				217B57E51C87F0190077B23D /* MyprayViewController.m in Sources */,
 				2108915A1C8D871500F8DD80 /* WishTableViewCell.m in Sources */,
 				217B57CB1C87D6240077B23D /* UserModel.m in Sources */,
@@ -989,10 +1133,12 @@
 				217B56C21C868ED00077B23D /* main.m in Sources */,
 				217B57B91C86F9AD0077B23D /* NewsTableViewCell.m in Sources */,
 				2126222B1C884856009A3028 /* TempleSecondViewController.m in Sources */,
+				210891EC1C914C7900F8DD80 /* ActivitySecondViewController.m in Sources */,
 				217B58131C881B8A0077B23D /* MasterSectionViewController.m in Sources */,
 				2126222E1C899BE7009A3028 /* NewsViewController.m in Sources */,
 				217B57061C86945F0077B23D /* MyViewController.m in Sources */,
 				217B57A61C86F7CA0077B23D /* NeighModel.m in Sources */,
+				210892001C914DA400F8DD80 /* DonationViewController.m in Sources */,
 				217B57C21C87CFE00077B23D /* ForgetViewController.m in Sources */,
 				217B57A31C86F7B20077B23D /* ActiviModel.m in Sources */,
 				217B57E21C87EFEF0077B23D /* MydonateViewController.m in Sources */,

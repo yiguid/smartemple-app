@@ -11,9 +11,8 @@
 @interface NewsTableViewCell : UITableViewCell
 
 @property(nonatomic,strong) UILabel * templeLabel;
-@property(nonatomic,strong) UILabel * desLabel;
 @property(nonatomic,strong) UILabel * viewLabel;
-
+@property(nonatomic,strong) UIView * fengexianview;
 -(void) setup :(NewsModel *)model;
 
 @end
