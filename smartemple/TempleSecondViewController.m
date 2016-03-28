@@ -88,7 +88,9 @@
 -(void)loadMaster{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"masterid":self.temple.masterid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"masterid":self.temple.masterid,@"access_token":token};
     [manager GET:Master_ID_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -194,10 +196,10 @@
     [headView addSubview:templename];
     
     
-    UIImageView * guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen-45, wScreen/2+35+wScreen/5, 10, 10)];
+    UIImageView * guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen-45,wScreen/2+35+wScreen/5, 10, 10)];
     guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
     [headView addSubview:guanzhuimage];
-    UILabel * followabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-30, wScreen/2+30+wScreen/5, 30, 20)];
+    UILabel * followabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-30, wScreen/2+30+wScreen/5,wScreen/5, 20)];
     followabel.textAlignment = NSTextAlignmentLeft;
     followabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     followabel.font = [UIFont systemFontOfSize:10];
@@ -225,7 +227,9 @@
 -(void)loadNews{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":token};
     NSString *url = [NSString stringWithFormat:@"%@/news",Temple_API];
     [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
@@ -249,7 +253,9 @@
 -(void)loadActivity{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":token};
     NSString *url = [NSString stringWithFormat:@"%@/activity",Temple_API];
     [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
@@ -296,7 +302,9 @@
 -(void)loadWish{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":token};
     NSString *url = [NSString stringWithFormat:@"%@/wish",Temple_API];
     [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);

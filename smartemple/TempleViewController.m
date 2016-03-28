@@ -118,7 +118,9 @@
 -(void)loadRec{
     
      AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":token};
     [manager GET:Temple_recommend_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -137,7 +139,9 @@
 -(void)loadHot{
     
      AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":token};
     [manager GET:Temple_hot_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -155,7 +159,9 @@
 -(void)loadAll{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"access_token":token};
     [manager GET:Temple_all_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         

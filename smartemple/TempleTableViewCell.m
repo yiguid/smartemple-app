@@ -95,8 +95,8 @@
     [self.websitelabel setFrame:CGRectMake(10, wScreen/2+50+wScreen/10, wScreen-20,textSize.height)];
     
     
-    self.guanzhuimage.frame = CGRectMake(wScreen-45, wScreen/2+25+wScreen/10, 10, 10);
-    self.guanzhulabel.frame = CGRectMake(wScreen-30, wScreen/2+20+wScreen/10, 30, 20);
+    self.guanzhuimage.frame = CGRectMake(wScreen-wScreen/10-15, wScreen/2+25+wScreen/10, 10, 10);
+    self.guanzhulabel.frame = CGRectMake(wScreen-wScreen/10, wScreen/2+20+wScreen/10,wScreen/10, 20);
     
     
     self.masterimage.frame = CGRectMake(wScreen/2-wScreen/10-10,10,wScreen/5,wScreen/5);

@@ -21,16 +21,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
      
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginScene"];
-    self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *loginVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginScene"];
+//    self.window=[[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+//    
+//    self.window.rootViewController = loginVC;
+//    
+//    
+//    [self.window makeKeyAndVisible];
+//    
     
-    self.window.rootViewController = loginVC;
-    
-    
-    [self.window makeKeyAndVisible];
-    
-        
     return YES;
 
 }

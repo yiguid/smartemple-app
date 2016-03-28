@@ -40,7 +40,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen-44) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
@@ -75,7 +75,9 @@
 -(void)loadMaster{
 
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = @{@"masterid":self.master.masterid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"masterid":self.master.masterid,@"access_token":token};
     [manager GET:Master_ID_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -122,20 +124,27 @@
     }];
     
     [headView addSubview:masterimage];
-    UIButton * guanzhu = [[UIButton alloc]initWithFrame:CGRectMake(wScreen-45,20,10,10)];
+    
+    
+    CGSize textSize = [self sizeWithText:self.master.views font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+    CGSize guanzhutextSize = [self sizeWithText:self.master.likes font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+
+    
+    
+    UIButton * guanzhu = [[UIButton alloc]initWithFrame:CGRectMake(wScreen-guanzhutextSize.width-20,20,10,10)];
     [guanzhu setImage:[UIImage imageNamed:@"xin.png"] forState:UIControlStateNormal];
     [guanzhu addTarget:self action:@selector(guanzhuBtn:) forControlEvents:UIControlEventTouchUpInside];
      [headView addSubview:guanzhu];
-    UILabel * likes = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-32,20,30,10)];
+    UILabel * likes = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-guanzhutextSize.width-5,20,guanzhutextSize.width,10)];
     likes.text = self.master.likes;
     likes.textColor = [UIColor blackColor];
-    likes.font = TextFont;
+    likes.font = MarkFont;
     [headView addSubview:likes];
     
-    UILabel * views = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-100,20,60,10)];
+    UILabel * views = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-textSize.width-55-guanzhutextSize.width,20,textSize.width+25,10)];
     views.text =[NSString stringWithFormat:@"人气 %@",self.master.views];
     views.textColor = [UIColor blackColor];
-    views.font = TextFont;
+    views.font = MarkFont;
     [headView addSubview:views];
    
     UILabel * templename = [[UILabel alloc]initWithFrame:CGRectMake(0,wScreen/3+40, wScreen, 20)];
@@ -390,7 +399,9 @@
 -(void)loadTimeline{
 
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"masterid":self.master.masterid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"masterid":self.master.masterid,@"access_token":token};
     [manager GET:Timeline_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -411,7 +422,9 @@
 -(void)loadQuestion{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"templeid":self.master.templeid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"5",@"templeid":self.master.templeid,@"access_token":token};
     [manager GET:Question_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -432,7 +445,9 @@
 -(void)loadWish{
 
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-     NSDictionary *parameters = @{@"page": @"1",@"limit":@"10",@"templeid":self.master.templeid,@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+     NSDictionary *parameters = @{@"page": @"1",@"limit":@"10",@"templeid":self.master.templeid,@"access_token":token};
     [manager GET:Wish_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
@@ -563,7 +578,10 @@
     
 }
 
-
+-(CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
 
 
 - (void)didReceiveMemoryWarning {
