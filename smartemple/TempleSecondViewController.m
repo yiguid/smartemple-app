@@ -27,6 +27,10 @@
 #import "ActiviModel.h"
 #import "DonationModel.h"
 #import "DonationTableViewCell.h"
+#import "ActivitySecondViewController.h"
+#import "WishViewController.h"
+#import "WishAllViewController.h"
+#import "ActivityAllViewController.h"
 @interface TempleSecondViewController (){
     
     masterModel * mastermodel;
@@ -81,7 +85,6 @@
  
     [self loadNews];
     [self loadActivity];
-    [self loadDonation];
     [self loadWish];
 }
 
@@ -127,12 +130,15 @@
     WishButton.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [WishButton setTitle:@"我想祈福" forState:UIControlStateNormal];
     [self.activityView addSubview:WishButton];
+     [WishButton addTarget:self action:@selector(WishBtn) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton * activityButton = [[UIButton alloc]initWithFrame:CGRectMake(wScreen/2+10, 10, wScreen/2-20, 30)];
     activityButton.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [activityButton setTitle:@"我想活动" forState:UIControlStateNormal];
     
     [self.activityView addSubview:activityButton];
+    
+    [activityButton addTarget:self action:@selector(activityBtn) forControlEvents:UIControlEventTouchUpInside];
 }
 
 /**
@@ -145,7 +151,13 @@
     
     CGSize textSize = [self sizeWithText:self.temple.website font:TextFont maxSize:CGSizeMake(wScreen - 20, MAXFLOAT)];
     
-    headView.frame = CGRectMake(0, 0, wScreen,textSize.height + wScreen/2+65+wScreen/5);
+    
+//    CGSize renqitextSize = [self sizeWithText:self.temple.views font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+    CGSize guanzhutextSize = [self sizeWithText:self.temple.views font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+    
+    
+    
+    headView.frame = CGRectMake(0, 0,wScreen,textSize.height + wScreen/2+65+wScreen/5);
     
     self.tableView.tableHeaderView = headView;
     
@@ -176,12 +188,13 @@
     title.text = [NSString stringWithFormat:@"%@(%@主持)",self.temple.master,self.temple.name];
     [headView addSubview:title];
     
-    UILabel * renqilabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+90,45,60,30)];
+    UILabel * renqilabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+60+guanzhutextSize.width,45,60,30)];
     renqilabel.font = TextFont;
     renqilabel.text = [NSString stringWithFormat:@"人气 %@",@"46"];
     renqilabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [headView addSubview:renqilabel];
-    UILabel * guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+20,45,60,30)];
+    
+    UILabel * guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+20,45,guanzhutextSize.width+30,30)];
     guanzhulabel.textAlignment = NSTextAlignmentLeft;
     guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     guanzhulabel.font = TextFont;
@@ -196,10 +209,13 @@
     [headView addSubview:templename];
     
     
-    UIImageView * guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen-45,wScreen/2+35+wScreen/5, 10, 10)];
+     CGSize guanzhuSize = [self sizeWithText:self.temple.views font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+    
+    
+    UIImageView * guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen-25-guanzhuSize.width,wScreen/2+35+wScreen/5, 10, 10)];
     guanzhuimage.image  =[UIImage imageNamed:@"xin.png"];
     [headView addSubview:guanzhuimage];
-    UILabel * followabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-30, wScreen/2+30+wScreen/5,wScreen/5, 20)];
+    UILabel * followabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-guanzhuSize.width-10, wScreen/2+30+wScreen/5,guanzhuSize.width, 20)];
     followabel.textAlignment = NSTextAlignmentLeft;
     followabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     followabel.font = [UIFont systemFontOfSize:10];
@@ -223,6 +239,19 @@
     
     
 }
+
+-(void)activityBtn{
+    
+    ActivityAllViewController * activity = [[ActivityAllViewController alloc]init];
+    [self.navigationController pushViewController:activity animated:YES];
+
+}
+-(void)WishBtn{
+
+    WishAllViewController * wish = [[WishAllViewController alloc]init];
+    [self.navigationController pushViewController:wish animated:YES];
+}
+
 
 -(void)loadNews{
     
@@ -276,29 +305,7 @@
 
 
 }
--(void)loadDonation{
-    
-//    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-//    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"page":@"1",@"limit":@"3",@"access_token":@"40ece0e10c42d2dff48e4c1500c81ba1faa713c1"};
-//    NSString *url = [NSString stringWithFormat:@"%@/donation",Temple_API];
-//    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@",responseObject);
-//        
-//        self.DonationArr = [DonationModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
-//        
-//        
-//        [self.tableView reloadData];
-//        
-//        NSLog(@"请求成功");
-//        
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"%@",error);
-//        
-//        
-//    }];
 
-}
 -(void)loadWish{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
@@ -330,7 +337,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 4;
+    return 3;
     
 }
 
@@ -341,8 +348,6 @@
         return self.NewsArr.count;
     }else if (section==1){
         return self.ActivityArr.count;
-    }else if (section==2){
-        return self.DonationArr.count;
     }else{
         return self.WishArr.count;
     }
@@ -384,23 +389,6 @@
         
         
     }else if (indexPath.section==2){
-//        
-//        NSString *ID = [NSString stringWithFormat:@"WishCell"];
-//        WishTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-//        
-//        if (cell == nil) {
-//            cell = [[WishTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-//        }
-//        
-//        
-//        cell.selectionStyle =UITableViewCellSelectionStyleNone;
-//        
-//        [cell setup:self.WishArr[indexPath.row]];
-//        
-//        return cell;
-        
-        
-    }else if (indexPath.section==3){
         
         NSString *ID = [NSString stringWithFormat:@"WishCell"];
         WishTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -440,9 +428,6 @@
         return [model getCellHeight];
         
         
-    }else if (indexPath.section==2){
-    
-        return 180;
     }else{
         Wishmodel *model = [self.WishArr objectAtIndex:indexPath.row];
         return [model getCellHeight];
@@ -453,7 +438,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    if (indexPath.section==1) {
+        
+        ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
+        ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
+        activity.activityID = model.activityID;
+        activity.type = model.type;
+        [self.navigationController pushViewController:activity animated:YES];
+        
+        }
     
     
 }

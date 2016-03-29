@@ -13,7 +13,7 @@
 
 +(NSDictionary *)replacedKeyFromPropertyName
 {
-    return @{@"Description" : @"description"};
+    return @{@"Description" : @"description",@"activityID":@"id"};
 }
 
 -(CGFloat)getCellHeight{

@@ -337,7 +337,10 @@
     
 }
 
-
+-(CGSize)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
 
 /*
 #pragma mark - Navigation

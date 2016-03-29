@@ -61,7 +61,6 @@
     
     
     self.fengexian = [[UIView alloc]init];
-    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [self.contentView addSubview:self.fengexian];
     
     
@@ -91,12 +90,13 @@
     
     CGSize textSize = [self sizeWithText:self.websitelabel.text font:TextFont maxSize:CGSizeMake(wScreen-20, MAXFLOAT)];
     
+    CGSize guanzhuSize = [self sizeWithText:self.guanzhulabel.text font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
     
     [self.websitelabel setFrame:CGRectMake(10, wScreen/2+50+wScreen/10, wScreen-20,textSize.height)];
     
     
-    self.guanzhuimage.frame = CGRectMake(wScreen-wScreen/10-15, wScreen/2+25+wScreen/10, 10, 10);
-    self.guanzhulabel.frame = CGRectMake(wScreen-wScreen/10, wScreen/2+20+wScreen/10,wScreen/10, 20);
+    self.guanzhuimage.frame = CGRectMake(wScreen-guanzhuSize.width-25, wScreen/2+25+wScreen/10, 10, 10);
+    self.guanzhulabel.frame = CGRectMake(wScreen-guanzhuSize.width-10, wScreen/2+20+wScreen/10,guanzhuSize.width, 20);
     
     
     self.masterimage.frame = CGRectMake(wScreen/2-wScreen/10-10,10,wScreen/5,wScreen/5);
@@ -112,7 +112,7 @@
     self.masterimage.layer.borderWidth = 2.0;
     
     self.fengexian.frame = CGRectMake(10,wScreen/2+65+textSize.height+wScreen/10,wScreen-20,0.5);
-    
+    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
 }
 

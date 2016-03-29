@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface LoginViewController : UIViewController<UITextFieldDelegate>
+#import "Verfiy.h"
+#import "Net.h"
+@interface LoginViewController : UIViewController<UITextFieldDelegate>{
+    
+    Verfiy * verfiy;
+    
+}
 
 
 @property(nonatomic,weak) IBOutlet UITextField * account;

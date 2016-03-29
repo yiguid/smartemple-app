@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Verfiy.h"
+#import "Net.h"
+@interface ForgetViewController : UIViewController<UITextFieldDelegate>{
+    
+    Verfiy * verfiy;
+    
+}
 
-@interface ForgetViewController : UIViewController
+-(IBAction)Back:(id)sender;
+
+
+@property(nonatomic,weak) IBOutlet UITextField * phone;
+@property(nonatomic,weak) IBOutlet UITextField * verify;
+@property(nonatomic,weak) IBOutlet UITextField * password;
+@property (weak, nonatomic) IBOutlet UIButton * verifyBtn;
+
+-(IBAction)verify:(id)sender;
+-(IBAction)Next:(id)sender;
 
 @end

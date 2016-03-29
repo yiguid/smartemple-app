@@ -1,23 +1,22 @@
 //
-//  ActivityAllViewController.m
+//  SetinformationViewController.m
 //  smartemple
 //
-//  Created by wang on 16/3/10.
+//  Created by wang on 16/3/29.
 //  Copyright © 2016年 wang. All rights reserved.
 //
 
-#import "ActivityAllViewController.h"
+#import "SetinformationViewController.h"
 
-@interface ActivityAllViewController ()
+@interface SetinformationViewController ()
 
 @end
 
-@implementation ActivityAllViewController
+@implementation SetinformationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {

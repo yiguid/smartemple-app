@@ -57,7 +57,6 @@
     
     
     self.fengexian = [[UIView alloc]init];
-    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [self.contentView addSubview:self.fengexian];
     
     return self;
@@ -81,7 +80,7 @@
     self.donationcontent.frame = CGRectMake(15, textSize.height+40, wScreen-30,donsize.height);
    
     self.fengexian.frame = CGRectMake(10,textSize.height+45+donsize.height, wScreen-20,0.5);
-    
+    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
 
 }
 

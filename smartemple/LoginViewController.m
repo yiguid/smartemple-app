@@ -15,7 +15,10 @@
 #import "MJExtension.h"
 #import "smartemple.pch"
 #import "RegistViewController.h"
+#import "MBProgressHUD.h"
 @interface LoginViewController ()
+@property MBProgressHUD *hud;
+
 @end
 
 @implementation LoginViewController
@@ -25,7 +28,9 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-  
+    
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:self.hud];
     
     self.account.delegate = self;
     self.password.delegate = self;
@@ -33,20 +38,27 @@
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.secureTextEntry = YES;
     
+    verfiy = [[Verfiy alloc]init];
+    
 }
 
 - (IBAction)logBtn:(id)sender{
     
     
-    if([self.account.text isEqualToString:@""]||self.account.text==nil)
-    {
-        NSLog(@"登录失败");
-    }
-    else if ([self.password.text isEqualToString:@""]||self.password.text==nil)
-    {
-        NSLog(@"登录失败");
-    }
-    else{
+    BOOL mobileNum;
+    mobileNum = [verfiy validateMobile:self.account.text];
+    
+    
+    
+    if([self.account.text isEqualToString:@""]||[self.password.text isEqualToString:@""]) {
+        
+        self.hud.labelText = @"请输入正确格式";//显示提示
+        self.hud.labelFont = TextFont;
+        [self.hud show:YES];
+        self.hud.square = YES;
+        [self.hud hide:YES afterDelay:2];
+        
+    }   else{
         
         
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
@@ -54,12 +66,24 @@
         [manager POST:login_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             NSDictionary * userDic = responseObject[@"user"];
-            //存储token值
-            NSString *Token = userDic[@"access_token"];
-            NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-            [userDef setObject:Token forKey:@"token"];
-            NSLog(@"请求成功");
-          
+            
+            
+            if ([userDic[@"msg"]isEqualToString:@"error"]) {
+                
+                self.hud.labelText = @"请输入正确号码";//显示提示
+                self.hud.labelFont = TextFont;
+                [self.hud show:YES];
+                self.hud.square = YES;
+                [self.hud hide:YES afterDelay:2];
+                
+            }else{
+                
+                //存储token值
+                NSString *Token = userDic[@"access_token"];
+                NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+                [userDef setObject:Token forKey:@"token"];
+                NSLog(@"请求成功");
+                
                 UITabBarController *tabBarController = [[UITabBarController alloc]init];
                 
                 [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -128,7 +152,9 @@
                 
                 
                 self.view.window.rootViewController = tabBarController;
-
+            
+            
+            }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);
@@ -171,7 +197,10 @@
     return YES;
 }
 
-
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.account resignFirstResponder];
+    [self.password resignFirstResponder];
+}
 
 
 /*

@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivitySecondViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ActivitySecondViewController : UIViewController<UIWebViewDelegate>
 
-@property(nonatomic,strong) UITableView * tableView;
+
+@property(nonatomic,strong) NSString * activityID;
+@property(nonatomic,strong) NSString * type;
 
 @end

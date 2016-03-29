@@ -119,7 +119,6 @@
         <!--注册账号-->
         <scene sceneID="dP5-aH-N8m">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D4q-QT-KwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="registScene" id="ZRU-JJ-jkh" userLabel="注册账号" customClass="RegistViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hQg-Sn-zv1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -161,9 +160,12 @@
                                 <state key="normal" title="注册">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="regist:" destination="ZRU-JJ-jkh" eventType="touchUpInside" id="wGp-ol-Eac"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smartemple-logo.png" highlightedImage="smartemple-logo.png" id="KoZ-iv-2qB">
-                                <rect key="frame" x="110" y="70" width="100" height="100"/>
+                                <rect key="frame" x="110" y="102" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                             </imageView>
@@ -176,20 +178,111 @@
                                 <state key="normal" title="发送验证码">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="verify:" destination="ZRU-JJ-jkh" eventType="touchUpInside" id="z3V-yH-v9T"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ibp-vA-xMi">
-                                <rect key="frame" x="7" y="11" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ibp-vA-xMi">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" title="⬅️"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="返回.png"/>
+                                <connections>
+                                    <action selector="Back:" destination="ZRU-JJ-jkh" eventType="touchUpInside" id="MKP-l9-Woq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="W34-AI-ROy" id="3Gz-UP-6PQ"/>
+                        <outlet property="phone" destination="QDt-kF-62J" id="jy6-44-xdv"/>
+                        <outlet property="verify" destination="ryl-6I-PDo" id="ls7-q3-Ycm"/>
+                        <outlet property="verifyBtn" destination="gUE-an-TPM" id="04k-dh-4f8"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4q-QT-KwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="441" y="283"/>
+        </scene>
+        <!--Setinformation View Controller-->
+        <scene sceneID="pNY-LN-JQI">
+            <objects>
+                <viewController storyboardIdentifier="SetScene" id="gym-ah-0OR" customClass="SetinformationViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="azv-34-8jh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="默认头像.png" id="FrK-Sy-oSU">
+                                <rect key="frame" x="115" y="60" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HlZ-fE-1PT">
+                                <rect key="frame" x="115" y="60" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Glq-ri-3JE">
+                                <rect key="frame" x="30" y="425" width="260" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="完成">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Finsh:" destination="gym-ah-0OR" eventType="touchUpInside" id="Cyl-hA-uWZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tSf-1d-J9U">
+                                <rect key="frame" x="73" y="289" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="男"/>
+                                <connections>
+                                    <action selector="Sex:" destination="gym-ah-0OR" eventType="touchUpInside" id="mji-iE-6Jp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PCh-qW-8CN">
+                                <rect key="frame" x="192" y="289" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" title="女"/>
+                                <connections>
+                                    <action selector="Sex:" destination="gym-ah-0OR" eventType="touchUpInside" id="F1w-LB-ACg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ayW-4N-FXl">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="返回.png"/>
+                                <connections>
+                                    <action selector="Back:" destination="gym-ah-0OR" eventType="touchUpInside" id="fIh-jU-J4t"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入昵称" minimumFontSize="17" id="BLe-d4-Cqj">
+                                <rect key="frame" x="30" y="203" width="260" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LOa-0g-PQy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5i-HH-1yR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="905"/>
         </scene>
         <!--忘记密码-->
         <scene sceneID="Zpp-sF-amy">
@@ -200,7 +293,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入验证码" minimumFontSize="17" id="0a8-FW-YXr">
-                                <rect key="frame" x="30" y="95" width="260" height="40"/>
+                                <rect key="frame" x="30" y="141" width="260" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -209,7 +302,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QdO-DP-sTk">
-                                <rect key="frame" x="212" y="100" width="70" height="30"/>
+                                <rect key="frame" x="212" y="146" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
@@ -217,12 +310,19 @@
                                 <state key="normal" title="发送验证码">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="verify:" destination="Uqe-HU-q4b" eventType="touchUpInside" id="dn4-v5-fwJ"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SWC-By-zcO">
-                                <rect key="frame" x="6" y="32" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SWC-By-zcO">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <state key="normal" title="⬅️"/>
+                                <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="返回.png"/>
+                                <connections>
+                                    <action selector="Back:" destination="Uqe-HU-q4b" eventType="touchUpInside" id="gSC-ad-pNz"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" id="nHS-rA-r41">
                                 <rect key="frame" x="0.0" y="70" width="320" height="1"/>
@@ -231,24 +331,36 @@
                                 <color key="backgroundColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找回密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sMa-bp-jIc">
-                                <rect key="frame" x="133" y="35" width="54" height="21"/>
+                                <rect key="frame" x="133" y="29" width="54" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入新密码" minimumFontSize="17" id="T2A-fh-k5v">
+                                <rect key="frame" x="30" y="80" width="260" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pfe-tp-G0b">
-                                <rect key="frame" x="266" y="31" width="46" height="30"/>
+                                <rect key="frame" x="266" y="25" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="下一步">
                                     <color key="titleColor" red="0.57647058819999997" green="0.52156862749999999" blue="0.38823529410000002" alpha="0.84655172410000001" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="Next:" destination="Uqe-HU-q4b" eventType="touchUpInside" id="ndu-9L-CoO"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入手机号" minimumFontSize="17" id="T2A-fh-k5v">
-                                <rect key="frame" x="30" y="155" width="260" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    请输入新密码" minimumFontSize="17" id="N3Z-JR-ZF5">
+                                <rect key="frame" x="30" y="204" width="260" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -261,6 +373,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="修改昵称" id="yls-VI-LbY" userLabel="忘记密码"/>
+                    <connections>
+                        <outlet property="password" destination="N3Z-JR-ZF5" id="cel-D8-k4U"/>
+                        <outlet property="phone" destination="T2A-fh-k5v" id="UrT-zB-cGu"/>
+                        <outlet property="verify" destination="0a8-FW-YXr" id="Kaj-QI-7aY"/>
+                        <outlet property="verifyBtn" destination="QdO-DP-sTk" id="ygP-4h-cGm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5u4-FQ-QN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -270,5 +388,7 @@
     <resources>
         <image name="shareweixin.png" width="90" height="91"/>
         <image name="smartemple-logo.png" width="478" height="306"/>
+        <image name="返回.png" width="35" height="35"/>
+        <image name="默认头像.png" width="202" height="201"/>
     </resources>
 </document>

@@ -20,7 +20,12 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
+//登录注册验证码
 #define login_API @"http://temple.irockwill.com/json/login"
+#define regist_API @"http://temple.irockwill.com/json/register/register_commit"
+#define verify_API @"http://temple.irockwill.com/json/register/vcode_commit"
+//修改密码
+#define Password_API @"http://temple.irockwill.com/json/register/pwd_modify"
 
 
 #define Temple_API @"http://temple.irockwill.com/json/temple"
@@ -29,23 +34,27 @@
 #define Temple_ID_API @"http://temple.irockwill.com/json/temple/info"
 #define Master_ID_API @"http://temple.irockwill.com/json/master/info"
 
-
+//大德
 #define Master_all_API @"http://temple.irockwill.com/json/master/all"
 #define Master_recommend_API @"http://temple.irockwill.com/json/master/recommend"
 #define Master_hot_API @"http://temple.irockwill.com/json/master/hot"
+//寺庙
 #define Temple_all_API @"http://temple.irockwill.com/json/temple/all"
 #define Temple_recommend_API @"http://temple.irockwill.com/json/temple/recommend"
 #define Temple_hot_API @"http://temple.irockwill.com/json/temple/hot"
-
+//发现
 #define Make_recTemple_API @"http://temple.irockwill.com/json/find/temple"
 #define Make_recMaster_API @"http://temple.irockwill.com/json/find/master"
 #define Make_news_API @"http://temple.irockwill.com/json/find/news"
 #define Make_activity_API @"http://temple.irockwill.com/json/find/activity"
-
+//时光轴 问答 祈福
 #define Timeline_API @"http://temple.irockwill.com/json/master/timeline"
 #define Question_API @"http://temple.irockwill.com/json/master/question"
 #define Wish_API @"http://temple.irockwill.com/json/temple/wish"
 
+
+//活动详情
+#define Temple_activity_API @"http://temple.irockwill.com/json/find/ac_detail"
 
 #define MarkFont [UIFont systemFontOfSize:10]
 #define TextFont [UIFont systemFontOfSize:12]

@@ -238,15 +238,15 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString * url = [NSString stringWithFormat:@"%@/message",Temple_API];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSDictionary * param = @{@"realname":@"测试",@"content":@"测试数据",@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":@"002"};
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary * param = @{@"realname":@"测试",@"content":@"测试数据",@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":@"002",@"access_token":token};
     [manager POST:url parameters:param
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               
               NSLog(@"评论成功");
               [self.view endEditing:YES];
               self.textFiled.text = @"";
-              
-          
               
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {

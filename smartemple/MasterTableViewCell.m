@@ -56,8 +56,11 @@
     self.userimage.frame = CGRectMake(10,10,wScreen/5,wScreen/5);
     self.title.frame = CGRectMake(wScreen/5+20,15,100, 20);
     
-    self.renqilabel.frame = CGRectMake(wScreen/5+70,35,50,30);
-    self.guanzhulabel.frame = CGRectMake(wScreen/5+20,35,50,30);
+    CGSize renqitextSize = [self sizeWithText:self.renqilabel.text font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+    CGSize guanzhutextSize = [self sizeWithText:self.guanzhulabel.text font:TextFont maxSize:CGSizeMake(MAXFLOAT,10)];
+    
+    self.renqilabel.frame = CGRectMake(wScreen/5+20+renqitextSize.width,35,renqitextSize.width,30);
+    self.guanzhulabel.frame = CGRectMake(wScreen/5+20,35,guanzhutextSize.width,30);
     
     self.fengexian.frame = CGRectMake(10,wScreen/5+20,wScreen-20,0.5);
 

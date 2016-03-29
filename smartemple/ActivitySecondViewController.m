@@ -13,7 +13,11 @@
 #import "AFNetworking.h"
 #import "MJExtension.h"
 #import "UIImageView+WebCache.h"
-@interface ActivitySecondViewController ()
+@interface ActivitySecondViewController (){
+
+    UIWebView * webView;
+    
+}
 
 @end
 
@@ -23,11 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
-    _tableView.delegate=self;
-    _tableView.dataSource=self;
-    _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
-    [self.view addSubview:_tableView];
+
     
     self.navigationItem.title = @"活动详情";
     
@@ -40,7 +40,44 @@
 
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-  
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"id":self.activityID,@"access_token":token,@"type":self.type};
+    [manager GET:Temple_activity_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject[@"content"]);
+        webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen-64)];
+        [webView setUserInteractionEnabled:YES];
+        webView.delegate = self;
+        [webView setOpaque:NO];
+        [webView setScalesPageToFit:YES];
+        
+        
+       NSString * htmlPath = [[NSBundle mainBundle] pathForResource:responseObject[@"content"] ofType:@"NSString"];
+       NSString *htmlCont = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
+       NSString *path = [[NSBundle mainBundle] bundlePath];NSURL *baseURL = [NSURL fileURLWithPath:path]; [webView loadHTMLString:htmlCont baseURL:baseURL];
+        
+        
+        [self.view addSubview:webView];
+        
+        NSLog(@"成功");
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+    
+
+    
+    
+    
+   
+
 
 }
 
@@ -48,6 +85,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//-(void)loadDada{
+//
+//    
+//}
 
 /*
 #pragma mark - Navigation
