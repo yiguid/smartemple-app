@@ -138,7 +138,7 @@
         
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
         NSDictionary *parameters = @{@"vcode":self.verify.text,@"username":self.phone.text,@"password":self.password.text};
-        [manager POST:regist_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [manager POST:Password_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             if ([responseObject[@"msg"]isEqualToString:@"用户名不存在"]) {
                 self.hud.labelText = @"没有此帐号";//显示提示

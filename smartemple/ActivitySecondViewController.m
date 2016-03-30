@@ -49,17 +49,14 @@
     [manager GET:Temple_activity_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         NSLog(@"%@",responseObject[@"content"]);
-        webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen-64)];
+        webView = [[UIWebView alloc]initWithFrame:CGRectMake(0,64, wScreen, hScreen-64)];
         [webView setUserInteractionEnabled:YES];
         webView.delegate = self;
         [webView setOpaque:NO];
         [webView setScalesPageToFit:YES];
         
         
-       NSString * htmlPath = [[NSBundle mainBundle] pathForResource:responseObject[@"content"] ofType:@"NSString"];
-       NSString *htmlCont = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
-       NSString *path = [[NSBundle mainBundle] bundlePath];NSURL *baseURL = [NSURL fileURLWithPath:path]; [webView loadHTMLString:htmlCont baseURL:baseURL];
-        
+        [webView loadHTMLString:responseObject[@"content"] baseURL:nil];
         
         [self.view addSubview:webView];
         
