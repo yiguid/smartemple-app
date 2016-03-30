@@ -21,9 +21,9 @@
         self.title.font = TextFont;
         self.title.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
         [self addSubview:self.title];
-        self.guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(15,wScreen/5+20,10,10)];
+        self.guanzhuimage = [[UIImageView alloc]initWithFrame:CGRectMake(15*wScreen/375,wScreen/5+20,10*wScreen/375,10*wScreen/375)];
         [self addSubview:self.guanzhuimage];
-        self.guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(30,wScreen/5+15,wScreen/5,20)];
+        self.guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(30*wScreen/375,wScreen/5+15,wScreen/5,20*wScreen/375)];
         self.guanzhulabel.textAlignment = NSTextAlignmentLeft;
         self.guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
         self.guanzhulabel.font = [UIFont systemFontOfSize:10];

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "MasterViewController.h"
+#import "MasterFirstViewController.h"
 #import "TempleViewController.h"
 #import "MakeViewController.h"
 #import "MyViewController.h"
@@ -95,14 +96,14 @@
                                                                    nil] forState:UIControlStateSelected];
                 
                 
-                MasterViewController *masterViewController = [[MasterViewController
+                MasterFirstViewController *masterViewController = [[MasterFirstViewController
                                                                alloc] init];
                 UINavigationController *masterNavigationController =
                 [[UINavigationController alloc] initWithRootViewController:
                  masterViewController];
                 masterNavigationController.tabBarItem.title=@"大德";
                 masterNavigationController.tabBarItem.image = [[UIImage imageNamed:@"1_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                masterNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"1_p@2x.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                masterNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"1_n@2x-2.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [masterNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0,0, 0)];
                 
                 
@@ -117,7 +118,7 @@
                  templeViewController];
                 templeNavigationController.tabBarItem.title=@"寺院";
                 templeNavigationController.tabBarItem.image = [[UIImage imageNamed:@"2_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                templeNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"follow-selected@2x.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                templeNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"2_n@2x-2.png"]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [templeNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0,0, 0)];
                 
                 [tabBarController addChildViewController:templeNavigationController];
@@ -130,7 +131,7 @@
                  makeViewController];
                 makeNavigationController.tabBarItem.title=@"发现";
                 makeNavigationController.tabBarItem.image = [[UIImage imageNamed:@"3_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                makeNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"3_p@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                makeNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"3_n@2x-2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [makeNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0,0,0, 0)];
                 
                 [tabBarController addChildViewController:makeNavigationController];
@@ -143,7 +144,7 @@
                  myViewController];
                 myNavigationController.tabBarItem.title=@"我的";
                 myNavigationController.tabBarItem.image = [[UIImage imageNamed:@"4_n@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-                myNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"4_p@2x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+                myNavigationController.tabBarItem.selectedImage = [[UIImage imageNamed:@"4_n@2x-2.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
                 [myNavigationController.tabBarItem setImageInsets:UIEdgeInsetsMake(0, 0,0, 0)];
                 
                 [tabBarController addChildViewController:myNavigationController];

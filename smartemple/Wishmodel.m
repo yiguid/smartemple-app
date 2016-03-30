@@ -14,7 +14,7 @@
     CGSize textSize = [self sizeWithText:self.content font:TextFont maxSize:CGSizeMake(wScreen - 55, MAXFLOAT)];
      CGSize donSize = [self sizeWithText:self.donationcontent font:TextFont maxSize:CGSizeMake(wScreen - 30, MAXFLOAT)];
     
-    return textSize.height+45+donSize.height;
+    return textSize.height+65+donSize.height;
 }
 
 
@@ -22,5 +22,7 @@
     NSDictionary *attrs = @{NSFontAttributeName : font};
     return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
+
+
 
 @end

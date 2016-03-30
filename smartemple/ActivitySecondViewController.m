@@ -50,13 +50,33 @@
         NSLog(@"%@",responseObject);
         NSLog(@"%@",responseObject[@"content"]);
         webView = [[UIWebView alloc]initWithFrame:CGRectMake(0,64, wScreen, hScreen-64)];
+        webView.backgroundColor = [UIColor whiteColor];
         [webView setUserInteractionEnabled:YES];
         webView.delegate = self;
         [webView setOpaque:NO];
         [webView setScalesPageToFit:YES];
         
+        [webView loadHTMLString:responseObject[@"content"] baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]]];
         
-        [webView loadHTMLString:responseObject[@"content"] baseURL:nil];
+        //构造内容
+        NSString *contentImg = [NSString stringWithFormat:@"%@",responseObject[@"content"]];
+        NSString *content =[NSString stringWithFormat:
+                            @"<html>"
+                            "<style type=\"text/css\">"
+                            "<!--"
+                            "body{font-size:40pt;line-height:60pt;}"
+                            "-->"
+                            "</style>"
+                            "<body>"
+                            "%@"
+                            "</body>"
+                            "</html>"
+                            , contentImg];
+        
+        //让self.contentWebView加载content
+        [webView loadHTMLString:content baseURL:nil];
+        
+        
         
         [self.view addSubview:webView];
         
@@ -83,10 +103,43 @@
     // Dispose of any resources that can be recreated.
 }
 
-//-(void)loadDada{
-//
-//    
-//}
+// 页面图片大小适应
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    // 设置图片的宽高适应屏幕
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:
+                                                     @"var script = document.createElement('script');"
+                                                     "script.type = 'text/javascript';"
+                                                     "script.text = \"function ResizeImages() { "
+                                                     "var myImg,oldWidth,oldHeight;"
+                                                     "var maxWidth=%f;"// 图片宽度
+                                                     "for(i=0;i <document.images.length;i++){"
+                                                     "myImg = document.images[i];"
+                                                     "oldWidth = myImg.width;oldHeight = myImg.height;"
+                                                     "var scale = oldWidth/oldHeight;"
+                                                     "if(myImg.width > maxWidth){"
+                                                     "myImg.width = maxWidth;myImg.height = maxWidth/scale;"
+                                                     "}"
+                                                     "}"
+                                                     "}\";"
+                                                     "document.getElementsByTagName('head')[0].appendChild(script);",wScreen-20]];
+    [webView stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
+    
+    // 添加图片的onclick方法
+    NSString *setImageOnclickString = [NSString stringWithFormat:
+                                       @"function setImageOnclick() {\
+                                       var imgs = document.getElementsByTagName('img');\
+                                       for(var i=0; i<imgs.length; i++) {\
+                                       imgs[i].onclick = function(){\
+                                       document.location = this.src;}}}"];
+    [webView stringByEvaluatingJavaScriptFromString:setImageOnclickString];
+    [webView stringByEvaluatingJavaScriptFromString:@"setImageOnclick()"];
+    
+    // 加载完成
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [SVProgressHUD dismiss];
+//    });
+}
 
 /*
 #pragma mark - Navigation

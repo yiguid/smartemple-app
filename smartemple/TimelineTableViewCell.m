@@ -70,6 +70,7 @@
 }
 
 - (void)setup:(Timelinemodel *)model{
+  
     
     self.datetime.text = model.datetime;
     self.message.text = model.message;

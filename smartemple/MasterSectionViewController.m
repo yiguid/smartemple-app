@@ -40,7 +40,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen-44) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
@@ -106,11 +106,11 @@
 - (void)setHeaderView{
 
     UIView *headView = [[UIView alloc]init];
-    headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+160);
+    headView.frame = CGRectMake(0, 0, wScreen,wScreen/6+100);
 //    headView.backgroundColor = [UIColor colorWithRed:210/255.0 green:212/255.0 blue:225/255.0 alpha:1.0];
     self.tableView.tableHeaderView = headView;
     
-    UIImageView *  masterimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen/3,30, wScreen/3, wScreen/3)];
+    UIImageView *  masterimage = [[UIImageView alloc]initWithFrame:CGRectMake(20,20, wScreen/6, wScreen/6)];
     
     [masterimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",self.master.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [masterimage setImage:masterimage.image];
@@ -131,44 +131,44 @@
 
     
     
-    UIButton * guanzhu = [[UIButton alloc]initWithFrame:CGRectMake(wScreen-guanzhutextSize.width-20,20,10,10)];
+    UIButton * guanzhu = [[UIButton alloc]initWithFrame:CGRectMake(textSize.width+60+wScreen/6,25,10,10)];
     [guanzhu setImage:[UIImage imageNamed:@"xin.png"] forState:UIControlStateNormal];
     [guanzhu addTarget:self action:@selector(guanzhuBtn:) forControlEvents:UIControlEventTouchUpInside];
      [headView addSubview:guanzhu];
-    UILabel * likes = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-guanzhutextSize.width-5,20,guanzhutextSize.width,10)];
+    UILabel * likes = [[UILabel alloc]initWithFrame:CGRectMake(textSize.width+75+wScreen/6,25,guanzhutextSize.width,10)];
     likes.text = self.master.likes;
     likes.textColor = [UIColor blackColor];
     likes.font = MarkFont;
     [headView addSubview:likes];
     
-    UILabel * views = [[UILabel alloc]initWithFrame:CGRectMake(wScreen-textSize.width-55-guanzhutextSize.width,20,textSize.width+25,10)];
+    UILabel * views = [[UILabel alloc]initWithFrame:CGRectMake(30+wScreen/6,25,textSize.width+25,10)];
     views.text =[NSString stringWithFormat:@"人气 %@",self.master.views];
     views.textColor = [UIColor blackColor];
     views.font = MarkFont;
     [headView addSubview:views];
-   
-    UILabel * templename = [[UILabel alloc]initWithFrame:CGRectMake(0,wScreen/3+40, wScreen, 20)];
+   CGSize templeSize = [self sizeWithText:self.master.name font:NameFont maxSize:CGSizeMake(MAXFLOAT,20)];
+    UILabel * templename = [[UILabel alloc]initWithFrame:CGRectMake(30+wScreen/6,50,templeSize.width+30, 20)];
     templename.textColor = [UIColor blackColor];
     templename.textAlignment = NSTextAlignmentCenter;
-    templename.text = self.master.name;
-    
+    templename.text =[NSString stringWithFormat:@"%@主持",self.master.name];
+    templename.font = NameFont;
     [headView addSubview:templename];
+//
+//    UIButton * temple = [[UIButton alloc]initWithFrame:CGRectMake(10,wScreen/3+65, wScreen-20,15)];
+//    [temple setTitle:@"访问寺院主页" forState:UIControlStateNormal];
+//     [temple setTitleColor:[UIColor colorWithRed:73/255.0 green:73/255.0 blue:73/255.0 alpha:1.0] forState: UIControlStateNormal];
+//    temple.titleLabel.font = TextFont;
+//    [headView addSubview:temple];
     
-    UIButton * temple = [[UIButton alloc]initWithFrame:CGRectMake(10,wScreen/3+65, wScreen-20,15)];
-    [temple setTitle:@"访问寺院主页" forState:UIControlStateNormal];
-     [temple setTitleColor:[UIColor colorWithRed:73/255.0 green:73/255.0 blue:73/255.0 alpha:1.0] forState: UIControlStateNormal];
-    temple.titleLabel.font = TextFont;
-    [headView addSubview:temple];
     
-    
-    UIButton * speech = [[UIButton alloc]initWithFrame:CGRectMake(10,wScreen/3+90, wScreen-20, 30)];
-    [speech setTitle:@"查看今日语音开示" forState:UIControlStateNormal];
+    UIButton * speech = [[UIButton alloc]initWithFrame:CGRectMake(10,wScreen/6+30, wScreen-20, 30)];
+    [speech setTitle:@"聆听今日语音开示" forState:UIControlStateNormal];
     speech.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [headView addSubview:speech];
     
     NSArray *segmentedData = [[NSArray alloc]initWithObjects:@"时光轴",@"问答",@"祈福",nil];
     segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedData];
-    segmentedControl.frame = CGRectMake(10.0,wScreen/3+130,wScreen-20, 30.0);
+    segmentedControl.frame = CGRectMake(10.0,wScreen/6+70,wScreen-20,30);
     segmentedControl.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     segmentedControl.selectedSegmentIndex =0;//默认选中的按钮索引
     
@@ -181,6 +181,21 @@
     [headView addSubview:segmentedControl];
     
 }
+
+//-(void)codeImg{
+//    NSString *path=[[NSBundle mainBundle] pathForResource:@"school_back" ofType:@"png"];
+//    UIImage *img= [UIImage imageWithContentsOfFile:path];
+//    NSData *data=UIImageJPEGRepresentation(img, 1.0);//UIImageJPEGRepresentation返回图片较小，但是清晰度模糊
+//    //    NSData *data=UIImagePNGRepresentation(img);//UIImagePNGRepresentation图片大，清晰
+//    
+////    data= [GTMBase64 encodeData:data];
+////    NSLog(@"-->%@",[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
+////    self.lbMessage.text=[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+//}
+
+
+
+
 
 
 -(void)text{
@@ -224,6 +239,14 @@
 }
 
 
+//-(NSString *)UIImageToBase64Str:(UIImage *) image
+//{
+//    
+//   
+//}
+
+
+
 -(void)sendmessage:(id)sender{
     
 //    if (_textFiled.text.length==0) {
@@ -234,28 +257,46 @@
 //    
 //    NSString * textstring = _textFiled.text;
     
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString * url = [NSString stringWithFormat:@"%@/message",Temple_API];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDef stringForKey:@"token"];
-    NSDictionary * param = @{@"realname":@"测试",@"content":@"测试数据",@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":@"002",@"access_token":token};
-    [manager POST:url parameters:param
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-              
-              NSLog(@"评论成功");
-              [self.view endEditing:YES];
-              self.textFiled.text = @"";
-              
-          }
-          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-              
-              NSLog(@"请求失败,%@",error);
-          }];
-    
-    
+//    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSString * url = [NSString stringWithFormat:@"%@/message",Temple_API];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+//    NSString *token = [userDef stringForKey:@"token"];
+//    NSDictionary * param = @{@"realname":@"测试",@"content":@"测试数据",@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":@"002",@"access_token":token};
+//    [manager POST:url parameters:param
+//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//              
+//              NSLog(@"评论成功");
+//              [self.view endEditing:YES];
+//              self.textFiled.text = @"";
+//              
+//          }
+//          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//              
+//              NSLog(@"请求失败,%@",error);
+//          }];
+//    
 
+    
+    UIImageView * imageview = [[UIImageView alloc]init];
+    imageview.image = [UIImage imageNamed:@"默认头像.png"];
+    NSData *data = UIImagePNGRepresentation(imageview.image);
+    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSLog(@"%@",encodedImageStr);
+    
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters=@{@"avatar":encodedImageStr};
+    [manager POST:@"http://temple.irockwill.com/json/register/avatar" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+      
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"%@",error);
+         
+         
+     }];
     
 }
 
@@ -279,7 +320,7 @@
     
     [UIView animateWithDuration:0.25 animations:^{
         _textView.frame = CGRectMake(0, hScreen-216-44-44, wScreen,44);
-        _tableView.frame=CGRectMake(0, 0, wScreen, hScreen-216-44);
+        _tableView.frame=CGRectMake(0, 0, wScreen, hScreen-216);
     }];
     
     

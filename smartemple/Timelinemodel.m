@@ -23,5 +23,16 @@
     return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
 
+-(NSString *)datetime{
+    
+    
+    NSArray *strarray = [_datetime componentsSeparatedByString:@" "];
+    
+    _datetime = strarray[0];
+    
+    return _datetime;
+    
+}
+
 
 @end

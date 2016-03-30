@@ -12,11 +12,10 @@
 
 @property(nonatomic,strong)UILabel * username;
 @property(nonatomic,strong)UILabel * datetime;
-@property(nonatomic,strong)UILabel * messagelabel;
 @property(nonatomic,strong)UILabel * message;
 @property(nonatomic,strong)UILabel * donationcontent;
 @property(nonatomic,strong)UIView * fengexian;
-
+@property(nonatomic,strong)UIImageView * userimage;
 -(void) setup :(Wishmodel *)model;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "WishTableViewCell.h"
 #import "smartemple.pch"
+#import "UIImageView+WebCache.h"
 @implementation WishTableViewCell
 
 - (void)awakeFromNib {
@@ -25,8 +26,7 @@
     
     
     self.username = [[UILabel alloc]init];
-    self.username.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    self.username.textColor = [UIColor whiteColor];
+    self.username.textColor =  [UIColor colorWithRed:91/255.0 green:108/255.0 blue:121/255.0 alpha:1.0];
     self.username.font = TextFont;
     self.username.textAlignment = NSTextAlignmentCenter;
     [self.contentView addSubview:self.username];
@@ -36,13 +36,9 @@
 //    [self.contentView addSubview:self.address];
     
     self.datetime = [[UILabel alloc]init];
-    self.datetime.font = TextFont;
+    self.datetime.font = TimeFont;
+    self.datetime.textColor = [UIColor colorWithRed:184.0/255 green:188.0/255 blue:194.0/255 alpha:1.0];
     [self.contentView addSubview:self.datetime];
-    
-    self.messagelabel = [[UILabel alloc]init];
-    self.messagelabel.font = TextFont;
-    [self.contentView addSubview:self.messagelabel];
-
     
     self.message = [[UILabel alloc]init];
     self.message.font = TextFont;
@@ -55,6 +51,9 @@
     self.donationcontent.numberOfLines = 0;
     [self.contentView addSubview:self.donationcontent];
     
+    self.userimage = [[UIImageView alloc]init];
+    
+    [self.contentView addSubview:self.userimage];
     
     self.fengexian = [[UIView alloc]init];
     [self.contentView addSubview:self.fengexian];
@@ -71,16 +70,20 @@
     
     CGSize donsize = [self sizeWithText:self.donationcontent.text font:TextFont maxSize:CGSizeMake(wScreen-30, MAXFLOAT)];
     
-    [self.message setFrame:CGRectMake(45,33, wScreen-55, textSize.height)];
+    [self.message setFrame:CGRectMake(55,33, wScreen-65, textSize.height)];
     
-    [self.username setFrame:CGRectMake(10, 10, namesize.width+10, 20)];
+    [self.username setFrame:CGRectMake(55, 10,namesize.width, 20)];
     
-    self.datetime.frame = CGRectMake(namesize.width+25,12,200, 20);
-    self.messagelabel.frame = CGRectMake(15,30,30,20);
-    self.donationcontent.frame = CGRectMake(15, textSize.height+40, wScreen-30,donsize.height);
+    self.datetime.frame = CGRectMake(55,textSize.height+45+donsize.height,200, 20);
+    self.donationcontent.frame = CGRectMake(55, textSize.height+40, wScreen-70,donsize.height);
    
-    self.fengexian.frame = CGRectMake(10,textSize.height+45+donsize.height, wScreen-20,0.5);
+    self.fengexian.frame = CGRectMake(10,textSize.height+65+donsize.height, wScreen-20,0.5);
     self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+    self.userimage.frame = CGRectMake(10,10, 40, 40);
+    
+    //头像圆形
+    self.userimage.layer.masksToBounds = YES;
+    self.userimage.layer.cornerRadius = self.userimage.frame.size.width/2;
 
 }
 
@@ -89,17 +92,20 @@
     self.username.text = model.userid;
     
     self.datetime.text = model.datetime;
-    self.messagelabel.text = @"留言:";
     self.message.text = model.content;
     
     if (model.donationcontent==NULL) {
         self.donationcontent.text = nil;
     }else{
         
-        self.donationcontent.text =  [NSString stringWithFormat:@"捐助: %@",model.donationcontent];
+        self.donationcontent.text = model.donationcontent;
     
     }
     
+    [self.userimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.userimage setImage:self.userimage.image];
+    }];
+
     
 
 }
