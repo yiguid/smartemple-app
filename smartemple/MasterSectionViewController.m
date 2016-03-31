@@ -229,11 +229,15 @@
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     [self.view addGestureRecognizer:tapGr];
     
+//    //键盘弹出通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+//    //键盘隐藏通知
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHid:) name: UIKeyboardWillHideNotification object:nil];
+    
     //键盘弹出通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
     //键盘隐藏通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHid:) name: UIKeyboardWillHideNotification object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name: UIKeyboardWillHideNotification object:nil];
 
 
 }
@@ -249,54 +253,38 @@
 
 -(void)sendmessage:(id)sender{
     
-//    if (_textFiled.text.length==0) {
-//        
-//        return;
-//        
-//    }
-//    
+    if (_textFiled.text.length==0) {
+        
+        return;
+        
+    }
+    
 //    NSString * textstring = _textFiled.text;
     
-//    
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    NSString * url = [NSString stringWithFormat:@"%@/message",Temple_API];
-//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
-//    NSString *token = [userDef stringForKey:@"token"];
-//    NSDictionary * param = @{@"realname":@"测试",@"content":@"测试数据",@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":@"002",@"access_token":token};
-//    [manager POST:url parameters:param
-//          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//              
-//              NSLog(@"评论成功");
-//              [self.view endEditing:YES];
-//              self.textFiled.text = @"";
-//              
-//          }
-//          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//              
-//              NSLog(@"请求失败,%@",error);
-//          }];
-//    
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString * url = [NSString stringWithFormat:@"%@/message",Temple_API];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSString *userID = [userDef stringForKey:@"userID"];
+    NSString *username = [userDef stringForKey:@"realname"];
+    NSDictionary * param = @{@"realname":username,@"content":_textFiled.text,@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":userID,@"access_token":token};
+    [manager POST:url parameters:param
+          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+              
+              NSLog(@"评论成功");
+              [self.view endEditing:YES];
+              self.textFiled.text = @"";
+              
+          }
+          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+              
+              NSLog(@"请求失败,%@",error);
+          }];
+    
 
     
-    UIImageView * imageview = [[UIImageView alloc]init];
-    imageview.image = [UIImage imageNamed:@"默认头像.png"];
-    NSData *data = UIImagePNGRepresentation(imageview.image);
-    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-    NSLog(@"%@",encodedImageStr);
-    
-    
-    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters=@{@"avatar":encodedImageStr};
-    [manager POST:@"http://temple.irockwill.com/json/register/avatar" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        NSLog(@"%@",responseObject);
-      
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         NSLog(@"%@",error);
-         
-         
-     }];
     
 }
 
@@ -315,25 +303,43 @@
     [_textFiled resignFirstResponder];
     
 }
-///键盘显示事件
+/////键盘显示事件
+//- (void) keyboardShow:(NSNotification *)notification {
+//    
+//    [UIView animateWithDuration:0.25 animations:^{
+//        _textView.frame = CGRectMake(0, hScreen-216-44-44, wScreen,44);
+//        _tableView.frame=CGRectMake(0, 0, wScreen, hScreen);
+//    }];
+//    
+//    
+//}
+/////键盘关闭事件
+//- (void) keyboardHid:(NSNotification *)notification {
+//    
+//    [UIView animateWithDuration:2.5 animations:^{
+//        _textView.frame = CGRectMake(0, hScreen-44, wScreen,44);
+//        _tableView.frame=CGRectMake(0, 0, wScreen, hScreen);
+//        
+//    }];
+//}
+//键盘显示事件
 - (void) keyboardShow:(NSNotification *)notification {
     
-    [UIView animateWithDuration:0.25 animations:^{
-        _textView.frame = CGRectMake(0, hScreen-216-44-44, wScreen,44);
-        _tableView.frame=CGRectMake(0, 0, wScreen, hScreen-216);
+    NSDictionary *userInfo = [notification userInfo];
+    NSValue *value = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGFloat keyBoardEndY = value.CGRectValue.origin.y;
+    
+    NSNumber *duration = [userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber *curve = [userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+    
+    [UIView animateWithDuration:duration.doubleValue animations:^{
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [UIView setAnimationCurve:[curve intValue]];
+        self.view.center = CGPointMake(self.view.center.x, keyBoardEndY  - self.view.bounds.size.height/2.0);
     }];
     
-    
 }
-///键盘关闭事件
-- (void) keyboardHid:(NSNotification *)notification {
-    
-    [UIView animateWithDuration:2.5 animations:^{
-        _textView.frame = CGRectMake(0, hScreen-44, wScreen,44);
-        _tableView.frame=CGRectMake(0, 0, wScreen, hScreen);
-        
-    }];
-}
+
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {

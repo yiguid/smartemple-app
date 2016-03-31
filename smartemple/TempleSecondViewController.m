@@ -134,7 +134,7 @@
     
     UIButton * activityButton = [[UIButton alloc]initWithFrame:CGRectMake(wScreen/2+10, 10, wScreen/2-20, 30)];
     activityButton.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    [activityButton setTitle:@"我想活动" forState:UIControlStateNormal];
+    [activityButton setTitle:@"参加活动" forState:UIControlStateNormal];
     
     [self.activityView addSubview:activityButton];
     
@@ -337,22 +337,79 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 6;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (section==0) {
-        
         return self.NewsArr.count;
     }else if (section==1){
+        return 1;
+    }
+    else if (section==2){
         return self.ActivityArr.count;
-    }else{
+    }
+    else if (section==3){
+        return 1;
+    }
+    else if (section==4){
         return self.WishArr.count;
+    }else{
+        return 1;
     }
     
 }
+//else if(indexPath.section==5){
+//    
+//    static NSString * CellIndentifier = @"quanbutuijian";
+//    
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    if (cell == nil) {
+//        
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
+//        
+//    }
+//    
+//    
+//    if (self.statusFramesDingGe.count>=3) {
+//        
+//        
+//        
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        button.frame = CGRectMake(wScreen/3, 10, wScreen/3, 30);
+//        
+//        NSString * str = [NSString stringWithFormat:@"%ld",self.moviedinggearr.count];
+//        
+//        [button setTitle:[NSString stringWithFormat:@"全部%@条定格",str] forState:UIControlStateNormal];
+//        
+//        
+//        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        button.backgroundColor = [UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1.0];
+//        [button addTarget:self action:@selector(dinggeBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [cell.contentView addSubview:button];
+//        button.layer.cornerRadius = 5.0f;
+//        
+//        button.layer.masksToBounds = YES;
+//        
+//        button.layer.borderWidth = 0.5f;
+//        
+//        button.layer.borderColor = [[UIColor grayColor]CGColor];
+//        
+//        cell .contentView .backgroundColor = [ UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
+//        
+//        
+//    }
+//    
+//    cell.selectionStyle =UITableViewCellSelectionStyleNone;
+//    return cell;
+//    
+//    
+//}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -372,6 +429,19 @@
         return cell;
     }else if (indexPath.section==1){
         
+        static NSString * CellIndentifier = @"manyNews";
+        
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+            if (cell == nil) {
+        
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
+                
+            }
+        return cell;
+        
+    }else if (indexPath.section==2){
+        
         
         NSString *ID = [NSString stringWithFormat:@"ActivityCell"];
         ActiviTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -388,7 +458,21 @@
         
         
         
-    }else if (indexPath.section==2){
+    }else if (indexPath.section==3){
+        
+        static NSString * CellIndentifier = @"manyActivity";
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        if (cell == nil) {
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
+            
+        }
+        return cell;
+    
+    
+    }else if (indexPath.section==4){
         
         NSString *ID = [NSString stringWithFormat:@"WishCell"];
         WishTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -405,6 +489,18 @@
         return cell;
 
     
+    }else{
+        
+        static NSString * CellIndentifier = @"manyWish";
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        
+        if (cell == nil) {
+            
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
+            
+        }
+        return cell;
     }
     
     
@@ -423,14 +519,21 @@
         return [model getCellHeight];
         
     }else if (indexPath.section==1){
+        return 20;
+    }
+    else if (indexPath.section==2){
         
         ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
         return [model getCellHeight];
-        
-        
-    }else{
+     
+    }else if (indexPath.section==3){
+        return 20;
+    }
+    else if (indexPath.section==4){
         Wishmodel *model = [self.WishArr objectAtIndex:indexPath.row];
         return [model getCellHeight];
+    }else{
+        return 20;
     }
     
 }
@@ -438,12 +541,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==1) {
+    if (indexPath.section==2) {
         
         ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
         ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
         activity.activityID = model.activityID;
+        activity.templeID = self.temple.templeid;
         activity.type = model.type;
+        activity.activityString = @"temple";
         [self.navigationController pushViewController:activity animated:YES];
         
         }

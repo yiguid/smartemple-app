@@ -42,6 +42,9 @@
 #define Temple_all_API @"http://temple.irockwill.com/json/temple/all"
 #define Temple_recommend_API @"http://temple.irockwill.com/json/temple/recommend"
 #define Temple_hot_API @"http://temple.irockwill.com/json/temple/hot"
+//寺庙活动
+#define Temple_activity_API @"http://temple.irockwill.com/activity/id"
+
 //发现
 #define Make_recTemple_API @"http://temple.irockwill.com/json/find/temple"
 #define Make_recMaster_API @"http://temple.irockwill.com/json/find/master"
@@ -52,9 +55,11 @@
 #define Question_API @"http://temple.irockwill.com/json/master/question"
 #define Wish_API @"http://temple.irockwill.com/json/temple/wish"
 
+#define My_API @"http://temple.irockwill.com/json/user/info"
 
-//活动详情
-#define Temple_activity_API @"http://temple.irockwill.com/json/find/ac_detail"
+
+////活动详情
+//#define Temple_activity_API @"http://temple.irockwill.com/json/find/ac_detail"
 
 #define MarkFont [UIFont systemFontOfSize:10]
 #define TextFont [UIFont systemFontOfSize:12]

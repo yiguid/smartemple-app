@@ -79,8 +79,8 @@
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDef stringForKey:@"token"];
-    NSDictionary *parameters = @{@"page": @"1",@"limit":@"8",@"access_token":token};
-    [manager GET:Master_recommend_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    NSDictionary *parameters = @{@"page": @"1",@"limit":@"12",@"access_token":token};
+    [manager GET:Master_hot_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         
         self.recMasterArr = [masterModel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];

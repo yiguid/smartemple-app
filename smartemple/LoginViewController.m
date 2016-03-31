@@ -39,6 +39,15 @@
     self.password.returnKeyType = UIReturnKeyDone;
     self.password.secureTextEntry = YES;
     
+    CGRect rect = self.account.frame;
+    rect.size.height = 40;
+    self.account.frame = rect;
+    self.account.layer.cornerRadius = 6.0;
+    CGRect prect = self.password.frame;
+    prect.size.height = 40;
+    self.password.frame = prect;
+    self.password.layer.cornerRadius = 6.0;
+    
     verfiy = [[Verfiy alloc]init];
     
 }
@@ -79,10 +88,18 @@
                 
             }else{
                 
+                
+                
                 //存储token值
                 NSString *Token = userDic[@"access_token"];
                 NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
                 [userDef setObject:Token forKey:@"token"];
+                //存储用户id
+                NSString * userID = userDic[@"id"];
+                [userDef setObject:userID forKey:@"userID"];
+                //存储用户姓名
+                NSString * username = userDic[@"realname"];
+                [userDef setObject:username forKey:@"realname"];
                 NSLog(@"请求成功");
                 
                 UITabBarController *tabBarController = [[UITabBarController alloc]init];
@@ -182,6 +199,7 @@
 {
     [self.account resignFirstResponder];
     [self.password resignFirstResponder];
+    
    
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;

@@ -18,7 +18,8 @@
 #import "MynewsViewController.h"
 #import "MysettingViewController.h"
 #import "UIImageView+WebCache.h"
-
+#import "AFNetworking.h"
+#import "MJExtension.h"
 @interface MyViewController ()
 
 @end
@@ -35,26 +36,13 @@
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
     
-    
     UIColor * color =[UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     
     NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
     
     self.navigationController.navigationBar.titleTextAttributes = dict;
     
-//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]
-//                                   initWithTitle:@"左按钮"
-//                                   style:UIBarButtonItemStylePlain
-//                                   target:self
-//                                   action:@selector(left)];
-//    [self.navigationItem setLeftBarButtonItem:leftButton];
-//    
-//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
-//                                    initWithTitle:@"右按钮"
-//                                    style:UIBarButtonItemStylePlain
-//                                    target:self
-//                                    action:@selector(right)];
-//    [self.navigationItem setRightBarButtonItem:rightButton];
+
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
 
@@ -71,49 +59,76 @@
 - (void)loadData{
     
     
+
+
+    
+    
     
     
 }
 
 - (void)setHeaderView{
     
-    UIView * headView = [[UIView alloc]init];
-    
-    headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+50);
-    
-    self.tableView.tableHeaderView = headView;
-    
-    UIImageView *  backimage = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,wScreen,wScreen/3)];
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSString *userID = [userDef stringForKey:@"userID"];
+    NSDictionary *parameters = @{@"userid":userID,@"access_token":token};
+    [manager GET:My_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+     
+        
+//         [userimage addTarget:self action:@selector(userimageButton)forControlEvents:UIControlEventTouchUpInside];
+        
+        UIView * headView = [[UIView alloc]init];
+        
+        headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+50);
+        
+        self.tableView.tableHeaderView = headView;
+        
+        UIImageView *  backimage = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,wScreen,wScreen/3)];
+        
+        backimage.image = [UIImage imageNamed:@"myBackImg@2x.png"];
+        
+        [backimage setImage:backimage.image];
+        
+        [headView addSubview:backimage];
+        
+        UILabel * userlabel = [[UILabel alloc]initWithFrame:CGRectMake(10,wScreen/3+10, wScreen/3, 20)];
+        userlabel.text = responseObject[0][@"realname"];
+        [headView addSubview:userlabel];
+        
+        UIButton * userimageBtn = [[UIButton alloc]initWithFrame:CGRectMake(wScreen/2-30,wScreen/3-30,60, 60)];
+        [headView addSubview:userimageBtn];
+        UIImageView * userimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen/2-30,wScreen/3-30,60, 60)];
+        
+               [userimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://temple.irockwill.com/userimg/avatar/%@",responseObject[0][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [userimage setImage:userimage.image];
+            
+            userimage.layer.masksToBounds = YES;
+            userimage.layer.cornerRadius = userimage.frame.size.width/2;
+            
+            //头像边框
+            userimage.layer.borderColor = [UIColor whiteColor].CGColor;
+            userimage.layer.borderWidth = 2.0;
+            
+        }];
+        [headView addSubview:userimage];
+        
+        
+        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(10, wScreen/3+50,wScreen-20,0.5)];
+        view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
+        [headView addSubview:view];
 
-    backimage.image = [UIImage imageNamed:@"myBackImg@2x.png"];
-    
-    [backimage setImage:backimage.image];
-    
-    [headView addSubview:backimage];
-    
-    UIImageView * userimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen/2-30,wScreen/3-30,60, 60)];
-   
-    
-    [userimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@""]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        [userimage setImage:userimage.image];
         
-        userimage.layer.masksToBounds = YES;
-        userimage.layer.cornerRadius = userimage.frame.size.width/2;
         
-        //头像边框
-        userimage.layer.borderColor = [UIColor whiteColor].CGColor;
-        userimage.layer.borderWidth = 2.0;
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
         
     }];
-    [headView addSubview:userimage];
+
     
-//    UILabel * temple = [[UILabel alloc]initWithFrame:CGRectMake(20, wScreen/3+40,100,20)];
-//    temple.text = @"我的寺院";
-//    [headView addSubview:temple];
-   
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(10, wScreen/3+50,wScreen-20,0.5)];
-    view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
-    [headView addSubview:view];
     
 }
 

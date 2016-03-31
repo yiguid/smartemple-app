@@ -32,6 +32,21 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     verfiy = [[Verfiy alloc]init];
+    
+    CGRect prect = self.phone.frame;
+    prect.size.height = 40;
+    self.phone.frame = prect;
+    self.phone.layer.cornerRadius = 6.0;
+    CGRect vrect = self.verify.frame;
+    vrect.size.height = 40;
+    self.verify.frame = vrect;
+    self.verify.layer.cornerRadius = 6.0;
+    CGRect rect = self.password.frame;
+    rect.size.height = 40;
+    self.password.frame = rect;
+    self.password.layer.cornerRadius = 6.0;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

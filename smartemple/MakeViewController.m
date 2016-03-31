@@ -23,6 +23,7 @@
 #import "NewsTableViewCell.h"
 #import "ActiviTableViewCell.h"
 #import "NewsViewController.h"
+#import "ActivitySecondViewController.h"
 @interface MakeViewController ()
 
 @property(nonatomic, strong)NSMutableArray * templeMakeArr;
@@ -128,7 +129,7 @@
         [manager GET:Make_activity_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             
-            self.activityMakeArr = [ActiviModel mj_objectArrayWithKeyValuesArray:responseObject[@"find"]];
+            self.activityMakeArr = [ActiviModel mj_objectArrayWithKeyValuesArray:responseObject];
             [self.tableView reloadData];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -327,13 +328,16 @@
         news.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:news animated:YES];
     
-    }else{
-                
-    
-    }
-    
-    
-    
+    }else if (indexPath.section==3) {
+            
+            ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
+            ActiviModel *model = [self.activityMakeArr objectAtIndex:indexPath.row];
+            activity.activityID = model.activityID;
+            activity.activityString = @"new";
+            activity.type = model.type;
+            [self.navigationController pushViewController:activity animated:YES];
+            
+        }
     
 }
 

@@ -11,6 +11,7 @@
 #import "smartemple.pch"
 #import "MJExtension.h"
 #import "MBProgressHUD.h"
+#import "SetinformationViewController.h"
 @interface RegistViewController ()
 
 @property MBProgressHUD *hud;
@@ -31,6 +32,19 @@
      self.view.backgroundColor = [UIColor whiteColor];
     
     verfiy = [[Verfiy alloc]init];
+    
+    CGRect prect = self.phone.frame;
+    prect.size.height = 40;
+    self.phone.frame = prect;
+    self.phone.layer.cornerRadius = 6.0;
+    CGRect vrect = self.verify.frame;
+    vrect.size.height = 40;
+    self.verify.frame = vrect;
+    self.verify.layer.cornerRadius = 6.0;
+    CGRect rect = self.password.frame;
+    rect.size.height = 40;
+    self.password.frame = rect;
+    self.password.layer.cornerRadius = 6.0;
 }
 
 
@@ -61,7 +75,7 @@
         
         
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-        NSDictionary *parameters = @{@"phone":self.phone.text};
+        NSDictionary *parameters = @{@"phone":self.phone.text,@"type":@"1"};
         [manager POST:verify_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@",responseObject);
             
@@ -113,60 +127,111 @@
 }
 -(IBAction)regist:(id)sender{
     
-   if([self.phone.text isEqualToString:@""]||[self.verify.text isEqualToString:@""]||[self.password.text isEqualToString:@""]) {
+    
+    
+    BOOL mobileNum;
+    mobileNum = [verfiy validateMobile:self.phone.text];
+    
         
-        self.hud.labelText = @"请输入正确格式";//显示提示
-        self.hud.labelFont = TextFont;
-        [self.hud show:YES];
-        self.hud.square = YES;
-        [self.hud hide:YES afterDelay:2];
+    if([self.phone.text isEqualToString:@""]||[self.verify.text isEqualToString:@""]||[self.password.text isEqualToString:@""]) {
         
-    }else if(6>self.password.text.length || self.password.text.length>12){
-        self.hud.labelText = @"密码长度大于6小于12";//显示提示
-        self.hud.labelFont = TextFont;
-        [self.hud show:YES];
-        self.hud.square = YES;
-        [self.hud hide:YES afterDelay:2];
-    }else{
-        
-        AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
-        NSDictionary *parameters = @{@"vcode":self.verify.text,@"password":self.password.text};
-        [manager POST:regist_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"%@",responseObject);
-            if ([responseObject[@"msg"]isEqualToString:@"用户名已存在"]) {
-                self.hud.labelText = @"帐号已被注册";//显示提示
+                self.hud.labelText = @"请输入正确格式";//显示提示
                 self.hud.labelFont = TextFont;
                 [self.hud show:YES];
                 self.hud.square = YES;
                 [self.hud hide:YES afterDelay:2];
-            }else if([responseObject[@"msg"]isEqualToString:@"验证码不正确"]){
-                self.hud.labelText = @"验证码不正确";//显示提示
-                self.hud.labelFont = TextFont;
-                [self.hud show:YES];
-                self.hud.square = YES;
-                [self.hud hide:YES afterDelay:2];
-            
-            }else if([responseObject[@"msg"]isEqualToString:@"注册成功"]){
-                self.hud.labelText = @"帐号注册成功";//显示提示
+        
+            } else if (!mobileNum) {
+                
+                self.hud.labelText = @"请输入正确手机号";//显示提示
                 self.hud.labelFont = TextFont;
                 [self.hud show:YES];
                 self.hud.square = YES;
                 [self.hud hide:YES afterDelay:2];
                 
-                          }
+            }else if(6>self.password.text.length || self.password.text.length>12){
+                
+                self.hud.labelText = @"密码长度大于6小于12";//显示提示
+                self.hud.labelFont = TextFont;
+                [self.hud show:YES];
+                self.hud.square = YES;
+                [self.hud hide:YES afterDelay:2];
+                
+            }else{
+                
+                CATransition *animation = [CATransition animation];
+                [animation setDuration:1.0];
+                [animation setType:kCATransitionFade]; //淡入淡出kCATransitionFade
+                [animation setSubtype:kCATransitionFromRight];
+                [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+                [[UIApplication sharedApplication].keyWindow.layer addAnimation:animation forKey:nil];
+                
+                UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                SetinformationViewController * setinformation = [storyboard instantiateViewControllerWithIdentifier:@"SetScene"];
+                
+                
+                NSUserDefaults *Defaults = [NSUserDefaults standardUserDefaults];
+                //保存验证码
+                [Defaults setObject:self.verify.text forKey:@"vcode"];
+                //保存密码
+                [Defaults setObject:self.password.text forKey:@"password"];
+                
+                [self presentViewController:setinformation animated:NO completion:nil];
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-            
-            
-        }];
-    }
+            }
     
     
-
-
-
 }
+//
+//   if([self.phone.text isEqualToString:@""]||[self.verify.text isEqualToString:@""]||[self.password.text isEqualToString:@""]) {
+//        
+//        self.hud.labelText = @"请输入正确格式";//显示提示
+//        self.hud.labelFont = TextFont;
+//        [self.hud show:YES];
+//        self.hud.square = YES;
+//        [self.hud hide:YES afterDelay:2];
+//        
+//    }else if(6>self.password.text.length || self.password.text.length>12){
+//        self.hud.labelText = @"密码长度大于6小于12";//显示提示
+//        self.hud.labelFont = TextFont;
+//        [self.hud show:YES];
+//        self.hud.square = YES;
+//        [self.hud hide:YES afterDelay:2];
+//    }else{
+//        
+//        AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+//        NSDictionary *parameters = @{@"vcode":self.verify.text,@"password":self.password.text};
+//        [manager POST:regist_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            NSLog(@"%@",responseObject);
+//            if ([responseObject[@"msg"]isEqualToString:@"用户名已存在"]) {
+//                self.hud.labelText = @"帐号已被注册";//显示提示
+//                self.hud.labelFont = TextFont;
+//                [self.hud show:YES];
+//                self.hud.square = YES;
+//                [self.hud hide:YES afterDelay:2];
+//            }else if([responseObject[@"msg"]isEqualToString:@"验证码不正确"]){
+//                self.hud.labelText = @"验证码不正确";//显示提示
+//                self.hud.labelFont = TextFont;
+//                [self.hud show:YES];
+//                self.hud.square = YES;
+//                [self.hud hide:YES afterDelay:2];
+//            
+//            }else if([responseObject[@"msg"]isEqualToString:@"注册成功"]){
+//                self.hud.labelText = @"帐号注册成功";//显示提示
+//                self.hud.labelFont = TextFont;
+//                [self.hud show:YES];
+//                self.hud.square = YES;
+//                [self.hud hide:YES afterDelay:2];
+//                
+//                          }
+//            
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            NSLog(@"%@",error);
+//            
+//            
+//        }];
+//    }
+
 
 
 

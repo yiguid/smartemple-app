@@ -12,6 +12,8 @@
 
 
 @property(nonatomic,strong) NSString * activityID;
+@property(nonatomic,strong) NSString * templeID;
 @property(nonatomic,strong) NSString * type;
+@property(nonatomic,strong) NSString * activityString;
 
 @end

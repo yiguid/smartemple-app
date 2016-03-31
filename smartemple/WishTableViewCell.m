@@ -101,8 +101,8 @@
         self.donationcontent.text = model.donationcontent;
     
     }
-    
-    [self.userimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://smartemple.com/%@",model.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+   
+    [self.userimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://temple.irockwill.com/userimg/avatar/%@",model.avatar]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [self.userimage setImage:self.userimage.image];
     }];
 
