@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TempleModel.h"
 
-@interface WishAllViewController : UIViewController
+@interface WishAllViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong) UITableView * tableView;
+
+@property(nonatomic,strong) TempleModel * temple;
 
 @end

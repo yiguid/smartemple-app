@@ -38,12 +38,15 @@
 #define Master_all_API @"http://temple.irockwill.com/json/master/all"
 #define Master_recommend_API @"http://temple.irockwill.com/json/master/recommend"
 #define Master_hot_API @"http://temple.irockwill.com/json/master/hot"
-//寺庙
+//寺院
 #define Temple_all_API @"http://temple.irockwill.com/json/temple/all"
 #define Temple_recommend_API @"http://temple.irockwill.com/json/temple/recommend"
 #define Temple_hot_API @"http://temple.irockwill.com/json/temple/hot"
-//寺庙活动
+//寺院活动
 #define Temple_activity_API @"http://temple.irockwill.com/activity/id"
+//寺院功德榜
+#define Temple_zhongchou_API @"http://temple.irockwill.com/json/temple/d_zhongchou"
+
 
 //发现
 #define Make_recTemple_API @"http://temple.irockwill.com/json/find/temple"

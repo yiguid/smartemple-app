@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TempleModel.h"
+@interface NewsAllViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@interface NewsAllViewController : UIViewController
+@property(nonatomic,strong) UITableView * tableView;
 
+@property(nonatomic,strong) TempleModel * temple;
 @end

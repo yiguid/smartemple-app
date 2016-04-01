@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DonationModel.h"
 @interface DonationTableViewCell : UITableViewCell
+
+@property(nonatomic,strong)UIImageView * templeimage;
+@property(nonatomic,strong)UILabel * titleLabel;
+@property(nonatomic,strong)UILabel * messageLabel;
+@property(nonatomic,strong)UILabel * viewLabel;
+@property(nonatomic,strong)UIView * fengexian;
+
+-(void) setup :(DonationModel *)model;
 
 @end

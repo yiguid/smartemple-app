@@ -416,24 +416,17 @@
 			name = "时光轴";
 			sourceTree = "<group>";
 		};
-		210891D91C910D8100F8DD80 /* 众筹 */ = {
+		210891DA1C910D8500F8DD80 /* 众筹 */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = "众筹";
-			sourceTree = "<group>";
-		};
-		210891DA1C910D8500F8DD80 /* 捐助 */ = {
-			isa = PBXGroup;
-			children = (
-				210891F11C914D0000F8DD80 /* 全部捐助列表 */,
-				210891F21C914D1900F8DD80 /* 捐助详情列表 */,
+				210891F11C914D0000F8DD80 /* 全部众筹列表 */,
+				210891F21C914D1900F8DD80 /* 众筹详情列表 */,
 				210891DC1C910DDF00F8DD80 /* DonationModel.h */,
 				210891DD1C910DDF00F8DD80 /* DonationModel.m */,
 				210891DF1C910EA300F8DD80 /* DonationTableViewCell.h */,
 				210891E01C910EA300F8DD80 /* DonationTableViewCell.m */,
 			);
-			name = "捐助";
+			name = "众筹";
 			sourceTree = "<group>";
 		};
 		210891E51C914C1D00F8DD80 /* 活动详情列表 */ = {
@@ -463,22 +456,22 @@
 			name = "全部新闻列表";
 			sourceTree = "<group>";
 		};
-		210891F11C914D0000F8DD80 /* 全部捐助列表 */ = {
+		210891F11C914D0000F8DD80 /* 全部众筹列表 */ = {
 			isa = PBXGroup;
 			children = (
 				210891FB1C914D9400F8DD80 /* DonationAllViewController.h */,
 				210891FC1C914D9400F8DD80 /* DonationAllViewController.m */,
 			);
-			name = "全部捐助列表";
+			name = "全部众筹列表";
 			sourceTree = "<group>";
 		};
-		210891F21C914D1900F8DD80 /* 捐助详情列表 */ = {
+		210891F21C914D1900F8DD80 /* 众筹详情列表 */ = {
 			isa = PBXGroup;
 			children = (
 				210891FE1C914DA400F8DD80 /* DonationViewController.h */,
 				210891FF1C914DA400F8DD80 /* DonationViewController.m */,
 			);
-			name = "捐助详情列表";
+			name = "众筹详情列表";
 			sourceTree = "<group>";
 		};
 		210891F31C914D2C00F8DD80 /* 祈福详情列表 */ = {
@@ -642,8 +635,7 @@
 				2108914D1C8D869E00F8DD80 /* 时光轴 */,
 				2108914C1C8D869C00F8DD80 /* 问答 */,
 				2108914B1C8D869900F8DD80 /* 祈福 */,
-				210891DA1C910D8500F8DD80 /* 捐助 */,
-				210891D91C910D8100F8DD80 /* 众筹 */,
+				210891DA1C910D8500F8DD80 /* 众筹 */,
 			);
 			name = "全局文件";
 			sourceTree = "<group>";

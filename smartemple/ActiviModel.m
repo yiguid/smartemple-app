@@ -19,7 +19,7 @@
 -(CGFloat)getCellHeight{
     CGSize textSize = [self sizeWithText:self.title font:TextFont maxSize:CGSizeMake(wScreen -100, MAXFLOAT)];
     
-    return textSize.height+30;
+    return textSize.height+20;
 }
 
 
