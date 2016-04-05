@@ -132,6 +132,8 @@
 		217B57EE1C87F0700077B23D /* MynewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B57ED1C87F0700077B23D /* MynewsViewController.m */; };
 		217B57F11C87F08F0077B23D /* MysettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B57F01C87F08F0077B23D /* MysettingViewController.m */; };
 		217B58131C881B8A0077B23D /* MasterSectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B58121C881B8A0077B23D /* MasterSectionViewController.m */; };
+		21D7BF901CB372B60087A697 /* AleartHeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BF8F1CB372B60087A697 /* AleartHeadViewController.m */; };
+		21D7BF931CB390CE0087A697 /* AleartNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BF921CB390CE0087A697 /* AleartNameViewController.m */; };
 		21FBF6351CAA2A7500262039 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FBF6301CAA2A7500262039 /* Reachability.m */; };
 		21FBF6361CAA2A7500262039 /* Net.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FBF6321CAA2A7500262039 /* Net.m */; };
 		21FBF6371CAA2A7500262039 /* Verfiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FBF6341CAA2A7500262039 /* Verfiy.m */; };
@@ -341,6 +343,10 @@
 		217B57F01C87F08F0077B23D /* MysettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MysettingViewController.m; sourceTree = "<group>"; };
 		217B58111C881B8A0077B23D /* MasterSectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterSectionViewController.h; sourceTree = "<group>"; };
 		217B58121C881B8A0077B23D /* MasterSectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterSectionViewController.m; sourceTree = "<group>"; };
+		21D7BF8E1CB372B60087A697 /* AleartHeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AleartHeadViewController.h; sourceTree = "<group>"; };
+		21D7BF8F1CB372B60087A697 /* AleartHeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AleartHeadViewController.m; sourceTree = "<group>"; };
+		21D7BF911CB390CE0087A697 /* AleartNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AleartNameViewController.h; sourceTree = "<group>"; };
+		21D7BF921CB390CE0087A697 /* AleartNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AleartNameViewController.m; sourceTree = "<group>"; };
 		21FBF62F1CAA2A7500262039 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		21FBF6301CAA2A7500262039 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		21FBF6311CAA2A7500262039 /* Net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Net.h; sourceTree = "<group>"; };
@@ -618,6 +624,10 @@
 				217B57C11C87CFE00077B23D /* ForgetViewController.m */,
 				21FBF6391CAA377900262039 /* SetinformationViewController.h */,
 				21FBF63A1CAA377900262039 /* SetinformationViewController.m */,
+				21D7BF8E1CB372B60087A697 /* AleartHeadViewController.h */,
+				21D7BF8F1CB372B60087A697 /* AleartHeadViewController.m */,
+				21D7BF911CB390CE0087A697 /* AleartNameViewController.h */,
+				21D7BF921CB390CE0087A697 /* AleartNameViewController.m */,
 			);
 			name = "登录、注册、设置基本信息";
 			sourceTree = "<group>";
@@ -1114,6 +1124,7 @@
 			files = (
 				210891FD1C914D9400F8DD80 /* DonationAllViewController.m in Sources */,
 				217B57DF1C87EFCA0077B23D /* MyattentViewController.m in Sources */,
+				21D7BF931CB390CE0087A697 /* AleartNameViewController.m in Sources */,
 				217B57B61C86F99D0077B23D /* SpeechTableViewCell.m in Sources */,
 				210891F71C914D5900F8DD80 /* WishAllViewController.m in Sources */,
 				217B57A01C86F77C0077B23D /* NewsModel.m in Sources */,
@@ -1164,6 +1175,7 @@
 				2126222E1C899BE7009A3028 /* NewsViewController.m in Sources */,
 				217B57061C86945F0077B23D /* MyViewController.m in Sources */,
 				217B57A61C86F7CA0077B23D /* NeighModel.m in Sources */,
+				21D7BF901CB372B60087A697 /* AleartHeadViewController.m in Sources */,
 				210892001C914DA400F8DD80 /* DonationViewController.m in Sources */,
 				217B57C21C87CFE00077B23D /* ForgetViewController.m in Sources */,
 				217B57A31C86F7B20077B23D /* ActiviModel.m in Sources */,

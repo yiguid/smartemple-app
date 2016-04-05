@@ -9,7 +9,6 @@
 #import "MyViewController.h"
 #import "smartemple.pch"
 #import "UserModel.h"
-#import "UserTableViewCell.h"
 #import "MyattentViewController.h"
 #import "MydonateViewController.h"
 #import "MyprayViewController.h"
@@ -48,7 +47,8 @@
 
      self.navigationItem.title = @"我的";
     [self setHeaderView];
-    [self loadData];
+    
+//    self.tableView.backgroundColor = [UIColor colorWithRed:33/255.0 green:32/255.0 blue:48/255.0 alpha:1.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,16 +56,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadData{
-    
-    
-
-
-    
-    
-    
-    
-}
 
 - (void)setHeaderView{
     
@@ -82,8 +72,8 @@
         
         UIView * headView = [[UIView alloc]init];
         
-        headView.frame = CGRectMake(0, 0, wScreen,wScreen/3+50);
-        
+        headView.frame = CGRectMake(0, 0, wScreen,wScreen/2);
+//        headView.backgroundColor = [UIColor colorWithRed:33/255.0 green:32/255.0 blue:48/255.0 alpha:1.0];
         self.tableView.tableHeaderView = headView;
         
         UIImageView *  backimage = [[UIImageView alloc]initWithFrame:CGRectMake(0,0,wScreen,wScreen/3)];
@@ -94,13 +84,22 @@
         
         [headView addSubview:backimage];
         
-        UILabel * userlabel = [[UILabel alloc]initWithFrame:CGRectMake(10,wScreen/3+10, wScreen/3, 20)];
+        UILabel * userlabel = [[UILabel alloc]initWithFrame:CGRectMake(10,wScreen/3, wScreen/3, 20)];
         userlabel.text = responseObject[0][@"realname"];
+        userlabel.textColor = [UIColor colorWithRed:33/255.0 green:32/255.0 blue:48/255.0 alpha:1.0];
         [headView addSubview:userlabel];
         
-        UIButton * userimageBtn = [[UIButton alloc]initWithFrame:CGRectMake(wScreen/2-30,wScreen/3-30,60, 60)];
+        UIButton * userimageBtn = [[UIButton alloc]initWithFrame:CGRectMake(wScreen*5/12,wScreen/4,wScreen/6,wScreen/6)];
         [headView addSubview:userimageBtn];
-        UIImageView * userimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen/2-30,wScreen/3-30,60, 60)];
+        UIButton * username = [[UIButton alloc]initWithFrame:CGRectMake(10,wScreen/3, wScreen/3, 20)];
+        [headView addSubview:username];
+        
+        [userimageBtn addTarget:self action:@selector(userimageButton)forControlEvents:UIControlEventTouchUpInside];
+        
+        [username addTarget:self action:@selector(usernameButton)forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        UIImageView * userimage = [[UIImageView alloc]initWithFrame:CGRectMake(wScreen*5/12,wScreen/4,wScreen/6,wScreen/6)];
         
                [userimage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://temple.irockwill.com/userimg/avatar/%@",responseObject[0][@"avatar"]]] placeholderImage:[UIImage imageNamed:@"avatar@2x.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [userimage setImage:userimage.image];
@@ -116,7 +115,7 @@
         [headView addSubview:userimage];
         
         
-        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(10, wScreen/3+50,wScreen-20,0.5)];
+        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(10, wScreen/2-1,wScreen-20,0.5)];
         view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
         [headView addSubview:view];
 
@@ -146,56 +145,50 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 44, wScreen, 1)];
+    
+    headView.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1.0];
     
     
-    NSString *ID = [NSString stringWithFormat:@"Cell"];
-    UserTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UserTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:ID];
-    }
-    
-    
+    NSString *ID = [NSString stringWithFormat:@"cell"];
+    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.font = TextFont;
+    [cell.contentView addSubview:headView];
     if (indexPath.row == 0) {
-        cell.menuimage.image = [UIImage imageNamed:@"定格@2x.png"];
-        cell.menuname.text = @"我的关注";
-        cell.menulabel.text = @">";
-    
+        cell.imageView.image = [UIImage imageNamed:@"定格@2x.png"];
+        cell.textLabel.text = @"我的关注";
+
     }else if (indexPath.row==1){
     
-        cell.menuimage.image = [UIImage imageNamed:@"推荐电影@2x.png"];
+        cell.imageView.image = [UIImage imageNamed:@"推荐电影@2x.png"];
         
-        cell.menuname.text = @"我的捐助";
-        cell.menulabel.text = @">";
+        cell.textLabel.text = @"我的捐助";
     
     }else if (indexPath.row==2){
-        cell.menuimage.image = [UIImage imageNamed:@"粉丝@3x.png"];
+        cell.imageView.image = [UIImage imageNamed:@"粉丝@3x.png"];
 
-        cell.menuname.text = @"我的祈福";
-        cell.menulabel.text = @">";
+        cell.textLabel.text = @"我的祈福";
         
     }else if (indexPath.row==3){
-        cell.menuimage.image = [UIImage imageNamed:@"收藏@2x.png"];
+        cell.imageView.image = [UIImage imageNamed:@"收藏@2x.png"];
 
-        cell.menuname.text = @"我的活动";
-        cell.menulabel.text = @">";
+        cell.textLabel.text = @"我的活动";
         
     }else if (indexPath.row==4){
-        cell.menuimage.image = [UIImage imageNamed:@"影品@2x.png"];
+        cell.imageView.image = [UIImage imageNamed:@"影品@2x.png"];
 
-        cell.menuname.text = @"我的义工";
-        cell.menulabel.text = @">";
+        cell.textLabel.text = @"我的义工";
         
     }else if (indexPath.row==5){
-        cell.menuimage.image = [UIImage imageNamed:@"消息@2x.png"];
+        cell.imageView.image = [UIImage imageNamed:@"消息@2x.png"];
 
-        cell.menuname.text = @"消息";
-        cell.menulabel.text = @">";
+        cell.textLabel.text = @"消息";
         
     }else if (indexPath.row==6){
-        cell.menuimage.image = [UIImage imageNamed:@"设置@2x.png"];
+        cell.imageView.image = [UIImage imageNamed:@"设置@2x.png"];
 
-        cell.menuname.text = @"设置";
-        cell.menulabel.text = @">";
+        cell.textLabel.text = @"设置";
         
     }
     cell.selectionStyle =UITableViewCellSelectionStyleNone;
@@ -260,6 +253,32 @@
     
     
 }
+
+-(void)userimageButton{
+    
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"AlertHead"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
+    
+}
+
+-(void)usernameButton{
+    
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"Alertname"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
+}
+
 
 
 /*

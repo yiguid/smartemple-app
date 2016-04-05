@@ -143,16 +143,7 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-//-(void)putimageUp
-//{
-//
 
-//   
-//    
-//    
-//  
-//    
-//}
 
 
 -(IBAction)mSex:(id)sender{

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MysettingViewController : UIViewController
+@interface MysettingViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong) UITableView * tableView;
 
 @end
