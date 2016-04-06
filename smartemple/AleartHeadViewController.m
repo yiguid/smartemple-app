@@ -194,16 +194,26 @@
     //    imageForHead =  editingInfo[UIImagePickerControllerOriginalImage];
     headImage=UIImagePNGRepresentation(image);
     //上传头像方法
-    [self putimageUp];
+//    [self putimageUp];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - 头像上传
 //上传头像方法
+//
+//-(void)putimageUp
+//{
+//    
+//
+//    
+//}
 
--(void)putimageUp
-{
+
+
+- (IBAction)saveuserimage:(id)sender {
+    
+    
     NSData *data = UIImagePNGRepresentation(photoView.image);
     encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     
@@ -215,27 +225,17 @@
     [manager POST:Aleart_API parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"%@",responseObject);
-     
-            self.hud.labelText = @"修改成功";//显示提示
-            self.hud.labelFont = TextFont;
-            [self.hud show:YES];
-            self.hud.square = YES;
-            [self.hud hide:YES afterDelay:2];
-       
+        
+        self.hud.labelText = @"修改成功";//显示提示
+        self.hud.labelFont = TextFont;
+        [self.hud show:YES];
+        self.hud.square = YES;
+        [self.hud hide:YES afterDelay:2];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
-    
 
-    
-}
-
-
-
-- (IBAction)saveuserimage:(id)sender {
-    
-    
-    [self selectForAlbumButtonClick];
     
 }
 

@@ -57,6 +57,13 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+    [self setHeaderView];
+    
+}
+
 - (void)setHeaderView{
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];

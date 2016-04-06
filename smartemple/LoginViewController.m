@@ -217,6 +217,7 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
     [self.account resignFirstResponder];
     [self.password resignFirstResponder];
 }

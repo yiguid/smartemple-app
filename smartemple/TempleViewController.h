@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TempleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate>
+@interface TempleViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @property(nonatomic,strong) UITableView * tableView;
-@property(nonatomic,strong)UISearchBar * search;
-
-@property(nonatomic,strong) NSMutableArray *dataSource;
-@property(nonatomic,strong) NSArray *filterData;
 
 @end
