@@ -12,6 +12,7 @@
 @interface Wishmodel : NSObject
 
 @property(nonatomic,copy)NSString * userid;
+@property(nonatomic,copy)NSString * realname;
 @property(nonatomic,copy)NSString * content;
 @property(nonatomic,copy)NSString * datetime;
 @property(nonatomic,copy)NSString * location;

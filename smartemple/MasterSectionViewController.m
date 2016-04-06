@@ -20,6 +20,7 @@
 #import "QuestionTableViewCell.h"
 #import "Wishmodel.h"
 #import "WishTableViewCell.h"
+#import "IPAdress.h"
 @interface MasterSectionViewController (){
 
     UISegmentedControl *segmentedControl;
@@ -69,11 +70,18 @@
     [self loadWish];
     [self text];
     _textView.hidden = YES;
+    
 }
 
+- (NSString *)deviceIPAdress {
+    InitAddresses();
+    GetIPAddresses();
+    GetHWAddresses();
+    return [NSString stringWithFormat:@"%s", ip_names[1]];
+}
 
 -(void)loadMaster{
-
+    
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDef stringForKey:@"token"];
@@ -182,19 +190,6 @@
     
 }
 
-//-(void)codeImg{
-//    NSString *path=[[NSBundle mainBundle] pathForResource:@"school_back" ofType:@"png"];
-//    UIImage *img= [UIImage imageWithContentsOfFile:path];
-//    NSData *data=UIImageJPEGRepresentation(img, 1.0);//UIImageJPEGRepresentation返回图片较小，但是清晰度模糊
-//    //    NSData *data=UIImagePNGRepresentation(img);//UIImagePNGRepresentation图片大，清晰
-//    
-////    data= [GTMBase64 encodeData:data];
-////    NSLog(@"-->%@",[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]);
-////    self.lbMessage.text=[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
-//}
-
-
-
 
 
 
@@ -259,7 +254,8 @@
         
     }
     
-//    NSString * textstring = _textFiled.text;
+    NSString * ip = [self deviceIPAdress];
+    NSLog(@"本机IP: %@",ip);
     
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -269,13 +265,14 @@
     NSString *token = [userDef stringForKey:@"token"];
     NSString *userID = [userDef stringForKey:@"userID"];
     NSString *username = [userDef stringForKey:@"realname"];
-    NSDictionary * param = @{@"realname":username,@"content":_textFiled.text,@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":@"001",@"userid":userID,@"access_token":token};
+    NSDictionary * param = @{@"realname":username,@"content":_textFiled.text,@"templeid":self.master.templeid,@"location":@"北京",@"fromurl":@"app/qf",@"ip":ip,@"userid":userID,@"access_token":token};
     [manager POST:url parameters:param
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               
               NSLog(@"评论成功");
               [self.view endEditing:YES];
               self.textFiled.text = @"";
+              [self loadWish];
               
           }
           failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TempleModel.h"
+@interface MyprayViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@interface MyprayViewController : UIViewController
+@property(nonatomic,strong) UITableView * tableView;
+
+@property(nonatomic,strong) TempleModel * temple;
+
 
 @end

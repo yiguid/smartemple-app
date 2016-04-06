@@ -347,6 +347,7 @@
 		21D7BF8F1CB372B60087A697 /* AleartHeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AleartHeadViewController.m; sourceTree = "<group>"; };
 		21D7BF911CB390CE0087A697 /* AleartNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AleartNameViewController.h; sourceTree = "<group>"; };
 		21D7BF921CB390CE0087A697 /* AleartNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AleartNameViewController.m; sourceTree = "<group>"; };
+		21F31CA81CB50B24006E42EC /* IPAdress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAdress.h; sourceTree = "<group>"; };
 		21FBF62F1CAA2A7500262039 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		21FBF6301CAA2A7500262039 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		21FBF6311CAA2A7500262039 /* Net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Net.h; sourceTree = "<group>"; };
@@ -614,6 +615,7 @@
 		217B56F51C8691590077B23D /* 登录、注册、设置基本信息 */ = {
 			isa = PBXGroup;
 			children = (
+				21F31CA61CB4FF63006E42EC /* 查询本机ip地址 */,
 				21FBF6381CAA2A8300262039 /* 判断是否是手机号 */,
 				217B56C91C868ED00077B23D /* Main.storyboard */,
 				217B570A1C86981B0077B23D /* LoginViewController.h */,
@@ -856,6 +858,14 @@
 				217B58121C881B8A0077B23D /* MasterSectionViewController.m */,
 			);
 			name = "法师详情";
+			sourceTree = "<group>";
+		};
+		21F31CA61CB4FF63006E42EC /* 查询本机ip地址 */ = {
+			isa = PBXGroup;
+			children = (
+				21F31CA81CB50B24006E42EC /* IPAdress.h */,
+			);
+			name = "查询本机ip地址";
 			sourceTree = "<group>";
 		};
 		21FBF6381CAA2A8300262039 /* 判断是否是手机号 */ = {

@@ -18,6 +18,7 @@
 
     UISearchBar * mySearchBar;
     NSString * searchstring;
+    UITapGestureRecognizer *tapGr;
 }
 
 @property(nonatomic, strong)NSMutableArray * allTempleArr;
@@ -72,11 +73,13 @@
     
     mySearchBar.hidden = YES;
     
-    //给最外层的view添加一个手势响应UITapGestureRecognizer
-    
-    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
-    [self.view addGestureRecognizer:tapGr];
-    
+    tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+
+    //键盘弹出通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+    //键盘隐藏通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardHid:) name: UIKeyboardWillHideNotification object:nil];
+
     
     [self loadRec];
     [self loadHot];
@@ -84,6 +87,21 @@
     
     searchstring = @"";
 
+}
+
+///键盘显示事件
+- (void) keyboardShow:(NSNotification *)notification {
+
+    //给最外层的view添加一个手势响应UITapGestureRecognizer
+    
+       [self.view addGestureRecognizer:tapGr];
+    
+
+}
+///键盘关闭事件
+- (void) keyboardHid:(NSNotification *)notification {
+
+    [self.view removeGestureRecognizer:tapGr];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -60,6 +60,12 @@
 
 #define My_API @"http://temple.irockwill.com/json/user/info"
 
+//我的页面
+#define Wish_My_API @"http://temple.irockwill.com/json/user/wish"
+
+
+
+
 //修改头像昵称
 #define Aleart_API @"http://temple.irockwill.com/json/user/update_avatar_realname"
 //搜索

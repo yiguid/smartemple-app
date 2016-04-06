@@ -89,7 +89,7 @@
 
 - (void)setup:(Wishmodel *)model{
     
-    self.username.text = model.userid;
+    self.username.text = model.realname;
     
     self.datetime.text = model.datetime;
     self.message.text = model.content;
