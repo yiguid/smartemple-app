@@ -15,7 +15,12 @@
 #import "MJExtension.h"
 #import "masterModel.h"
 #import "UIImageView+WebCache.h"
-@interface MasterFirstViewController ()
+#import "UserModel.h"
+@interface MasterFirstViewController (){
+
+    NSArray * master;
+}
+
 @property(nonatomic, strong)NSMutableArray * recMasterArr;
 @end
 
@@ -25,18 +30,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    LZAutoScrollView *autoScrollView = [[LZAutoScrollView alloc] initWithFrame:CGRectMake(0,64,wScreen,150*wScreen/375)];
-    autoScrollView.titles = @[@"一", @"二", @"三"];
+    
+    
+    
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"page":@"1",@"limit":@"3",@"access_token":token};
+    NSString *url = [NSString stringWithFormat:@"%@/home_slider",Master_API];
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        master = [UserModel mj_objectArrayWithKeyValuesArray:responseObject[@"master"]];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
+   
+    
+    LZAutoScrollView *autoScrollView = [[LZAutoScrollView alloc] initWithFrame:CGRectMake(0,64,wScreen,3*wScreen/4)];
+    
+    autoScrollView.titles = @[@"真严法师", @"延琳法师", @"昌恒法师"];
     autoScrollView.placeHolder = [UIImage imageNamed:@"place.jpg"];
     autoScrollView.pageControlAligment = PageControlAligmentCenter;
     autoScrollView.images = @[
-                              @"http://img2.3lian.com/2014/f7/5/d/22.jpg",
-                              @"http://image.tianjimedia.com/uploadImages/2011/327/1VPRY46Q4GB7.jpg",
-                              @"http://img6.faloo.com/Picture/0x0/0/747/747488.jpg"
+                              @"http://smartemple.com/templeimg/home/973-20160306134716.jpg",
+                              @"http://smartemple.com/templeimg/home/1281-20160306112834.jpg",
+                              @"http://smartemple.com/templeimg/home/5-20151223232050.jpg"
                               ];
-    
+ 
     autoScrollView.itemClicked = ^(int index) {
-        NSLog(@"index: %d", index);
+        NSLog(@"index: %d11", index);
     };
     [self.view addSubview:autoScrollView];
     
@@ -74,7 +102,6 @@
 
 
 -(void)loadData{
-    
     
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];

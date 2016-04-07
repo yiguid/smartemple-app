@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsViewController : UIViewController
+@interface NewsViewController : UIViewController<UIWebViewDelegate>
+
+
+@property(nonatomic,strong) NSString * newsID;
+@property(nonatomic,strong) NSString * templeID;
+@property(nonatomic,strong) NSString * type;
+@property(nonatomic,strong) NSString * newsString;
+
 
 @end

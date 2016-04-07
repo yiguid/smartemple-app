@@ -32,6 +32,7 @@
 #import "WishAllViewController.h"
 #import "ActivityAllViewController.h"
 #import "NewsAllViewController.h"
+#import "NewsViewController.h"
 #import "DonationAllViewController.h"
 @interface TempleSecondViewController (){
     
@@ -44,6 +45,7 @@
 @property(nonatomic, strong)NSMutableArray * NewsArr;;
 @property(nonatomic, strong)NSMutableArray * ActivityArr;
 @property(nonatomic, strong)NSMutableArray * WishArr;
+@property(nonatomic, strong)NSMutableArray * GoodArr;
 @property(nonatomic, strong)NSMutableArray * DonationArr;
 @end
 
@@ -57,7 +59,7 @@
     self.ActivityArr = [[NSMutableArray alloc]init];
     self.WishArr = [[NSMutableArray alloc]init];
     self.DonationArr = [[NSMutableArray alloc]init];
-    
+    self.GoodArr = [[NSMutableArray alloc]init];
     
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -89,6 +91,7 @@
     [self loadActivity];
     [self loadWish];
     [self loadDonation];
+    [self loadGood];
 }
 
 -(void)loadMaster{
@@ -137,7 +140,7 @@
     
     UIButton * activityButton = [[UIButton alloc]initWithFrame:CGRectMake(wScreen/2+10, 10, wScreen/2-20, 30)];
     activityButton.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
-    [activityButton setTitle:@"参加活动" forState:UIControlStateNormal];
+    [activityButton setTitle:@"查看新闻" forState:UIControlStateNormal];
     
     [self.activityView addSubview:activityButton];
     
@@ -197,7 +200,7 @@
     renqilabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [headView addSubview:renqilabel];
     
-    UILabel * guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+20,45,guanzhutextSize.width+30,30)];
+    UILabel * guanzhulabel = [[UILabel alloc]initWithFrame:CGRectMake(wScreen/5+20,45,guanzhutextSize.width+40,30)];
     guanzhulabel.textAlignment = NSTextAlignmentLeft;
     guanzhulabel.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     guanzhulabel.font = TextFont;
@@ -235,7 +238,7 @@
     websitelabel.text = self.temple.website;
     [headView addSubview:websitelabel];
     
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(10,textSize.height + wScreen/2+65+wScreen/5,wScreen-20,0.5)];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0,textSize.height + wScreen/2+65+wScreen/5,wScreen,0.5)];
     view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
     [headView addSubview:view];
     
@@ -245,9 +248,9 @@
 
 -(void)activityBtn{
     
-    ActivityAllViewController * activity = [[ActivityAllViewController alloc]init];
-    activity.temple = self.temple;
-    [self.navigationController pushViewController:activity animated:YES];
+    NewsAllViewController * news = [[NewsAllViewController alloc]init];
+    news.temple = self.temple;
+    [self.navigationController pushViewController:news animated:YES];
 
 }
 -(void)WishBtn{
@@ -256,6 +259,35 @@
     wish.temple = self.temple;
     [self.navigationController pushViewController:wish animated:YES];
 }
+
+
+-(void)loadGood{
+    
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDef stringForKey:@"token"];
+    NSDictionary *parameters = @{@"templeid":self.temple.templeid,@"access_token":token};
+    NSString *url = [NSString stringWithFormat:@"%@/news",Temple_API];
+    [manager GET:url parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+//        self.GoodArr = [NewsModel mj_objectArrayWithKeyValuesArray:responseObject[@"temple"]];
+//        
+        
+        [self.tableView reloadData];
+        
+        NSLog(@"请求成功");
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        
+        
+    }];
+
+
+}
+
 
 
 -(void)loadNews{
@@ -366,7 +398,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 8;
+    return 4;
     
 }
 
@@ -377,18 +409,18 @@
     }else if (section==1){
         return 1;
     }
+//    else if (section==2){
+//        return self.ActivityArr.count;
+//    }
+//    else if (section==3){
+//        return 1;
+//    }
+//    else if (section==4){
+//        return self.DonationArr.count;
+//    }else if (section==5){
+//        return 1;
+//    }
     else if (section==2){
-        return self.ActivityArr.count;
-    }
-    else if (section==3){
-        return 1;
-    }
-    else if (section==4){
-        return self.DonationArr.count;
-    }else if (section==5){
-        return 1;
-    }
-    else if (section==6){
         return self.WishArr.count;
     }else{
         return 1;
@@ -426,7 +458,7 @@
         if (self.NewsArr.count>=3) {
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.frame = CGRectMake(5,5,70,20);
+            button.frame = CGRectMake(5,5,80,20);
             //            NSString * str = [NSString stringWithFormat:@"%ld",self.NewsArr.count];
             
             [button setTitle:[NSString stringWithFormat:@"阅读更多>>"] forState:UIControlStateNormal];
@@ -447,117 +479,119 @@
         
         return cell;
         
-    }else if (indexPath.section==2){
-        
-        
-        NSString *ID = [NSString stringWithFormat:@"ActivityCell"];
-        ActiviTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-        
-        if (cell == nil) {
-            cell = [[ActiviTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-        }
-        
-        
-        [cell setup:self.ActivityArr[indexPath.row]];
-        cell.selectionStyle =UITableViewCellSelectionStyleNone;
-        return cell;
-        
-        
-        
-        
-    }else if (indexPath.section==3){
-        
-        static NSString * CellIndentifier = @"manyActivity";
-        
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        if (cell == nil) {
-            
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
-            
-        }
-        
-        if (self.ActivityArr.count>=3) {
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.frame = CGRectMake(5,5,70, 30);
-            //            NSString * str = [NSString stringWithFormat:@"%ld",self.NewsArr.count];
-            
-            [button setTitle:[NSString stringWithFormat:@"阅读更多>>"] forState:UIControlStateNormal];
-            
-            
-            [button setTitleColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0] forState:UIControlStateNormal];
-            button.titleLabel.font = TextFont;
-           
-            [button addTarget:self action:@selector(ActivityBtn) forControlEvents:UIControlEventTouchUpInside];
-            
-            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0,30,wScreen,1)];
-            view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
-            [cell.contentView addSubview:view];
-            
-            [cell.contentView addSubview:button];
-            
-            
-        }
-        
-        
-        return cell;
-    
-    
-    }else if (indexPath.section==4){
-        
-        NSString *ID = [NSString stringWithFormat:@"DonationCell"];
-        DonationTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-        
-        if (cell == nil) {
-            cell = [[DonationTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-        }
-        
-        
-        cell.selectionStyle =UITableViewCellSelectionStyleNone;
-        
-        [cell setup:self.DonationArr[indexPath.row]];
-        
-        return cell;
-        
-        
-    }else if (indexPath.section==5){
-        
-        static NSString * CellIndentifier = @"manyDonation";
-        
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        if (cell == nil) {
-            
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
-            
-        }
-        
-        if (self.DonationArr.count>=3) {
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.frame = CGRectMake(5,5,70, 30);
-            //            NSString * str = [NSString stringWithFormat:@"%ld",self.NewsArr.count];
-            
-            [button setTitle:[NSString stringWithFormat:@"阅读更多>>"] forState:UIControlStateNormal];
-            
-            
-            [button setTitleColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0] forState:UIControlStateNormal];
-            button.titleLabel.font = TextFont;
-            
-            [button addTarget:self action:@selector(DonationBtn) forControlEvents:UIControlEventTouchUpInside];
-            
-            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0,30,wScreen,1)];
-            view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
-            [cell.contentView addSubview:view];
-            
-            [cell.contentView addSubview:button];
-            
-            
-        }
-        
-        return cell;
-    }else if (indexPath.section==6){
+    }
+//    else if (indexPath.section==2){
+//        
+//        
+//        NSString *ID = [NSString stringWithFormat:@"ActivityCell"];
+//        ActiviTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//        
+//        if (cell == nil) {
+//            cell = [[ActiviTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//        }
+//        
+//        
+//        [cell setup:self.ActivityArr[indexPath.row]];
+//        cell.selectionStyle =UITableViewCellSelectionStyleNone;
+//        return cell;
+//        
+//        
+//        
+//        
+//    }else if (indexPath.section==3){
+//        
+//        static NSString * CellIndentifier = @"manyActivity";
+//        
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        
+//        if (cell == nil) {
+//            
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
+//            
+//        }
+//        
+//        if (self.ActivityArr.count>=3) {
+//            
+//            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            button.frame = CGRectMake(5,5,70, 30);
+//            //            NSString * str = [NSString stringWithFormat:@"%ld",self.NewsArr.count];
+//            
+//            [button setTitle:[NSString stringWithFormat:@"阅读更多>>"] forState:UIControlStateNormal];
+//            
+//            
+//            [button setTitleColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0] forState:UIControlStateNormal];
+//            button.titleLabel.font = TextFont;
+//           
+//            [button addTarget:self action:@selector(ActivityBtn) forControlEvents:UIControlEventTouchUpInside];
+//            
+//            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0,30,wScreen,1)];
+//            view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
+//            [cell.contentView addSubview:view];
+//            
+//            [cell.contentView addSubview:button];
+//            
+//            
+//        }
+//        
+//        
+//        return cell;
+//    
+//    
+//    }else if (indexPath.section==4){
+//        
+//        NSString *ID = [NSString stringWithFormat:@"DonationCell"];
+//        DonationTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//        
+//        if (cell == nil) {
+//            cell = [[DonationTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//        }
+//        
+//        
+//        cell.selectionStyle =UITableViewCellSelectionStyleNone;
+//        
+//        [cell setup:self.DonationArr[indexPath.row]];
+//        
+//        return cell;
+//        
+//        
+//    }else if (indexPath.section==5){
+//        
+//        static NSString * CellIndentifier = @"manyDonation";
+//        
+//        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//        
+//        if (cell == nil) {
+//            
+//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIndentifier];
+//            
+//        }
+//        
+//        if (self.DonationArr.count>=3) {
+//            
+//            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            button.frame = CGRectMake(5,5,70, 30);
+//            //            NSString * str = [NSString stringWithFormat:@"%ld",self.NewsArr.count];
+//            
+//            [button setTitle:[NSString stringWithFormat:@"阅读更多>>"] forState:UIControlStateNormal];
+//            
+//            
+//            [button setTitleColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1.0] forState:UIControlStateNormal];
+//            button.titleLabel.font = TextFont;
+//            
+//            [button addTarget:self action:@selector(DonationBtn) forControlEvents:UIControlEventTouchUpInside];
+//            
+//            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0,30,wScreen,1)];
+//            view.backgroundColor = [UIColor colorWithRed:150/255.0 green:150/255.0 blue:150/255.0 alpha:1.0];
+//            [cell.contentView addSubview:view];
+//            
+//            [cell.contentView addSubview:button];
+//            
+//            
+//        }
+//    
+//        return cell;
+//    }
+else if (indexPath.section==2){
         
         NSString *ID = [NSString stringWithFormat:@"WishCell"];
         WishTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
@@ -591,7 +625,7 @@
             
             
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.frame = CGRectMake(5,5,70, 30);
+            button.frame = CGRectMake(5,5,80, 30);
             //            NSString * str = [NSString stringWithFormat:@"%ld",self.NewsArr.count];
             
             [button setTitle:[NSString stringWithFormat:@"阅读更多>>"] forState:UIControlStateNormal];
@@ -638,33 +672,34 @@
         }
     
     }
-    else if (indexPath.section==2){
-        
-        ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
-        return [model getCellHeight];
-     
-    }else if (indexPath.section==3){
-        
-        if (self.ActivityArr.count>=3) {
-            return 30;
-        }else{
-            return 0;
-        }
-      
-    }else if (indexPath.section==4){
-        
-//        DonationModel *model = [self.DonationArr objectAtIndex:indexPath.row];
-        return wScreen/3;
-        
-    }else if (indexPath.section==5){
-        
-        if (self.DonationArr.count>=3) {
-            return 30;
-        }else{
-            return 0;
-        }
-        
-    }else if (indexPath.section==6){
+//    else if (indexPath.section==2){
+//        
+//        ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
+//        return [model getCellHeight];
+//     
+//    }else if (indexPath.section==3){
+//        
+//        if (self.ActivityArr.count>=3) {
+//            return 30;
+//        }else{
+//            return 0;
+//        }
+//      
+//    }else if (indexPath.section==4){
+//        
+////        DonationModel *model = [self.DonationArr objectAtIndex:indexPath.row];
+//        return wScreen/3;
+//        
+//    }else if (indexPath.section==5){
+//        
+//        if (self.DonationArr.count>=3) {
+//            return 30;
+//        }else{
+//            return 0;
+//        }
+//        
+//    }
+else if (indexPath.section==2){
         Wishmodel *model = [self.WishArr objectAtIndex:indexPath.row];
         return [model getCellHeight];
     }else{
@@ -682,17 +717,24 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==2) {
-        
-        ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
-        ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
-        activity.activityID = model.activityID;
-        activity.templeID = self.temple.templeid;
-        activity.type = model.type;
-        activity.activityString = @"temple";
-        [self.navigationController pushViewController:activity animated:YES];
-        
-        }
+//    if (indexPath.section==2) {
+//        
+//        ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
+//        ActiviModel *model = [self.ActivityArr objectAtIndex:indexPath.row];
+//        activity.activityID = model.activityID;
+//        activity.templeID = self.temple.templeid;
+//        activity.type = model.type;
+//        activity.activityString = @"temple";
+//        [self.navigationController pushViewController:activity animated:YES];
+//        
+//        }
+    if (indexPath.section==0) {
+        NewsViewController * news = [[NewsViewController alloc]init];
+        NewsModel * model = [self.NewsArr objectAtIndex:indexPath.row];
+        news.newsID = model.newsID;
+        news.templeID = self.temple.templeid;
+        [self.navigationController pushViewController:news animated:YES];
+    }
     
     
 }
@@ -702,19 +744,19 @@
     [self.navigationController pushViewController:news animated:YES];
 
 }
--(void)ActivityBtn{
-    ActivityAllViewController * activity = [[ActivityAllViewController alloc]init];
-    activity.temple = self.temple;
-    [self.navigationController pushViewController:activity animated:YES];
-
-}
-
--(void)DonationBtn{
-    DonationAllViewController * donation = [[DonationAllViewController alloc]init];
-    donation.temple = self.temple;
-    [self.navigationController pushViewController:donation animated:YES];
-
-}
+//-(void)ActivityBtn{
+//    ActivityAllViewController * activity = [[ActivityAllViewController alloc]init];
+//    activity.temple = self.temple;
+//    [self.navigationController pushViewController:activity animated:YES];
+//
+//}
+//
+//-(void)DonationBtn{
+//    DonationAllViewController * donation = [[DonationAllViewController alloc]init];
+//    donation.temple = self.temple;
+//    [self.navigationController pushViewController:donation animated:YES];
+//
+//}
 
 -(void)WishButtn{
     WishAllViewController * wish = [[WishAllViewController alloc]init];

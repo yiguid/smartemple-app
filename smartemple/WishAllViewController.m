@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "WishTableViewCell.h"
 #import "Wishmodel.h"
+#import "LZAutoScrollView.h"
 @interface WishAllViewController ()
 @property(nonatomic, strong)NSMutableArray * WishArr;
 
@@ -26,14 +27,35 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.WishArr = [[NSMutableArray alloc]init];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, wScreen, hScreen) style:UITableViewStylePlain];
+    
+    LZAutoScrollView *autoScrollView = [[LZAutoScrollView alloc] initWithFrame:CGRectMake(0,64,wScreen,3*wScreen/4)];
+    
+    autoScrollView.pageControlAligment = PageControlAligmentCenter;
+    autoScrollView.images = @[
+                              @"http://smartemple.com/assets/images/qf1.png",
+                              @"http://smartemple.com/assets/images/qf2.png",
+                              @"http://smartemple.com/assets/images/qf3.png"
+                              ];
+    
+    
+    autoScrollView.itemClicked = ^(int index) {
+        NSLog(@"index: %d11", index);
+    };
+    [self.view addSubview:autoScrollView];
+    
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,wScreen*3/4, wScreen, hScreen-wScreen*3/4) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSelectionStyleNone;
     [self.view addSubview:_tableView];
     
+    
+    
+
+    
    [self loadWish];
-    [self text];
+   [self text];
+   
 
 }
 

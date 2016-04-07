@@ -42,6 +42,9 @@
 #define Temple_all_API @"http://temple.irockwill.com/json/temple/all"
 #define Temple_recommend_API @"http://temple.irockwill.com/json/temple/recommend"
 #define Temple_hot_API @"http://temple.irockwill.com/json/temple/hot"
+//日行一善
+#define Temple_Good_API @"http://temple.irockwill.com/json/temple/income_count"
+
 //寺院活动
 #define Temple_activity_API @"http://temple.irockwill.com/activity/id"
 //寺院功德榜
@@ -75,8 +78,8 @@
 ////活动详情
 //#define Temple_activity_API @"http://temple.irockwill.com/json/find/ac_detail"
 
-#define MarkFont [UIFont systemFontOfSize:10]
-#define TextFont [UIFont systemFontOfSize:12]
-#define NameFont [UIFont systemFontOfSize:14]
-#define TimeFont [UIFont systemFontOfSize:11]
+#define MarkFont [UIFont systemFontOfSize:12]
+#define TextFont [UIFont systemFontOfSize:14]
+#define NameFont [UIFont systemFontOfSize:15]
+#define TimeFont [UIFont systemFontOfSize:13]
 #endif 

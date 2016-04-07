@@ -10,4 +10,9 @@
 
 @interface UserModel : NSObject
 
+@property(nonatomic,copy)NSString * homeimg;
+@property(nonatomic,copy)NSString * masterid;
+@property(nonatomic,copy)NSString * intro;
+@property(nonatomic,copy)NSString * realname;
+
 @end

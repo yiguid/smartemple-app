@@ -143,7 +143,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -154,13 +154,14 @@
         
         return self.masterMakeArr.count;
     }
-    else if (section==2){
+    else{
         
         return self.newsMakeArr.count;
-    }else{
-        
-        return self.activityMakeArr.count;
     }
+//    else{
+//        
+//        return self.activityMakeArr.count;
+//    }
 
     
    
@@ -205,7 +206,7 @@
         
         
         
-    }else  if (indexPath.section==2) {
+    }else{
         
         
         NSString *ID = [NSString stringWithFormat:@"NewsCell"];
@@ -225,26 +226,27 @@
         
         
         
-    }else{
-        
-        
-        NSString *ID = [NSString stringWithFormat:@"ActivityCell"];
-        ActiviTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
-        
-        if (cell == nil) {
-            cell = [[ActiviTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-        }
-        
-        
-        [cell setup:self.activityMakeArr[indexPath.row]];
-         cell.selectionStyle =UITableViewCellSelectionStyleNone;
-        return cell;
-
-        
-        
-        
     }
-    
+//    else{
+//        
+//        
+//        NSString *ID = [NSString stringWithFormat:@"ActivityCell"];
+//        ActiviTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:ID];
+//        
+//        if (cell == nil) {
+//            cell = [[ActiviTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+//        }
+//        
+//        
+//        [cell setup:self.activityMakeArr[indexPath.row]];
+//         cell.selectionStyle =UITableViewCellSelectionStyleNone;
+//        return cell;
+//
+//        
+//        
+//        
+//    }
+//    
     return nil;
     
     
@@ -261,16 +263,17 @@
     }else if (indexPath.section==1){
         
         return wScreen/5+20;
-    }else if (indexPath.section==2){
+    }{
     
         NewsModel *model = [self.newsMakeArr objectAtIndex:indexPath.row];
         return [model getCellHeight];
 
-    }else{
-        ActiviModel *model = [self.activityMakeArr objectAtIndex:indexPath.row];
-        return [model getCellHeight];
-
     }
+//    else{
+//        ActiviModel *model = [self.activityMakeArr objectAtIndex:indexPath.row];
+//        return [model getCellHeight];
+//
+//    }
     
     
 }
@@ -281,11 +284,12 @@
         return @"寺院";
     }else if (section==1){
         return @"法师";
-    }else if (section==2){
-        return @"消息";
     }else{
-        return @"活动";
+        return @"消息";
     }
+//    else{
+//        return @"活动";
+//    }
 
 }
 
@@ -325,19 +329,23 @@
     }else if (indexPath.section==2){
         
         NewsViewController * news = [[NewsViewController alloc]init];
-        news.hidesBottomBarWhenPushed = YES;
+        NewsModel * model = [self.newsMakeArr objectAtIndex:indexPath.row];
+        news.newsID = model.newsID;
+        news.templeID = model.templeid;
         [self.navigationController pushViewController:news animated:YES];
+
     
-    }else if (indexPath.section==3) {
-            
-            ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
-            ActiviModel *model = [self.activityMakeArr objectAtIndex:indexPath.row];
-            activity.activityID = model.activityID;
-            activity.activityString = @"new";
-            activity.type = model.type;
-            [self.navigationController pushViewController:activity animated:YES];
-            
-        }
+    }
+//    else if (indexPath.section==3) {
+//            
+//            ActivitySecondViewController * activity = [[ActivitySecondViewController alloc]init];
+//            ActiviModel *model = [self.activityMakeArr objectAtIndex:indexPath.row];
+//            activity.activityID = model.activityID;
+//            activity.activityString = @"new";
+//            activity.type = model.type;
+//            [self.navigationController pushViewController:activity animated:YES];
+//            
+//        }
     
 }
 

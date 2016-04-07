@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "NewsTableViewCell.h"
 #import "NewsModel.h"
+#import "NewsViewController.h"
 @interface NewsAllViewController ()
 @property(nonatomic, strong)NSMutableArray * NewsArr;
 @end
@@ -105,7 +106,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-        
+    NewsViewController * news = [[NewsViewController alloc]init];
+    NewsModel * model = [self.NewsArr objectAtIndex:indexPath.row];
+    news.newsID = model.newsID;
+    news.templeID = self.temple.templeid;
+    [self.navigationController pushViewController:news animated:YES];
+
+    
     
 }
 

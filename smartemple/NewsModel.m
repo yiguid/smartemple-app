@@ -13,14 +13,20 @@
 
 +(NSDictionary *)replacedKeyFromPropertyName
 {
-    return @{@"Description" : @"description"};
+    return @{@"Description" : @"description",@"newsID":@"id"};
 }
 
 -(CGFloat)getCellHeight{
-    CGSize textSize = [self sizeWithText:self.title font:TextFont maxSize:CGSizeMake(wScreen -100, MAXFLOAT)];
+    CGSize textSize = [self sizeWithText:self.Description font:TextFont maxSize:CGSizeMake(wScreen-wScreen/3-15, MAXFLOAT)];
+    
+    if (textSize.height<wScreen/3) {
+        return wScreen/3;
+    }else{
+         return textSize.height + 30;
+    }
     
     
-    return textSize.height+20;
+   
 }
 
 
@@ -28,6 +34,7 @@
     NSDictionary *attrs = @{NSFontAttributeName : font};
     return  [text boundingRectWithSize: maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
 }
+
 
 
 @end

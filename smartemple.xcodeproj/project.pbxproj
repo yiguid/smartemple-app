@@ -134,6 +134,14 @@
 		217B58131C881B8A0077B23D /* MasterSectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217B58121C881B8A0077B23D /* MasterSectionViewController.m */; };
 		21D7BF901CB372B60087A697 /* AleartHeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BF8F1CB372B60087A697 /* AleartHeadViewController.m */; };
 		21D7BF931CB390CE0087A697 /* AleartNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D7BF921CB390CE0087A697 /* AleartNameViewController.m */; };
+		21F31CB11CB62F05006E42EC /* 祈福-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CAA1CB62F05006E42EC /* 祈福-1@2x.png */; };
+		21F31CB21CB62F05006E42EC /* 祈福-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CAB1CB62F05006E42EC /* 祈福-2@2x.png */; };
+		21F31CB31CB62F05006E42EC /* 时光轴-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CAC1CB62F05006E42EC /* 时光轴-1@2x.png */; };
+		21F31CB41CB62F05006E42EC /* 时光轴-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CAD1CB62F05006E42EC /* 时光轴-2@2x.png */; };
+		21F31CB51CB62F05006E42EC /* 搜索@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CAE1CB62F05006E42EC /* 搜索@2x.png */; };
+		21F31CB61CB62F05006E42EC /* 问答-1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CAF1CB62F05006E42EC /* 问答-1@2x.png */; };
+		21F31CB71CB62F05006E42EC /* 问答-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CB01CB62F05006E42EC /* 问答-2@2x.png */; };
+		21F31CBA1CB636CA006E42EC /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21F31CB91CB636CA006E42EC /* Media.xcassets */; };
 		21FBF6351CAA2A7500262039 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FBF6301CAA2A7500262039 /* Reachability.m */; };
 		21FBF6361CAA2A7500262039 /* Net.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FBF6321CAA2A7500262039 /* Net.m */; };
 		21FBF6371CAA2A7500262039 /* Verfiy.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FBF6341CAA2A7500262039 /* Verfiy.m */; };
@@ -348,6 +356,14 @@
 		21D7BF911CB390CE0087A697 /* AleartNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AleartNameViewController.h; sourceTree = "<group>"; };
 		21D7BF921CB390CE0087A697 /* AleartNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AleartNameViewController.m; sourceTree = "<group>"; };
 		21F31CA81CB50B24006E42EC /* IPAdress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAdress.h; sourceTree = "<group>"; };
+		21F31CAA1CB62F05006E42EC /* 祈福-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "祈福-1@2x.png"; sourceTree = "<group>"; };
+		21F31CAB1CB62F05006E42EC /* 祈福-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "祈福-2@2x.png"; sourceTree = "<group>"; };
+		21F31CAC1CB62F05006E42EC /* 时光轴-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时光轴-1@2x.png"; sourceTree = "<group>"; };
+		21F31CAD1CB62F05006E42EC /* 时光轴-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时光轴-2@2x.png"; sourceTree = "<group>"; };
+		21F31CAE1CB62F05006E42EC /* 搜索@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "搜索@2x.png"; sourceTree = "<group>"; };
+		21F31CAF1CB62F05006E42EC /* 问答-1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "问答-1@2x.png"; sourceTree = "<group>"; };
+		21F31CB01CB62F05006E42EC /* 问答-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "问答-2@2x.png"; sourceTree = "<group>"; };
+		21F31CB91CB636CA006E42EC /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		21FBF62F1CAA2A7500262039 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		21FBF6301CAA2A7500262039 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		21FBF6311CAA2A7500262039 /* Net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Net.h; sourceTree = "<group>"; };
@@ -683,6 +699,7 @@
 		217B57071C8696150077B23D /* image */ = {
 			isa = PBXGroup;
 			children = (
+				21F31CA91CB62EE6006E42EC /* segment */,
 				21369ED21CABA1690064A04D /* 1_n@2x-2.png */,
 				21369ED31CABA1690064A04D /* 1_n@2x.png */,
 				21369ED41CABA1690064A04D /* 1_n@3x-2.png */,
@@ -753,6 +770,7 @@
 				217B57D21C87DADC0077B23D /* movie@2x.png */,
 				210891671C8FD09600F8DD80 /* smartemple-logo.png */,
 				21369ECA1CAB7FDC0064A04D /* place.jpg */,
+				21F31CB91CB636CA006E42EC /* Media.xcassets */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -866,6 +884,20 @@
 				21F31CA81CB50B24006E42EC /* IPAdress.h */,
 			);
 			name = "查询本机ip地址";
+			sourceTree = "<group>";
+		};
+		21F31CA91CB62EE6006E42EC /* segment */ = {
+			isa = PBXGroup;
+			children = (
+				21F31CAA1CB62F05006E42EC /* 祈福-1@2x.png */,
+				21F31CAB1CB62F05006E42EC /* 祈福-2@2x.png */,
+				21F31CAC1CB62F05006E42EC /* 时光轴-1@2x.png */,
+				21F31CAD1CB62F05006E42EC /* 时光轴-2@2x.png */,
+				21F31CAE1CB62F05006E42EC /* 搜索@2x.png */,
+				21F31CAF1CB62F05006E42EC /* 问答-1@2x.png */,
+				21F31CB01CB62F05006E42EC /* 问答-2@2x.png */,
+			);
+			name = segment;
 			sourceTree = "<group>";
 		};
 		21FBF6381CAA2A8300262039 /* 判断是否是手机号 */ = {
@@ -1005,12 +1037,16 @@
 			files = (
 				210891861C8FD36000F8DD80 /* 3x.png in Resources */,
 				210891921C8FDC5500F8DD80 /* jinghao@3x.png in Resources */,
+				21F31CB41CB62F05006E42EC /* 时光轴-2@2x.png in Resources */,
 				2108919F1C8FDC6F00F8DD80 /* guanzhu_fabuyingping@2x.png in Resources */,
 				217B56D01C868ED00077B23D /* LaunchScreen.storyboard in Resources */,
+				21F31CB61CB62F05006E42EC /* 问答-1@2x.png in Resources */,
 				21369EEF1CABA1690064A04D /* 4_n@2x.png in Resources */,
 				210891D31C8FDD1600F8DD80 /* 喜欢@2x.png in Resources */,
 				210891BD1C8FDD1600F8DD80 /* 定格@2x.png in Resources */,
 				21369EE41CABA1690064A04D /* 1_n@3x-2.png in Resources */,
+				21F31CBA1CB636CA006E42EC /* Media.xcassets in Resources */,
+				21F31CB71CB62F05006E42EC /* 问答-2@2x.png in Resources */,
 				21369EEB1CABA1690064A04D /* 3_n@2x.png in Resources */,
 				21369EE21CABA1690064A04D /* 1_n@2x-2.png in Resources */,
 				210891C81C8FDD1600F8DD80 /* 评论@3x.png in Resources */,
@@ -1034,6 +1070,7 @@
 				210891CF1C8FDD1600F8DD80 /* 推荐电影@2x.png in Resources */,
 				210891D81C8FDD1600F8DD80 /* 影品@3x.png in Resources */,
 				21369EED1CABA1690064A04D /* 3_n@3x.png in Resources */,
+				21F31CB21CB62F05006E42EC /* 祈福-2@2x.png in Resources */,
 				210891CE1C8FDD1600F8DD80 /* 收藏@3x.png in Resources */,
 				21369EEA1CABA1690064A04D /* 3_n@2x-2.png in Resources */,
 				21369ECB1CAB7FDC0064A04D /* place.jpg in Resources */,
@@ -1057,6 +1094,7 @@
 				210891C31C8FDD1600F8DD80 /* 关注@2x.png in Resources */,
 				217B56CB1C868ED00077B23D /* Main.storyboard in Resources */,
 				217B57D11C87DAB90077B23D /* shareImg.png in Resources */,
+				21F31CB51CB62F05006E42EC /* 搜索@2x.png in Resources */,
 				210891D51C8FDD1600F8DD80 /* 消息@2x.png in Resources */,
 				21369EEC1CABA1690064A04D /* 3_n@3x-2.png in Resources */,
 				210891BF1C8FDD1600F8DD80 /* 返回@2x.png in Resources */,
@@ -1066,7 +1104,9 @@
 				217B57091C86963E0077B23D /* dian.png in Resources */,
 				210891681C8FD09600F8DD80 /* smartemple-logo.png in Resources */,
 				217B57841C86E2EA0077B23D /* shareqq@2x.png in Resources */,
+				21F31CB11CB62F05006E42EC /* 祈福-1@2x.png in Resources */,
 				210891D21C8FDD1600F8DD80 /* 喜欢-black@3x.png in Resources */,
+				21F31CB31CB62F05006E42EC /* 时光轴-1@2x.png in Resources */,
 				210891C91C8FDD1600F8DD80 /* 设置@2x.png in Resources */,
 				210891931C8FDC5500F8DD80 /* kan@2x.png in Resources */,
 				210891D71C8FDD1600F8DD80 /* 影品@2x.png in Resources */,

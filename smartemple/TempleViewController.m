@@ -51,13 +51,19 @@
     
     self.navigationController.navigationBar.titleTextAttributes = dict;
     
-   
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]
-                                    initWithTitle:@"🔍"
-                                    style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(right:)];
-    [self.navigationItem setRightBarButtonItem:rightButton];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    btn.frame =CGRectMake(0, 0, 32, 32);
+    
+    [btn setImage:[UIImage imageNamed:@"搜索.png"] forState:UIControlStateNormal];
+    
+    [btn addTarget: self action: @selector(right:) forControlEvents: UIControlEventTouchUpInside];
+    
+    UIBarButtonItem* item=[[UIBarButtonItem alloc]initWithCustomView:btn];
+    [self.navigationItem setRightBarButtonItem:item];
+    
+
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
    

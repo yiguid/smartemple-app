@@ -70,7 +70,6 @@
     [self loadWish];
     [self text];
     _textView.hidden = YES;
-    
 }
 
 - (NSString *)deviceIPAdress {

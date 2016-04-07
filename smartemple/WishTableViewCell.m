@@ -56,6 +56,7 @@
     [self.contentView addSubview:self.userimage];
     
     self.fengexian = [[UIView alloc]init];
+    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
     [self.contentView addSubview:self.fengexian];
     
     return self;
@@ -78,7 +79,7 @@
     self.donationcontent.frame = CGRectMake(55, textSize.height+40, wScreen-70,donsize.height);
    
     self.fengexian.frame = CGRectMake(10,textSize.height+65+donsize.height, wScreen-20,0.5);
-    self.fengexian.backgroundColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];
+   
     self.userimage.frame = CGRectMake(10,10, 40, 40);
     
     //头像圆形
@@ -90,7 +91,6 @@
 - (void)setup:(Wishmodel *)model{
     
     self.username.text = model.realname;
-    
     self.datetime.text = model.datetime;
     self.message.text = model.content;
     

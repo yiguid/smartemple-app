@@ -16,7 +16,7 @@
             
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,wScreen/5,wScreen/5)];
         [self addSubview:self.imageView];
-        self.title = [[UILabel alloc]initWithFrame:CGRectMake(0,wScreen/5,wScreen/5,20)];
+        self.title = [[UILabel alloc]initWithFrame:CGRectMake(0,wScreen/5,wScreen/5+5,20)];
         self.title.textAlignment = NSTextAlignmentCenter;
         self.title.font = TextFont;
         self.title.textColor = [UIColor colorWithRed:147/255.0 green:133/255.0 blue:99/255.0 alpha:1.0];

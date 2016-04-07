@@ -119,12 +119,6 @@
 
 }
 
-//- (UICollectionViewFlowLayout *) flowLayout{
-//    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-//    flowLayout.headerReferenceSize = CGSizeMake(300.0f, 50.0f);  //设置head大小
-//    flowLayout.footerReferenceSize = CGSizeMake(300.0f, 50.0f);
-//    return flowLayout;
-//}
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
 
